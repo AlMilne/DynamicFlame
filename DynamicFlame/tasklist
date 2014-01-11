@@ -1,0 +1,10 @@
+- Add current static html pages to the eclipse project
+- Test auto deployment to tomcat
+- Create database for storing images and news stories
+- Test database with manual sql
+- Create Spring form for uploading and deleting images
+- Create Spring form for create, deleting and editing news stories
+- Implement Spring security to only allow admin access to above
+- Create Spring forum
+- Create database to store forum posts
+- Add user login/profiles stored in database for forum use
