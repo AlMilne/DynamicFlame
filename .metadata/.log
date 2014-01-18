@@ -8342,3 +8342,9 @@ java.io.FileNotFoundException: C:\wks\DynamicFlameWebsite\DynamicFlame\target\te
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2014-01-18 16:38:46.229
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-01-18 16:48:37.612
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2014-01-18 16:48:37.624
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
