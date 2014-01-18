@@ -1,0 +1,25 @@
+/*
+ * Module: DynamicFlame, Project: Unity Digital 
+ * Copyright (C) Aviva UK Life, All rights reserved
+ */
+package com.au.dynamicflame.domain;
+
+import java.sql.Timestamp;
+
+
+/**
+ * News.java - TODO Alasdair COMMENT MISSING.
+ * 
+ * @author Alasdair
+ * @since 11/01/2014
+ */
+public class News {
+
+    String title;
+    String subtitle;
+    String content;
+    String author;
+    Timestamp posted_date;
+    short image_id;
+    byte likes;
+}

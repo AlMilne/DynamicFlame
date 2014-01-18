@@ -1,0 +1,27 @@
+package com.amilne.controller;
+
+import org.junit.Test;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.au.dynamicflame.controller.NewsController;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * NewsControllerTest.java - TODO Alasdair COMMENT MISSING.
+ * 
+ * @author Alasdair
+ * @since 11/01/2014
+ */
+public class NewsControllerTest {
+
+    @Test
+    public void testHandleRequestView() throws Exception{
+        NewsController controller = new NewsController();
+        ModelAndView modelAndView = controller.handleRequest(null, null);
+        assertEquals("hello", modelAndView.getViewName());
+        assertNotNull(modelAndView.getModel());
+        String nowValue = (String) modelAndView.getModel().get("now");
+        assertNotNull(nowValue);
+    }
+}

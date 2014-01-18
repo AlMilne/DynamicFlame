@@ -1,0 +1,43 @@
+package com.amilne.controller;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
+
+import com.au.dynamicflame.controller.NewsController;
+/**
+ * NewsControllerTest.java - TODO Alasdair COMMENT MISSING.
+ * 
+ * @author Alasdair
+ * @since 11/01/2014
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+public class NewsControllerTest {
+    
+    private MockMvc mockMvc;
+    
+    private NewsController newsController;
+    
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(newsController).build();
+    }
+    
+   
+    @Test
+    public void testHandleRequestView() throws Exception{
+        newsController = new NewsController();
+//        assertEquals("home", newsController.loadFormPage(new ExtendedModelMap()));
+//
+//        assertNotNull(modelAndView.getModel());
+//        String nowValue = (String) modelAndView.getModel().get("message");
+//        assertNotNull(nowValue);
+    }
+}

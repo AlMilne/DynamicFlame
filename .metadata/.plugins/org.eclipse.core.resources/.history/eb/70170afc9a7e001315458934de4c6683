@@ -1,0 +1,9 @@
+label.title=Article title
+label.subtitle=Subtitle
+label.content=Content
+
+error.title=Title of article must be entered
+errors.Subtitle=Subtitle of article must be entered
+error.Content=Content of article must be entered
+errors.Content=Content of article must be entered2
+

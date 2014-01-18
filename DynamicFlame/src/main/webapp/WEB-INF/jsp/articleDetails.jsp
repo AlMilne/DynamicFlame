@@ -9,7 +9,7 @@
 </head>
 <body>
 	<p>Article title is ${article.title}. Subtitle is
-		${article.subtitle}.</p>
+		${article.subtitle}.Content is ${article.content}</p>
 </body>
 
 </html>

@@ -78,8 +78,8 @@ public class JDBCDatabaseTest {
 
             while (rs.next()) {
 
-                String userid = rs.getString("USER_ID");
-                String username = rs.getString("USERNAME");
+                String userid = rs.getString("image_id");
+                String username = rs.getString("title");
 
                 System.out.println("userid : " + userid);
                 System.out.println("username : " + username);

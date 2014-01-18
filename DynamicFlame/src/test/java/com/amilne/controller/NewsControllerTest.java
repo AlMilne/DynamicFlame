@@ -1,27 +1,71 @@
 package com.amilne.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.springframework.web.servlet.ModelAndView;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.au.dynamicflame.controller.NewsController;
+
 /**
- * NewsControllerTest.java - TODO Alasdair COMMENT MISSING.
+ * NewsControllerTest.java - test class for NewsController class.
  * 
  * @author Alasdair
  * @since 11/01/2014
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
 public class NewsControllerTest {
 
+    private MockMvc mockMvc;
+
+    @InjectMocks
+    private NewsController newsController = new NewsController();
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/jsp/view/");
+        viewResolver.setSuffix(".jsp");
+        
+        mockMvc = MockMvcBuilders.standaloneSetup(newsController).setViewResolvers(viewResolver).build();
+    }
+
     @Test
-    public void testHandleRequestView() throws Exception{
-        NewsController controller = new NewsController();
-        ModelAndView modelAndView = controller.handleRequest();
-        assertEquals("newsAdmin", modelAndView.getViewName());
-        assertNotNull(modelAndView.getModel());
-        String nowValue = (String) modelAndView.getModel().get("message");
-        assertNotNull(nowValue);
+    public void testHandleRequestView() throws Exception {
+        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"))
+                .andExpect(model().attributeExists("newsArticle"));
+    }
+
+    @Test
+    public void testProcessNewsArticleValidationError() throws Exception {
+        mockMvc.perform(post("/articleDetails")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"));
+    }
+
+    @Test
+    public void testProcessNewsArticleSuccess() throws Exception {
+        // BindingResult result = mock(BindingResult.class);
+        // when(result.hasErrors()).thenReturn(true);
+
+        mockMvc.perform(post("/articleDetails")
+                .param("title", "title")
+                .param("subtitle", "subtitle")
+                .param("content", "content"))
+                .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+                .andExpect(model().attributeExists("article"));
     }
 }
