@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun NewsControllerTest (Failed Tests first)" project="DynamicFlame" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="com.amilne.controller.NewsControllerTest" time="2.82">
-    <testcase name="testHandleRequestView" classname="com.amilne.controller.NewsControllerTest" time="2.456"/>
-    <testcase name="testProcessNewsArticleValidationError" classname="com.amilne.controller.NewsControllerTest" time="0.272"/>
-    <testcase name="testProcessNewsArticleSuccess" classname="com.amilne.controller.NewsControllerTest" time="0.092"/>
-  </testsuite>
-</testrun>

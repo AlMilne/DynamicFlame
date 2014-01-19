@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css"/>
 <title>News Stories</title>
 
 </head>
@@ -27,7 +28,7 @@
 		<form:label path="content">
 			<spring:message code="label.content" />
 		</form:label>
-		<form:input path="content" id="content"></form:input>
+		<form:textarea path="content" id="content" rows="5"></form:textarea>
 		<form:errors path="content" cssclass="error"></form:errors>
 		<br />
 

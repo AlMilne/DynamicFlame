@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="NewsControllerTest" project="DynamicFlame" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.amilne.controller.NewsControllerTest" time="2.436">
-    <testcase name="testHandleRequestView" classname="com.amilne.controller.NewsControllerTest" time="2.436"/>
-  </testsuite>
-</testrun>

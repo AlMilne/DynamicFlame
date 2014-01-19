@@ -1,6 +1,0 @@
-INDEX VERSION 1.3+C:\wks\DynamicFlameWebsite\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1699002217.index
-752708436.index
-1263586230.index
-1914934465.index
-98173946.index
