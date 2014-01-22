@@ -7,15 +7,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.au.dynamicflame.controller.NewsController;
+import org.au.dynamicflame.model.NewsArticle;
+import org.au.dynamicflame.news.service.NewsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -24,11 +30,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Alasdair
  * @since 11/01/2014
  */
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
 public class NewsControllerTest {
 
     private MockMvc mockMvc;
+
+    @Autowired
+    private WebApplicationContext wac;
 
     @InjectMocks
     private NewsController newsController = new NewsController();
@@ -36,12 +46,12 @@ public class NewsControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/jsp/view/");
-        viewResolver.setSuffix(".jsp");
-        
-        mockMvc = MockMvcBuilders.standaloneSetup(newsController).setViewResolvers(viewResolver).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+
+        // InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        // viewResolver.setPrefix("/WEB-INF/jsp/view/");
+        // viewResolver.setSuffix(".jsp");
+        // mockMvc = MockMvcBuilders.standaloneSetup(newsController).setViewResolvers(viewResolver).build();
     }
 
     @Test
@@ -57,13 +67,7 @@ public class NewsControllerTest {
 
     @Test
     public void testProcessNewsArticleSuccess() throws Exception {
-        // BindingResult result = mock(BindingResult.class);
-        // when(result.hasErrors()).thenReturn(true);
-
-        mockMvc.perform(post("/articleDetails")
-                .param("title", "title")
-                .param("subtitle", "subtitle")
-                .param("content", "content"))
+        mockMvc.perform(post("/articleDetails").param("title", "title").param("content", "content").param("subtitle", "subtitle"))
                 .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
                 .andExpect(model().attributeExists("article"));
     }

@@ -2,7 +2,7 @@
  * Module: DynamicFlame, Project: Unity Digital 
  * Copyright (C) Aviva UK Life, All rights reserved
  */
-package org.amilne.db;
+package org.au.dynamicflame.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

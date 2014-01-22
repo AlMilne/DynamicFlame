@@ -1,4 +1,4 @@
-package org.amilne.db;
+package org.au.dynamicflame.db;
 
 import java.util.List;
 
@@ -74,16 +74,15 @@ public class NewsServiceTest {
     
     @Test
     public void testGetStories() {
-        // now lets pull events from the database and list them
-//      session = sessionFactory.openSession();
-//      session.beginTransaction();
-//      List<NewsArticle> result = session.createQuery("from news").list();
-//      for (NewsArticle article : (List<NewsArticle>) result) {
-//          System.out.println("article " + article.getTitle());
-//      }
-//      session.getTransaction().commit();
-//      session.close();
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
         
+        List<NewsArticle> result = session.createQuery("FROM NewsArticle").list();
+        for (NewsArticle article : (List<NewsArticle>) result) {
+            System.out.println("article " + article.getTitle());
+        }
+        
+        session.getTransaction().commit();
+        session.close();
     }
 }

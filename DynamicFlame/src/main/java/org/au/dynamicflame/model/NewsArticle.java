@@ -51,7 +51,7 @@ public class NewsArticle {
     Timestamp posted_time;
     
     @Column(name = "image_id")
-    short image_id;
+    Short image_id;
     
     @Column(name = "likes")
     byte likes;
@@ -145,14 +145,14 @@ public class NewsArticle {
     /**
      * @return the image_id
      */
-    public short getImage_id() {
+    public Short getImage_id() {
         return image_id;
     }
     
     /**
      * @param image_id the image_id to set
      */
-    public void setImage_id(short image_id) {
+    public void setImage_id(Short image_id) {
         this.image_id = image_id;
     }
     
