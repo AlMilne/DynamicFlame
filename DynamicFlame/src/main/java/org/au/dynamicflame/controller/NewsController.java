@@ -64,6 +64,8 @@ public class NewsController {
         m.addAttribute("article", newsArticle);
         
         newsService.addNewsArticle(newsArticle);
+        
+        m.addAttribute("articleList", newsService.listNewsArticles());
 
         return "articleDetails";
     }
