@@ -37,7 +37,7 @@ public class NewsDAOImpl implements NewsDAO {
      */
     @Override
     public List<NewsArticle> listNewsArticles() {
-        return sessionFactory.getCurrentSession().createQuery("FROM NewsArticle").list();
+        return sessionFactory.getCurrentSession().createQuery("FROM NewsArticle order by posted_time desc").list();
     }
 
     /** 
