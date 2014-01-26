@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * NewsServiceImpl.java - TODO Alasdair COMMENT MISSING.
+ * NewsServiceImpl.java - Service layer class for the news service.
  * 
  * @author Alasdair
  * @since 19/01/2014

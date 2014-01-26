@@ -64,6 +64,7 @@ public class NewsControllerTest {
     public void testProcessNewsArticleSuccess() throws Exception {
         mockMvc.perform(post("/articleDetails").param("title", "title").param("content", "content").param("subtitle", "subtitle"))
                 .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
-                .andExpect(model().attributeExists("article"));
+                .andExpect(model().attributeExists("articleList"));
     }
+    
 }

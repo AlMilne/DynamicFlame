@@ -9,38 +9,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
- * NewsDAOImpl.java - TODO Alasdair COMMENT MISSING.
+ * NewsDAOImpl.java - Implementation of the NewsDAO class to handle the adding, listing and deletion of news stories.
+ * Uses the Hibernate sessionFactory to perform the necesary operations one each of these methods to interact with the
+ * db.
  * 
  * @author Alasdair
  * @since 19/01/2014
  */
 @Repository
 public class NewsDAOImpl implements NewsDAO {
-    
-    @Autowired  
-    private SessionFactory sessionFactory;  
-      
-    private Session getCurrentSession() {  
-        return sessionFactory.getCurrentSession();  
-    }  
 
-    /** 
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    private Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public void addNewsArticle(NewsArticle newsArticle) {
-        getCurrentSession().save(newsArticle); 
+        getCurrentSession().save(newsArticle);
     }
 
-    /** 
+    /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<NewsArticle> listNewsArticles() {
         return sessionFactory.getCurrentSession().createQuery("FROM NewsArticle order by posted_time desc").list();
     }
 
-    /** 
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -49,7 +52,7 @@ public class NewsDAOImpl implements NewsDAO {
         if (null != newsArticle) {
             sessionFactory.getCurrentSession().delete(newsArticle);
         }
-        
+
     }
 
 }

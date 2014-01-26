@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * NewsController.java - Controller for the news page. Handles the mapping for creating new news stories as well as the
@@ -29,6 +30,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class NewsController {
+
+    /** ARTICLE_LIST_VIEW */
+    private static final String ARTICLE_LIST = "articleList";
 
     private static final Logger LOGGER = Logger.getLogger("NewsController");
 
@@ -79,9 +83,9 @@ public class NewsController {
         // Populate PagedListHolder with news articles
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
-        request.getSession().setAttribute("articleList", pagedListHolder);
+        request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
 
-        model.addAttribute("articleList", pagedListHolder);
+        model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
         return "articleDetails";
     }
@@ -96,31 +100,35 @@ public class NewsController {
      * @return String - view to display
      */
     @RequestMapping(value = "/articleDetails", method = RequestMethod.GET)
-    public String viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public ModelAndView viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
-        model.addAttribute("articleList", pagedListHolder);
+        request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "articleDetails";
+        // model.addAttribute(ARTICLE_LIST_VIEW, pagedListHolder);
+
+        return new ModelAndView("articleDetails", ARTICLE_LIST, pagedListHolder);
     }
 
     /**
-     * deleteContact - removes the selected news story from the db.
+     * deleteNewsArticle - removes the selected news story from the db.
      * 
      * @param story_id
      * @param model
      * @return String - view to display
      */
-    @RequestMapping(value = "/delete/{story_id}")
-    public String deleteContact(@PathVariable("story_id") final Integer story_id, Model model) {
+    @RequestMapping(value = "/delete/{story_id}", method = RequestMethod.GET)
+    public ModelAndView deleteNewsArticle(HttpServletRequest request, @PathVariable("story_id") final Integer story_id) {
+        PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
+        LOGGER.log(Level.INFO, "in deleteContact {0}", story_id);
 
         newsService.removeNewsArticles(story_id);
 
-        model.addAttribute("articleList", newsService.listNewsArticles());
+        // model.addAttribute(ARTICLE_LIST_VIEW, newsService.listNewsArticles());
 
-        return "articleDetails";
+        return new ModelAndView("articleDetails", ARTICLE_LIST, pagedListHolder);
     }
-    
+
     /**
      * populatePagedListHolder - populates the Spring PagedListHolder class with the list of news stories in order to
      * handle the news story pagination. Retrieves the request object 'page' to determine which direction the navigation
@@ -132,7 +140,7 @@ public class NewsController {
     private PagedListHolder<NewsArticle> populatePagedListHolder(HttpServletRequest request) {
         @SuppressWarnings("unchecked")
         PagedListHolder<NewsArticle> pagedListHolder =
-                (PagedListHolder<NewsArticle>) request.getSession().getAttribute("articleList");
+                (PagedListHolder<NewsArticle>) request.getSession().getAttribute(ARTICLE_LIST);
 
         // If first time on page populate the pagedListHolder with the news articles
         if (pagedListHolder == null) {

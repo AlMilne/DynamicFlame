@@ -8,14 +8,10 @@
 
 </head>
 <body>
-	<p>Article title is ${article.title}. Subtitle is
-		${article.subtitle}.Content is ${article.content}</p>
-
 	<h3>News Articles</h3>
-	<div class="paging">
+	<div>
 		<c:if test="${!articleList.firstPage}">
 			<a href="articleDetails.html?page=previous"><b>&lt;&lt; Prev</b></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </c:if>
 		<c:if test="${!articleList.lastPage}">
 			<a href="articleDetails.html?page=next"><b>Next &gt;&gt;</b></a>
@@ -24,7 +20,7 @@
 	<c:if test="${!empty articleList}">
 		<table class="data">
 			<tr>
-				<td>rows: ${articleList.nrOfElements}</td>
+				<td>Articles: ${articleList.nrOfElements}</td>
 			</tr>
 			<tr>
 				<th>Title</th>
