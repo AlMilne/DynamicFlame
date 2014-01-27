@@ -5,12 +5,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css"/>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
+<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 <title>News Stories</title>
+<script>
+	$.validator.setDefaults({
+		submitHandler : function() {
+			alert("submitted!");
+		}
+	});
 
+	$().ready(function() {
+
+		// validate form on keyup and submit
+		$("#newsAdminForm").validate({
+			rules : {
+				title : "required",
+				subtitle : "required",
+				content : "required"
+			},
+			messages : {
+				title : "Please enter article title",
+				subtitle : "Please enter article subtitle",
+				content : "Please enter article content"
+			}
+		});
+	});
+</script>
 </head>
 <body>
-	<form:form commandName="newsArticle" action="articleDetails.htm">
+	<form:form commandName="newsArticle" action="articleDetails.htm"
+		id="newsAdminForm">
 		<form:label path="title">
 			<spring:message code="label.title" />
 		</form:label>
