@@ -5,7 +5,7 @@ import java.util.List;
 import org.au.dynamicflame.model.NewsArticle;
 
 /**
- * NewsService.java - TODO Alasdair COMMENT MISSING.
+ * NewsService.java - NewsService interface. Will handle CRUD operations of news articles. 
  * 
  * @author Alasdair
  * @since 19/01/2014

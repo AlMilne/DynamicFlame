@@ -21,8 +21,14 @@ public class AOPLogging {
 
     private static final Logger LOGGER = Logger.getLogger("AOPLogging");
 
-    // private final Log log = LogFactory.getLog(this.getClass());
-
+    /**
+     * logTimeMethod - Logs method details on entry and exit of methods. Records class name, method name and arguements
+     * as well as execution time in ms.
+     * 
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
     @Around("execution(* org.au.dynamicflame..*.*(..))")
     public Object logTimeMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 

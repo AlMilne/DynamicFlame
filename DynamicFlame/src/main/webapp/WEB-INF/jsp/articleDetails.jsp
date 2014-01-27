@@ -33,8 +33,8 @@
 					<td>${article.title}</td>
 					<td>${article.subtitle}</td>
 					<td>${article.content}</td>
-					<td>${article.posted_time}</td>
-					<td><a href="delete/${article.story_id}"
+					<td>${article.postedTime}</td>
+					<td><a href="delete/${article.storyId}"
 						onclick="return confirm('Are you sure you want to delete this document?')">Delete</a></td>
 				</tr>
 				<c:if test="${articleList.nrOfElements == 0}">

@@ -5,7 +5,7 @@ import java.util.List;
 import org.au.dynamicflame.model.NewsArticle;
 
 /**
- * NewsDAO.java - TODO Alasdair COMMENT MISSING.
+ * NewsDAO.java - DAO interface for the news articles
  * 
  * @author Alasdair
  * @since 19/01/2014

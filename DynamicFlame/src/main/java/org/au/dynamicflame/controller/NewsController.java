@@ -75,7 +75,7 @@ public class NewsController {
         // Add some default values to required model fields not yet captured
         newsArticle.setAuthor("admin");
         short imageid = 1;
-        newsArticle.setImage_id(imageid);
+        newsArticle.setImageId(imageid);
 
         newsService.addNewsArticle(newsArticle);
 

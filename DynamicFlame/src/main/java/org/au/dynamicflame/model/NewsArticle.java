@@ -29,7 +29,7 @@ public class NewsArticle {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "story_id")
-    int story_id;
+    int storyId;
 
     @NotEmpty
     @Column(name = "title")
@@ -48,10 +48,10 @@ public class NewsArticle {
     
     @DateTimeFormat(pattern="dd/MM/yyyy")
     @Column(name = "posted_time")
-    Timestamp posted_time;
+    Timestamp postedTime;
     
     @Column(name = "image_id")
-    Short image_id;
+    Short imageId;
     
     @Column(name = "likes")
     byte likes;
@@ -59,15 +59,15 @@ public class NewsArticle {
     /**
      * @return the story_id
      */
-    public int getStory_id() {
-        return story_id;
+    public int getStoryId() {
+        return storyId;
     }
 
     /**
      * @param story_id the story_id to set
      */
-    public void setStory_id(int story_id) {
-        this.story_id = story_id;
+    public void setStoryId(int storyId) {
+        this.storyId = storyId;
     }
 
     /**
@@ -131,29 +131,29 @@ public class NewsArticle {
      */
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "posted_time")
-    public Timestamp getPosted_time() {
-        return posted_time;
+    public Timestamp getPostedTime() {
+        return postedTime;
     }
     
     /**
      * @param posted_date the posted_date to set
      */
-    public void setPosted_time(Timestamp posted_time) {
-        this.posted_time = posted_time;
+    public void setPostedTime(Timestamp postedTime) {
+        this.postedTime = postedTime;
     }
     
     /**
      * @return the image_id
      */
-    public Short getImage_id() {
-        return image_id;
+    public Short getImageId() {
+        return imageId;
     }
     
     /**
      * @param image_id the image_id to set
      */
-    public void setImage_id(Short image_id) {
-        this.image_id = image_id;
+    public void setImageId(Short imageId) {
+        this.imageId = imageId;
     }
     
     /**

@@ -40,21 +40,6 @@ public class NewsServiceTest {
     @Autowired
     private NewsService newsService;
 
-    protected void setUp() throws Exception {
-        // Session session = getSession(this.sessionFactory);
-        // TransactionSynchronizationManager.bindResource(sessionFactory,new SessionHolder(session));
-        // System.out.println("Hibernate session is bound");
-    }
-
-    // protected Session getSession(SessionFactory sessionFactory) throws DataAccessResourceFailureException {
-    // // Session session = SessionFactoryUtils.getSession(sessionFactory, true);
-    // // FlushMode flushMode = this.flushMode;
-    // // if (flushMode != null) {
-    // // session.setFlushMode(flushMode);
-    // // }
-    // // return session;
-    // }
-
     protected void tearDown() throws Exception {
         if (sessionFactory != null) {
             sessionFactory.close();
@@ -73,13 +58,11 @@ public class NewsServiceTest {
         newsArticle.setContent("content");
         newsArticle.setAuthor("admin");
         short imageid = 1;
-        newsArticle.setImage_id(imageid);
+        newsArticle.setImageId(imageid);
 
         newsService.addNewsArticle(newsArticle);
 
-        // session.save(newsArticle);
         session.flush();
-        // session.getTransaction().commit();
         session.close();
 
     }
