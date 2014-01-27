@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * NewsController.java - Controller for the news page. Handles the mapping for creating new news stories as well as the
@@ -100,14 +99,14 @@ public class NewsController {
      * @return String - view to display
      */
     @RequestMapping(value = "/articleDetails", method = RequestMethod.GET)
-    public ModelAndView viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
         request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
 
-        // model.addAttribute(ARTICLE_LIST_VIEW, pagedListHolder);
+        model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return new ModelAndView("articleDetails", ARTICLE_LIST, pagedListHolder);
+        return "articleDetails";
     }
 
     /**
@@ -117,16 +116,20 @@ public class NewsController {
      * @param model
      * @return String - view to display
      */
-    @RequestMapping(value = "/delete/{story_id}", method = RequestMethod.GET)
-    public ModelAndView deleteNewsArticle(HttpServletRequest request, @PathVariable("story_id") final Integer story_id) {
-        PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
+    @RequestMapping(value = "/delete/{story_id:\\d+}", method = RequestMethod.GET)
+    public String deleteNewsArticle(HttpServletRequest request, @PathVariable("story_id") final Integer story_id, Model model) {
         LOGGER.log(Level.INFO, "in deleteContact {0}", story_id);
-
         newsService.removeNewsArticles(story_id);
+        
+        // Set the articleList attribute to null to force refresh of the PagedLstHolder
+        request.getSession().setAttribute(ARTICLE_LIST, null);
+        PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
+        
+        request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
+        model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        // model.addAttribute(ARTICLE_LIST_VIEW, newsService.listNewsArticles());
-
-        return new ModelAndView("articleDetails", ARTICLE_LIST, pagedListHolder);
+        // Redirect so page reloads
+        return "redirect:/articleDetails";
     }
 
     /**
