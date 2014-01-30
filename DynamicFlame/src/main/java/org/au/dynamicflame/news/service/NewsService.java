@@ -16,4 +16,6 @@ public interface NewsService {
     public List<NewsArticle> listNewsArticles();
 
     public void removeNewsArticles(Integer id);
+    
+    public void editNewsArticle(NewsArticle newsArticle);
 }

@@ -17,4 +17,6 @@ public interface NewsDAO {
 
     public void removeNewsArticles(Integer id);
     
+    public void editNewsArticle(NewsArticle newsArticle);
+    
 }

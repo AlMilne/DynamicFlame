@@ -1,6 +1,8 @@
 package org.au.dynamicflame.news.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.NewsArticle;
 import org.hibernate.Session;
@@ -18,7 +20,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class NewsDAOImpl implements NewsDAO {
-
+    private static final Logger LOGGER = Logger.getLogger("NewsDAOImpl");
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -53,6 +55,26 @@ public class NewsDAOImpl implements NewsDAO {
             sessionFactory.getCurrentSession().delete(newsArticle);
         }
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void editNewsArticle(NewsArticle newsArticle) {
+        LOGGER.log(Level.INFO, "newsArticle: {0}", newsArticle.getStoryId());
+        NewsArticle articleToUpdate =
+                (NewsArticle) sessionFactory.getCurrentSession().load(NewsArticle.class, newsArticle.getStoryId());
+
+        if (null != articleToUpdate) {
+            articleToUpdate.setTitle(newsArticle.getTitle());
+            articleToUpdate.setSubtitle(newsArticle.getSubtitle());
+            articleToUpdate.setContent(newsArticle.getSubtitle());
+
+            getCurrentSession().update(articleToUpdate);
+        } else {
+            LOGGER.log(Level.SEVERE, "no article to update found");
+        }
     }
 
 }

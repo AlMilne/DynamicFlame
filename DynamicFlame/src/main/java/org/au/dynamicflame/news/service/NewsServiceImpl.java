@@ -46,4 +46,12 @@ public class NewsServiceImpl implements NewsService {
         newsDAO.removeNewsArticles(id);
     }
 
+    /** 
+     * {@inheritDoc}
+     */
+    @Override
+    public void editNewsArticle(NewsArticle newsArticle) {
+        newsDAO.editNewsArticle(newsArticle);
+    }
+
 }

@@ -1,5 +1,6 @@
 package org.au.dynamicflame.controller;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -120,16 +121,53 @@ public class NewsController {
     public String deleteNewsArticle(HttpServletRequest request, @PathVariable("story_id") final Integer story_id, Model model) {
         LOGGER.log(Level.INFO, "in deleteContact {0}", story_id);
         newsService.removeNewsArticles(story_id);
-        
+
         // Set the articleList attribute to null to force refresh of the PagedLstHolder
         request.getSession().setAttribute(ARTICLE_LIST, null);
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
-        
+
         request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
         // Redirect so page reloads
         return "redirect:/articleDetails";
+    }
+
+    /**
+     * editArticle - TODO Alasdair COMMENT MISSING.
+     * 
+     * @param newsArticle
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editArticle(@PathVariable Integer id, Model model) {
+        List<NewsArticle> articles = newsService.listNewsArticles();
+        for (Iterator<NewsArticle> iterator = articles.iterator(); iterator.hasNext();) {
+            NewsArticle article = (NewsArticle) iterator.next();
+            if (article.getStoryId() == id) {
+                LOGGER.log(Level.INFO, "article {0}", article.getStoryId());
+                model.addAttribute("newsArticle", article);
+            }
+        }
+        
+        return "editNews";
+    }
+    
+    /**
+     * updateArticle - TODO Alasdair COMMENT MISSING.
+     * 
+     * @param newsArticle
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String updateArticle(@ModelAttribute("newsArticle") NewsArticle newsArticle, Model model) {
+        newsService.editNewsArticle(newsArticle);
+        
+        return "articleDetails";
     }
 
     /**

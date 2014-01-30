@@ -36,6 +36,7 @@
 					<td>${article.postedTime}</td>
 					<td><a href="delete/${article.storyId}"
 						onclick="return confirm('Are you sure you want to delete this document?')">Delete</a></td>
+					<td><a href="edit/${article.storyId}">Edit</a></td>
 				</tr>
 				<c:if test="${articleList.nrOfElements == 0}">
 					<tr>
