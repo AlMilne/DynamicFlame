@@ -63,13 +63,16 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void editNewsArticle(NewsArticle newsArticle) {
         LOGGER.log(Level.INFO, "newsArticle: {0}", newsArticle.getStoryId());
+        
+        // Retrieve the article from db that is to be updated
         NewsArticle articleToUpdate =
                 (NewsArticle) sessionFactory.getCurrentSession().load(NewsArticle.class, newsArticle.getStoryId());
 
+        // Set the article values to be updated
         if (null != articleToUpdate) {
             articleToUpdate.setTitle(newsArticle.getTitle());
             articleToUpdate.setSubtitle(newsArticle.getSubtitle());
-            articleToUpdate.setContent(newsArticle.getSubtitle());
+            articleToUpdate.setContent(newsArticle.getContent());
 
             getCurrentSession().update(articleToUpdate);
         } else {

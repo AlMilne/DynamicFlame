@@ -25,7 +25,7 @@
 			<tr>
 				<th>Title</th>
 				<th>Subtitle</th>
-				<th>Contact</th>
+				<th>Contemt</th>
 				<th>&nbsp;</th>
 			</tr>
 			<c:forEach items="${articleList.pageList}" var="article">

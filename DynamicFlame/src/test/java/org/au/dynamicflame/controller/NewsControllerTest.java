@@ -8,12 +8,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import javax.transaction.Transactional;
 
+import org.au.dynamicflame.model.NewsArticle;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -40,12 +42,16 @@ public class NewsControllerTest {
 
     @InjectMocks
     private NewsController newsController = new NewsController();
+    
+    @Autowired MockHttpSession session;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 
+        session.setAttribute("newsArticle", new NewsArticle());
+        
         // InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         // viewResolver.setPrefix("/WEB-INF/jsp/view/");
         // viewResolver.setSuffix(".jsp");
@@ -60,30 +66,52 @@ public class NewsControllerTest {
 
     @Test
     public void testProcessNewsArticleValidationError() throws Exception {
-        mockMvc.perform(post("/articleDetails")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"));
+        mockMvc.perform(post("/articleDetails").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle"))
+                .andExpect(view().name("newsAdmin"));
     }
 
     @Test
     public void testProcessNewsArticleSuccess() throws Exception {
-        mockMvc.perform(post("/articleDetails").param("title", "title").param("content", "content").param("subtitle", "subtitle"))
+        mockMvc.perform(post("/articleDetails").session(session).param("title", "title").param("content", "content").param("subtitle", "subtitle"))
                 .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
-                .andExpect(model().attributeExists("articleList"));
+                .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
     }
-    
+
     @Test
     public void testViewNewsArticles() throws Exception {
-        mockMvc.perform(get("/articleDetails"))
-                .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+        mockMvc.perform(get("/articleDetails")).andExpect(status().isOk()).andExpect(view().name("articleDetails"))
                 .andExpect(model().attributeExists("articleList"));
+    }
+
+    @Test
+    public void testEditArticle() throws Exception {
+        mockMvc.perform(get("/edit/68")).andExpect(status().isOk()).andExpect(view().name("editNews"))
+                .andExpect(model().attributeExists("newsArticle"));
     }
     
     @Test
     @Transactional
     @Rollback(true)
     public void testDeleteNewsArticles() throws Exception {
-        mockMvc.perform(get("/delete/59"))
+        mockMvc.perform(get("/delete/68"))
                 .andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/articleDetails"))
                 .andExpect(model().attributeExists("articleList"));
     }
-    
+
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testUpdateArticle() throws Exception {
+        NewsArticle article = new NewsArticle();
+        article.setStoryId(68);
+        article.setAuthor("admin");;
+        article.setTitle("title");
+        article.setSubtitle("subtitle");
+        article.setContent("content");
+        session.setAttribute("newsArticle", article);
+        
+        mockMvc.perform(post("/update").session(session)).andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+                .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
+    }
+
 }

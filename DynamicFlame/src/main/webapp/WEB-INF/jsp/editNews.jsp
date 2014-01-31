@@ -35,7 +35,7 @@
 </script>
 </head>
 <body>
-	<form:form commandName="newsArticle" action="/edit.htm"
+	<form:form commandName="newsArticle" action="/update.htm"
 		id="newsAdminForm">
 		<form:label path="title">
 			<spring:message code="label.title" />

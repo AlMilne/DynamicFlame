@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * NewsController.java - Controller for the news page. Handles the mapping for creating new news stories as well as the
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 10/01/2014
  */
 @Controller
+@SessionAttributes("newsArticle")
 public class NewsController {
 
     /** ARTICLE_LIST_VIEW */
@@ -134,16 +136,21 @@ public class NewsController {
     }
 
     /**
-     * editArticle - TODO Alasdair COMMENT MISSING.
+     * editArticle - locates the news article that was selected for editing from the id path variable that matches the
+     * story_id of the article. Adds the article to be updated into the model and then returns the editNews view to load
+     * the page with the article details pre-populated.
      * 
-     * @param newsArticle
-     * @param id
-     * @param model
-     * @return
+     * TODO current finding of news story inefficient, should just return single article
+     * from db not have to return all and search
+     * 
+     * @param id story_id of the news article to edit
+     * @param model object to store the article in
+     * @return editNews.jsp view
      */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editArticle(@PathVariable Integer id, Model model) {
         List<NewsArticle> articles = newsService.listNewsArticles();
+        
         for (Iterator<NewsArticle> iterator = articles.iterator(); iterator.hasNext();) {
             NewsArticle article = (NewsArticle) iterator.next();
             if (article.getStoryId() == id) {
@@ -151,22 +158,27 @@ public class NewsController {
                 model.addAttribute("newsArticle", article);
             }
         }
-        
+
         return "editNews";
     }
-    
+
     /**
-     * updateArticle - TODO Alasdair COMMENT MISSING.
+     * updateArticle - updates the news article whose story_id matches that of the newsArticle passed in.
      * 
-     * @param newsArticle
-     * @param id
-     * @param model
-     * @return
+     * @param newsArticle object that contains the updated values
+     * @param model object to store the pageListholder in for pagination
+     * @return articleDetails.jsp view
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String updateArticle(@ModelAttribute("newsArticle") NewsArticle newsArticle, Model model) {
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateArticle(@ModelAttribute NewsArticle newsArticle, Model model, HttpServletRequest request) {
         newsService.editNewsArticle(newsArticle);
-        
+        request.getSession().setAttribute(ARTICLE_LIST, null);
+        PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
+
+        request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
+
+        model.addAttribute(ARTICLE_LIST, pagedListHolder);
+
         return "articleDetails";
     }
 
