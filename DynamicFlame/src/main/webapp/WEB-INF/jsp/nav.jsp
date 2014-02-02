@@ -14,10 +14,10 @@
 						<li><a href="#">Etiam dolore nisl</a></li>
 					</ul></li>
 				<li><a href="kingsway.html">Kingsway Indoor Stadium</a></li>
-				<li><a href="#">Curtin University Stadium</a></li>
-				<li><a href="#">Leisurelife Centre</a></li>
-				<li><a href="#">Leeming Recreation Centre</a></li>
-				<li><a href="#">Heathridge Leisure Centre</a></li>
+				<li><a href="curtin.html">Curtin University Stadium</a></li>
+				<li><a href="vicpark.html">Victoria Park</a></li>
+				<li><a href="langford.html">Langford Recreation Centre</a></li>
+				<li><a href="heathridge.html">Heathridge Leisure Centre</a></li>
 			</ul></li>
 		<li><a href="about.html">About Us</a></li>
 		<li><a href="news.html">News</a></li>

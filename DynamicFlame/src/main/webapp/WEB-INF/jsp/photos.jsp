@@ -7,7 +7,9 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<script src="${contextPath}/resources/js/jquery.lightbox.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".lightbox").lightbox();
@@ -174,30 +176,36 @@ p a:hover {
 					<ul id="gallery">
 						<div class="row">
 							<div class="4u">
-								<li><a href="images/lights3.jpg" class="lightbox" rel="dfbc"><img src="images/IMG_7923_sm.jpg">
+								<li><a href="${contextPath}/resources/images/IMG_7923.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/IMG_7923_sm.jpg">
 										<div>Hainsworth</div></a></li>
 							</div>
 							<div class="4u">
-								<li><a href="images/lights2.jpg" class="lightbox" rel="dfbc"><img src="images/IMG_7921_sm.jpg">
+								<li><a href="${contextPath}/resources/images/IMG_7921.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/IMG_7921_sm.jpg">
 										<div>Racket</div></a></li>
 							</div>
 							<div class="4u">
-								<li><a href="images/trophies.jpg" class="lightbox" rel="dfbc"><img src="images/trophies_sm.jpg">
+								<li><a href="${contextPath}/resources/images/trophies.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/trophies_sm.jpg">
 										<div>Trophies</div></a></li>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="4u">
-								<li><a href="images/winners.jpg" class="lightbox" rel="dfbc"><img src="images/winners_sm.jpg">
+								<li><a href="${contextPath}/resources/images/winners.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/winners_sm.jpg">
 										<div>DFBC Winners</div></a></li>
 							</div>
 							<div class="4u">
-								<li><a href="images/flo3.jpg" class="lightbox" rel="dfbc"><img src="images/trophies_sm.jpg">
+								<li><a href="${contextPath}/resources/images/trophies.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/trophies_sm.jpg">
 										<div>Trophies</div></a></li>
 							</div>
 							<div class="4u">
-								<li><a href="images/lights2.jpg" class="lightbox" rel="dfbc"><img src="images/IMG_7921_sm.jpg">
+								<li><a href="${contextPath}/resources/images/IMG_7921.jpg" class="lightbox" rel="dfbc"><img
+										src="${contextPath}/resources/images/IMG_7921_sm.jpg">
 										<div>Racket</div></a></li>
 							</div>
 					</ul>

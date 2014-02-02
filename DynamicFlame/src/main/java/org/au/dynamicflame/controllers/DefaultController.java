@@ -38,6 +38,26 @@ public class DefaultController {
         return "hainsworth";
     }
     
+    @RequestMapping(value = "/curtin.html", method = RequestMethod.GET)
+    public String curtin() {
+        return "curtin";
+    }
+    
+    @RequestMapping(value = "/vicpark.html", method = RequestMethod.GET)
+    public String vicpark() {
+        return "vicpark";
+    }
+    
+    @RequestMapping(value = "/langford.html", method = RequestMethod.GET)
+    public String langford() {
+        return "langford";
+    }
+    
+    @RequestMapping(value = "/heathridge.html", method = RequestMethod.GET)
+    public String heathridge() {
+        return "heathridge";
+    }
+    
     @RequestMapping(value = "/news.html", method = RequestMethod.GET)
     public String kingsway() {
         return "news";

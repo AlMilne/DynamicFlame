@@ -53,7 +53,7 @@
 			</a>
 			<div class="col span_1_of_4">
 				<a href="hainsworth.html"> <strong><span class="venueContent">Hainsworth</strong></span>Sunday <span
-					class="venueContentTimes">2:00pm to 3:30pm Juniors</span><br> 3:00pm to 5:00pm Adults 
+					class="venueContentTimes">2:00pm to 3:00pm Juniors</span><br> 3:00pm to 5:00pm Adults 
 			</div>
 			</a>
 			<div class="col span_1_of_4">
@@ -65,21 +65,24 @@
 		<br>
 		<div class="section group">
 			<div class="col span_1_of_4">
-				<strong><span class="venueContentWed">Curtin</strong></span>Wednesday <span class="venueContentTimes">6:30pm to 8:30pm</span><br>
-				Juniors & Adults
+				<a href="curtin.html"><strong><span class="venueContentWed">Curtin</strong></span>Wednesday <span
+					class="venueContentTimes">6:30pm to 8:30pm</span><br> Juniors & Adults 
+			</div>
+			</a>
+			<div class="col span_1_of_4">
+				<a href="vicpark.html"><strong><span class="venueContent">Vic Park</strong></span>Friday <span 
+				class="venueContentTimes">5:30pm to 6:45pm Juniors</span><br> 6:45pm to 9:00pm Adults 
+			</div>
+			</a>
+			<div class="col span_1_of_4">
+				<a href="langford.html"><strong><span class="venueContent">Langford</strong></span>Saturday <span
+					class="venueContentTimes">10:30am to 12:00am</span><br> Juniors & Adults 
 			</div>
 			<div class="col span_1_of_4">
-				<strong><span class="venueContent">Vic Park</strong></span>Friday <span class="venueContentTimes">5:30pm to 6:45pm
-					Juniors</span><br> 6:45pm to 9:00pm Adults
+				<a href="heathridge.html"><strong><span class="venueContent">Heathridge</strong></span>Saturday <span
+					class="venueContentTimes">1:00pm to 3:30pm Juniors</span><br> Juniors & Adults 
 			</div>
-			<div class="col span_1_of_4">
-				<strong><span class="venueContent">Leeming</strong></span>Saturday <span class="venueContentTimes">10:00am to 11:30am</span><br>
-				Juniors & Adults
-			</div>
-			<div class="col span_1_of_4">
-				<strong><span class="venueContent">Heathridge</strong></span>Saturday <span class="venueContentTimes">1:00pm to 3:30pm
-					Juniors</span><br> Juniors & Adults
-			</div>
+			</a>
 		</div>
 
 
