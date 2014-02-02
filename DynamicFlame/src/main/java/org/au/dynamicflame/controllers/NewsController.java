@@ -1,4 +1,4 @@
-package org.au.dynamicflame.controller;
+package org.au.dynamicflame.controllers;
 
 import java.util.Iterator;
 import java.util.List;
@@ -47,7 +47,7 @@ public class NewsController {
      * @param model
      * @return String - view to display
      */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/newsAdmin", method = RequestMethod.GET)
     public String loadFormPage(Model model) {
         LOGGER.log(Level.INFO, "in loadFormPage");
         model.addAttribute("newsArticle", new NewsArticle());

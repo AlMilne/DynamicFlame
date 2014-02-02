@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import javax.transaction.Transactional;
 
+import org.au.dynamicflame.controllers.NewsController;
 import org.au.dynamicflame.model.NewsArticle;
 import org.junit.Before;
 import org.junit.Test;

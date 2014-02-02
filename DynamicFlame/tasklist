@@ -1,5 +1,3 @@
-- Add current static html pages to the eclipse project
-- Edit news stories
 - Create Spring form for uploading and deleting images
 - Implement Spring security to only allow admin access to above
 - like stories and images
