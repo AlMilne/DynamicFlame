@@ -72,4 +72,9 @@ public class DefaultController {
     public String about() {
         return "about";
     }
+    
+    @RequestMapping(value = "/contact.html", method = RequestMethod.GET)
+    public String contact() {
+        return "contact";
+    }
 }

@@ -22,6 +22,6 @@
 		<li><a href="about.html">About Us</a></li>
 		<li><a href="news.html">News</a></li>
 		<li><a href="photos.html">Photos</a></li>
-		<li><a href="no-sidebar.html">Contact Us</a></li>
+		<li><a href="contact.html">Contact Us</a></li>
 	</ul>
 </nav>
