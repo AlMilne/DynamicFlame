@@ -116,18 +116,13 @@
 								<a href="#">Club News</a>
 							</h2>
 							<section>
-								<header>
-									<h3>New website!</h3>
-									<span class="byline"> 19th November, 2013 </span>
-								</header>
+								<h3>New website!</h3>
+								<span class="byline"> 19th November, 2013 </span>
 								<p>The club's awesome new website is now up and running.</p>
 							</section>
 							<section>
-								<header>
-									<h3>Volunteer Management Plan</h3>
-								</header>
-								<span class="byline"> 9th May, 2013 </span> <a href="http://mdomaradzki.deviantart.com/art/Planet-Bronte-339258500"
-									class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+								<h3>Volunteer Management Plan</h3>
+								<span class="byline"> 9th May, 2013 </span> 
 								<p>DFBC received a $2,000 grant from the Department of Sports and Recreation on Thursday, 9th May. The grant is for
 									the implementation of a Volunteer Management Plan (VMP). The VMP will address areas of recruitment, selection and
 									screening, induction and orientation, training and development, retaining and recognition, rewarding and most importantly
@@ -146,23 +141,22 @@
 									develop ways to recognise and reward volunteer efforts, and plan for volunteer retention and replacement.</p>
 							</section>
 							<section>
-								<header>
-									<h3>Vic Park Examiner Article</h3>
-								</header>
+								<h3>Vic Park Examiner Article</h3>
 								<span class="byline"> June 13th, 2012 </span>
 								<p>After playing badminton for only 18 months Sophie Leonard, 15, is heading to the Sunshine Coast, Queensland to
 									represent Western Australia at the national under 15s championships in October. Sophie is a member of the Dynamic Flame
 									badminton club and trains at Leisurelife Centre, Victoria Park on Friday nights. She started playing the sport after
 									being introduced to it at school and now trains five days a week.</p>
-								<p>“I play the general school sports then most of the time I just play badminton, that’s all I have time for because I
-									train so much,” she said.</p>
+								<p>“I play the general school sports then most of the time I just play badminton, that’s all I have time for
+									because I train so much,” she said.</p>
 								<p>“For now just going to Queensland is a big thing for me and that was probably my goal, after that I don’t know
-									where I’ll go, I’ll reset my goals and go from there”. “It’s not all about winning, it just about trying your best.”</p>
-								<p>Sophie’s mum Tonia said badminton could be played at all ages. “You can learn it as a young kid and play it when
-									you’re 80, it’s something you can pick up and play throughout your life and it has its benefits, it’s indoors, you’re not
-									going to get sunburnt, you’re not going to get flooded out and you only need one set of equipment,” she said. “It’s going
-									to be a great experience for Sophie because we have no idea how good the other state players are and apparently they are
-									fantastic.”</p>
+									where I’ll go, I’ll reset my goals and go from there”. “It’s not all about winning, it just about trying your
+									best.”</p>
+								<p>Sophie’s mum Tonia said badminton could be played at all ages. “You can learn it as a young kid and play it
+									when you’re 80, it’s something you can pick up and play throughout your life and it has its benefits, it’s indoors,
+									you’re not going to get sunburnt, you’re not going to get flooded out and you only need one set of equipment,” she
+									said. “It’s going to be a great experience for Sophie because we have no idea how good the other state players are
+									and apparently they are fantastic.”</p>
 								<p>Sophie spends her spare time volunteering, particularly for the Australian Orang-utan project.</p>
 								<p>Fellow club member Shelby Milne, 15, also had success recently finishing in the top 16 at the under 17s national
 									badminton championships in Hobart, Tasmania.</p>
@@ -176,6 +170,7 @@
 									<strong>The above article appeared in the Vic Park Examiner Newspapers, Issue 257, on June, 13th, 2012</strong>
 								</p>
 							</section>
+						</header>
 					</article>
 				</div>
 			</div>
@@ -208,5 +203,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

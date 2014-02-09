@@ -9,7 +9,6 @@
 <meta name="keywords" content="" />
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-
 </head>
 <body class="homepage">
 
@@ -37,52 +36,56 @@
 
 
 	<!-- Banner -->
-	<div id="banner">
+	<div id="banner" class="venues">
 		<h2>We invite you to join us at the following venues</h2>
 		<br>
 		<div class="section group">
 			<div class="col span_1_of_4">
-				<a href="melville.html"> <strong><span class="venueContent">Melville</strong></span>Sunday <span class="venueContentTimes">9:30am
-						to 11:30am</span><br> Juniors & Adults 
+				<a href="melville.html"><span class="venueContent">Melville</span>Sunday <span class="venueContentTimes">9:30am
+						to 11:30am</span><br> Juniors &amp; Adults
+				</a>
 			</div>
-			</a>
+
 			<div class="col span_1_of_4">
-				<a href="cannington.html"> <strong><span class="venueContent">Cannington</strong></span>Sunday <span
-					class="venueContentTimes">11:00am to 1:00pm</span><br> Juniors & Adults 
+				<a href="cannington.html"><span class="venueContent">Cannington</span>Sunday <span
+					class="venueContentTimes">11:00am to 1:00pm</span><br> Juniors &amp; Adults
+				</a>
 			</div>
-			</a>
+
 			<div class="col span_1_of_4">
-				<a href="hainsworth.html"> <strong><span class="venueContent">Hainsworth</strong></span>Sunday <span
-					class="venueContentTimes">2:00pm to 3:00pm Juniors</span><br> 3:00pm to 5:00pm Adults 
+				<a href="hainsworth.html"><span class="venueContent">Hainsworth</span>Sunday <span
+					class="venueContentTimes">2:00pm to 3:00pm Juniors</span><br> 3:00pm to 5:00pm Adults
+				</a>
 			</div>
-			</a>
+
 			<div class="col span_1_of_4">
-				<a href="kingsway.html"> <strong><span class="venueContent">Kingsway</strong></span>Tuesday <span
-					class="venueContentTimes">5:30pm to 6:45pm Juniors</span><br> 7:00pm to 10:00pm Adults 
+				<a href="kingsway.html"><span class="venueContent">Kingsway</span>Tuesday <span
+					class="venueContentTimes">5:30pm to 6:45pm Juniors</span><br> 7:00pm to 10:00pm Adults
+				</a>
 			</div>
-			</a>
+
 		</div>
 		<br>
 		<div class="section group">
 			<div class="col span_1_of_4">
-				<a href="curtin.html"><strong><span class="venueContentWed">Curtin</strong></span>Wednesday <span
-					class="venueContentTimes">6:30pm to 8:30pm</span><br> Juniors & Adults 
+				<a href="curtin.html"><span class="venueContentWed">Curtin</span>Wednesday <span
+					class="venueContentTimes">6:30pm to 8:30pm</span><br> Juniors &amp; Adults </a>
 			</div>
-			</a>
+
 			<div class="col span_1_of_4">
-				<a href="vicpark.html"><strong><span class="venueContent">Vic Park</strong></span>Friday <span 
-				class="venueContentTimes">5:30pm to 6:45pm Juniors</span><br> 6:45pm to 9:00pm Adults 
+				<a href="vicpark.html"><span class="venueContent">Vic Park</span>Friday <span class="venueContentTimes">5:30pm
+						to 6:45pm Juniors</span><br> 6:45pm to 9:00pm Adults </a>
 			</div>
-			</a>
+
 			<div class="col span_1_of_4">
-				<a href="langford.html"><strong><span class="venueContent">Langford</strong></span>Saturday <span
-					class="venueContentTimes">10:30am to 12:00am</span><br> Juniors & Adults 
+				<a href="langford.html"><span class="venueContent">Langford</span>Saturday <span
+					class="venueContentTimes">10:30am to 12:00am</span><br> Juniors &amp; Adults </a>
 			</div>
 			<div class="col span_1_of_4">
-				<a href="heathridge.html"><strong><span class="venueContent">Heathridge</strong></span>Saturday <span
-					class="venueContentTimes">1:00pm to 3:30pm Juniors</span><br> Juniors & Adults 
+				<a href="heathridge.html"><span class="venueContent">Heathridge</span>Saturday <span
+					class="venueContentTimes">1:00pm to 3:30pm Juniors</span><br> Juniors &amp; Adults </a>
 			</div>
-			</a>
+
 		</div>
 
 

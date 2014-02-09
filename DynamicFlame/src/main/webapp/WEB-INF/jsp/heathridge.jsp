@@ -8,7 +8,8 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
+	
 </script>
 <script>
 	var marker;
@@ -68,7 +69,7 @@
 					<article id="main" class="special">
 						<header>
 							<h2>Heathridge Leisure Centre</h2>
-							<h3>Corner of Siren Road & Sail Terrace, Heathridge</h3>
+							<h3>Corner of Siren Road &amp; Sail Terrace, Heathridge</h3>
 							<span class="byline"> 1:00pm to 3:30pm Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
 								$10 for non-members
 							</span>
@@ -112,5 +113,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

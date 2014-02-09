@@ -1067,7 +1067,7 @@
 	#header
 	{
 		position: relative;
-		background-image: url('../images/IMG_7923.JPG');  
+		background-image: url('../images/IMG_7923.jpg');  
 		background-size: cover;
 		background-position: center center;
 		color: #fff;
@@ -1594,16 +1594,21 @@
 /* venueSection                                                                      */
 /*********************************************************************************/	
 
+.venues a {
+	border-bottom: none !important;
+}
 .venueContent {
 	display: inline-block; 
 	width: 170px; 
 	text-align: left;
+	font-weight: bold;
 }
 
 .venueContentWed {
 	display: inline-block; 
 	width: 140px; 
 	text-align: left;
+	font-weight: bold;
 }
 
 .venueContentTimes {
