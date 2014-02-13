@@ -25,7 +25,7 @@
 			<tr>
 				<th>Title</th>
 				<th>Subtitle</th>
-				<th>Contemt</th>
+				<th>Content</th>
 				<th>&nbsp;</th>
 			</tr>
 			<c:forEach items="${articleList.pageList}" var="article">

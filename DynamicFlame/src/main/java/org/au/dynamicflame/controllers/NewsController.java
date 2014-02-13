@@ -65,7 +65,7 @@ public class NewsController {
      * @param model
      * @return String - view to display
      */
-    @RequestMapping(value = "/articleDetails", method = RequestMethod.POST)
+    @RequestMapping(value = "/news", method = RequestMethod.POST)
     public String processNewsArticle(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("newsArticle") @Valid NewsArticle newsArticle, BindingResult result, Model model) {
 
@@ -89,7 +89,7 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "articleDetails";
+        return "news";
     }
 
     /**
@@ -101,7 +101,7 @@ public class NewsController {
      * @param model
      * @return String - view to display
      */
-    @RequestMapping(value = "/articleDetails", method = RequestMethod.GET)
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
@@ -109,7 +109,7 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "articleDetails";
+        return "news";
     }
 
     /**
@@ -132,7 +132,7 @@ public class NewsController {
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
         // Redirect so page reloads
-        return "redirect:/articleDetails";
+        return "redirect:/news";
     }
 
     /**
@@ -179,7 +179,7 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "articleDetails";
+        return "news";
     }
 
     /**

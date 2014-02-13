@@ -560,6 +560,27 @@
 			{
 			}
 			
+		.buttonEdit
+		{
+			position: relative;
+			display: inline-block;
+			background: #8CCCCE;
+			color: #fff;
+			text-align: center;
+			border-radius: 0.5em;
+			text-decoration: none;
+			padding: 0.65em 3em 0.65em 3em;
+			border: 0;
+			cursor: pointer;
+			outline: 0;
+		}
+
+		.buttonEdit:hover
+		{
+			color: #fff;
+			background: #8CDDCE;
+		}
+			
 	/* Posts */
 
 		.post

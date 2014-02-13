@@ -58,10 +58,10 @@ public class DefaultController {
         return "heathridge";
     }
     
-    @RequestMapping(value = "/news.html", method = RequestMethod.GET)
-    public String kingsway() {
-        return "news";
-    }
+//    @RequestMapping(value = "/news.html", method = RequestMethod.GET)
+//    public String kingsway() {
+//        return "news";
+//    }
     
     @RequestMapping(value = "/photos.html", method = RequestMethod.GET)
     public String photos() {
