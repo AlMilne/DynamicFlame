@@ -82,6 +82,7 @@ public class NewsController {
 
         newsService.addNewsArticle(newsArticle);
 
+        request.getSession().setAttribute(ARTICLE_LIST, null);
         // Populate PagedListHolder with news articles
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 

@@ -35,6 +35,9 @@
 
 		<div class="container">
 			<div class="row">
+				<div class="-9u 3u">
+					<a href="newsAdmin.html" class="button">New Article</a>
+				</div>
 				<div class="4u" id="sidebar">
 					<hr class="first" />
 					<section>

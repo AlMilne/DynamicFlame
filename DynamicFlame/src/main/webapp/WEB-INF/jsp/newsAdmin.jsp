@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/style.css" />
+<title>New Article</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-<title>News Stories</title>
+
 <script>
 	$.validator.setDefaults({
-		submitHandler : function() {
-			alert("submitted!");
-		}
 	});
 
 	$().ready(function() {
@@ -36,8 +36,22 @@
 </script>
 </head>
 <body>
-	<form:form commandName="newsArticle" action="articleDetails.htm"
-		id="newsAdminForm">
+	<!-- Header -->
+	<div id="header">
+		<!-- Inner -->
+		<div class="inner">
+			<header>
+				<h1>
+					<a href="#" id="logo">Dynamic Flame</a>
+				</h1>
+			</header>
+		</div>
+
+		<!-- Nav -->
+		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
+	</div>
+	
+	<form:form commandName="newsArticle" action="news.htm" id="newsAdminForm" style="margin-left: 10em;">
 		<form:label path="title">
 			<spring:message code="label.title" />
 		</form:label>
@@ -55,11 +69,11 @@
 		<form:label path="content">
 			<spring:message code="label.content" />
 		</form:label>
-		<form:textarea path="content" id="content" rows="5"></form:textarea>
+		<form:textarea path="content" id="content" rows="5" style="width: 50em; background: #fff; border: 1px solid;"></form:textarea>
 		<form:errors path="content" cssclass="error"></form:errors>
 		<br />
 
-		<input type="submit" value="Save Changes" />
+		<input type="submit" value="Save article" class="button"/>
 
 	</form:form>
 

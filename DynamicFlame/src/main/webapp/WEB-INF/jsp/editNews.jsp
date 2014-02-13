@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dynamic Flame Badminton Club</title>
+<title>Edit Article</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-<title>Edit Article</title>
 <script>
 	$.validator.setDefaults({
 
