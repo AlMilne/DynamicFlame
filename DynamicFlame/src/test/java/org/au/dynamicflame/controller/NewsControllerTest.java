@@ -60,33 +60,33 @@ public class NewsControllerTest {
     }
 
     @Test
-    public void testHandleRequestView() throws Exception {
-        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"))
+    public void testLoadFormPage() throws Exception {
+        mockMvc.perform(get("/newsAdmin")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"))
                 .andExpect(model().attributeExists("newsArticle"));
     }
 
     @Test
     public void testProcessNewsArticleValidationError() throws Exception {
-        mockMvc.perform(post("/articleDetails").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle"))
+        mockMvc.perform(post("/news").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle"))
                 .andExpect(view().name("newsAdmin"));
     }
 
     @Test
     public void testProcessNewsArticleSuccess() throws Exception {
-        mockMvc.perform(post("/articleDetails").session(session).param("title", "title").param("content", "content").param("subtitle", "subtitle"))
-                .andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+        mockMvc.perform(post("/news").session(session).param("title", "title").param("content", "content").param("subtitle", "subtitle"))
+                .andExpect(status().isOk()).andExpect(view().name("news"))
                 .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
     }
 
     @Test
     public void testViewNewsArticles() throws Exception {
-        mockMvc.perform(get("/articleDetails")).andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+        mockMvc.perform(get("/news")).andExpect(status().isOk()).andExpect(view().name("news"))
                 .andExpect(model().attributeExists("articleList"));
     }
 
     @Test
     public void testEditArticle() throws Exception {
-        mockMvc.perform(get("/edit/68")).andExpect(status().isOk()).andExpect(view().name("editNews"))
+        mockMvc.perform(get("/edit/67")).andExpect(status().isOk()).andExpect(view().name("editNews"))
                 .andExpect(model().attributeExists("newsArticle"));
     }
     
@@ -94,8 +94,8 @@ public class NewsControllerTest {
     @Transactional
     @Rollback(true)
     public void testDeleteNewsArticles() throws Exception {
-        mockMvc.perform(get("/delete/68"))
-                .andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/articleDetails"))
+        mockMvc.perform(get("/delete/67"))
+                .andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/news"))
                 .andExpect(model().attributeExists("articleList"));
     }
 
@@ -104,14 +104,14 @@ public class NewsControllerTest {
     @Rollback(true)
     public void testUpdateArticle() throws Exception {
         NewsArticle article = new NewsArticle();
-        article.setStoryId(68);
+        article.setStoryId(67);
         article.setAuthor("admin");;
         article.setTitle("title");
         article.setSubtitle("subtitle");
         article.setContent("content");
         session.setAttribute("newsArticle", article);
         
-        mockMvc.perform(post("/update").session(session)).andExpect(status().isOk()).andExpect(view().name("articleDetails"))
+        mockMvc.perform(post("/update").session(session)).andExpect(status().isOk()).andExpect(view().name("news"))
                 .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
     }
 

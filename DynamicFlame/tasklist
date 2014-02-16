@@ -1,10 +1,9 @@
 - Create Spring form for uploading and deleting images
-- Implement Spring security to only allow admin access to above
+- Security password encrypted in db
 - like stories and images
 - comment on stories and images
 - social login
 
-- finish venues
 - contact us page
 
 - Create Spring forum
