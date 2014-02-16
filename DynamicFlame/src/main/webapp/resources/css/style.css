@@ -580,7 +580,48 @@
 			color: #fff;
 			background: #8CDDCE;
 		}
-			
+		
+		.newbutton {
+			position: relative;
+			display: inline-block;
+			background: #DF7366;
+			color: #fff;
+			text-align: center;
+			border-radius: 0.5em;
+			text-decoration: none;
+			padding: 0.15em 1em 0.15em 1em;
+			border: 0;
+			cursor: pointer;
+			outline: 0;
+		}
+		
+		.newbutton:hover
+		{
+			color: #fff;
+			background:#EF8376;
+		}
+		
+		.buttonLogin
+		{
+			position: relative;
+			display: inline-block;
+			background: url("../images/lock.png") no-repeat scroll 10% center #DF7366;
+			color: #fff;
+			text-align: center;
+			border-radius: 0.5em;
+			text-decoration: none;
+			padding: 0.15em 1em 0.15em 1.75em;
+			border: 0;
+			cursor: pointer;
+			outline: 0;
+		}
+
+		.buttonLogin:hover
+		{
+			color: #fff;
+			background: url("../images/lock.png") no-repeat scroll 10% center #EF8376;
+		}
+		
 	/* Posts */
 
 		.post
