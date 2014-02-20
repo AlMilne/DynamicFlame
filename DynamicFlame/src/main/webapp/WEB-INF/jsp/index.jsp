@@ -9,9 +9,28 @@
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
 </head>
+
 <body class="homepage">
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<!-- Header -->
 	<div id="header">
+		<div id="facebook" class="row">
+			<section class="-9u 3u">
+				<div class="fb-like" data-href="http://www.facebook.com/dynamicflamebadmintonclub" data-layout="button_count"
+					data-action="like" data-show-faces="true" data-share="true"></div>
+			</section>
+		</div>
 
 		<!-- Inner -->
 		<div class="inner">
@@ -91,36 +110,7 @@
 
 
 	<!-- Footer -->
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="12u">
-
-					<!-- Contact -->
-					<section class="contact">
-						<ul class="icons">
-							<li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
-							<li><div style="color: white;">
-									<iframe
-										src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com/dynamicflamebadmintonclub&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80"
-										scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 100%; height: 80px;"
-										allowTransparency="true"></iframe>
-								</div></li>
-						</ul>
-					</section>
-
-					<!-- Copyright -->
-					<div class="copyright">
-						<ul class="menu">
-							<li>&copy; 2013 Dynamic Flame. All rights reserved.</li>
-						</ul>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 
 </body>
 </html>

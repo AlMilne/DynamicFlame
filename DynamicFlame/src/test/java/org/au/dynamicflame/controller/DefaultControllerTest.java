@@ -92,6 +92,11 @@ public class DefaultControllerTest {
     }
     
     @Test
+    public void testHandleRequestKingsway() throws Exception {
+        mockMvc.perform(get("/kingsway.html")).andExpect(status().isOk()).andExpect(view().name("kingsway"));
+    }
+    
+    @Test
     public void testHandleRequestPhotos() throws Exception {
         mockMvc.perform(get("/photos.html")).andExpect(status().isOk()).andExpect(view().name("photos"));
     }

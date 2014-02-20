@@ -78,6 +78,9 @@
 		<input type="submit" value="Save Changes" class="button" />
 
 	</form:form>
+	
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 
 </body>
 

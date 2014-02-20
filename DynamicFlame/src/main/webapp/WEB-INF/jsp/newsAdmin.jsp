@@ -9,13 +9,11 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 
 <script>
-	$.validator.setDefaults({
-	});
+	$.validator.setDefaults({});
 
 	$().ready(function() {
 
@@ -50,7 +48,7 @@
 		<!-- Nav -->
 		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 	</div>
-	
+
 	<form:form commandName="newsArticle" action="news.htm" id="newsAdminForm" style="margin-left: 10em;">
 		<form:label path="title">
 			<spring:message code="label.title" />
@@ -73,9 +71,12 @@
 		<form:errors path="content" cssclass="error"></form:errors>
 		<br />
 
-		<input type="submit" value="Save article" class="button"/>
+		<input type="submit" value="Save article" class="button" />
 
 	</form:form>
+
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 
 </body>
 

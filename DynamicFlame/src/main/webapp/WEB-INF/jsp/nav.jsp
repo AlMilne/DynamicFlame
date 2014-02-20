@@ -6,13 +6,6 @@
 				<li><a href="melville.html">Melville Recreation Centre</a></li>
 				<li><a href="cannington.html">Cannington Leisureplex</a></li>
 				<li><a href="hainsworth.html">Hainsworth Community Centre</a></li>
-				<li><span>And a submenu &hellip;</span>
-					<ul>
-						<li><a href="#">Lorem ipsum dolor</a></li>
-						<li><a href="#">Phasellus consequat</a></li>
-						<li><a href="#">Magna phasellus</a></li>
-						<li><a href="#">Etiam dolore nisl</a></li>
-					</ul></li>
 				<li><a href="kingsway.html">Kingsway Indoor Stadium</a></li>
 				<li><a href="curtin.html">Curtin University Stadium</a></li>
 				<li><a href="vicpark.html">Victoria Park</a></li>

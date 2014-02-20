@@ -30,7 +30,7 @@
 		<!-- SMTP settings -->
 		<property name="host" value="smtp.mail.yahoo.com" /> 
 		<property name="port" value="587" /> 
-		<property name="username" value="alasdair.milne@yahoo.co.uk" /> 
+		<property name="username" value="a.b@c.aom" /> 
 		<property name="password" value="password" /> 
 		<property name="javaMailProperties"> 
 			<!-- additional properties specific to JavaMail -->
@@ -50,7 +50,7 @@
 		<property name="password" value="password" />
 	</bean>
 
-	<!-- Configure Hibernate 4 Session Facotry -->
+	<!-- Configure Hibernate 4 Session Factory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />

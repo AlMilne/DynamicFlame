@@ -60,6 +60,11 @@ public class DefaultController {
         return "heathridge";
     }
     
+    @RequestMapping(value = "/kingsway.html", method = RequestMethod.GET)
+    public String kingsway() {
+        return "kingsway";
+    }    
+    
     @RequestMapping(value = "/photos.html", method = RequestMethod.GET)
     public String photos() {
         return "photos";
