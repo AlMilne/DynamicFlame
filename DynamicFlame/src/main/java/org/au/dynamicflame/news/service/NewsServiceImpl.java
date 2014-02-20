@@ -35,6 +35,7 @@ public class NewsServiceImpl implements NewsService {
      */
     @Override
     public List<NewsArticle> listNewsArticles() {
+        System.err.println("listNewsArticles listNewsArticles listNewsArticles");
         return newsDAO.listNewsArticles();
     }
 

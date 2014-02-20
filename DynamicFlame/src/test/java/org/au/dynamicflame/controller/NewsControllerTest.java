@@ -1,5 +1,8 @@
 package org.au.dynamicflame.controller;
 
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -10,10 +13,12 @@ import javax.transaction.Transactional;
 
 import org.au.dynamicflame.controllers.NewsController;
 import org.au.dynamicflame.model.NewsArticle;
+import org.au.dynamicflame.news.service.NewsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
@@ -28,6 +33,8 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * NewsControllerTest.java - test class for NewsController class.
  * 
+ * TODO: verify calling of newsServiceMock object, currently using real NewsController and not a mock
+ * 
  * @author Alasdair
  * @since 11/01/2014
  */
@@ -36,7 +43,12 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
 public class NewsControllerTest {
 
+    private static int TEST_ARTICLE_ID = 67;
+
     private MockMvc mockMvc;
+    
+    @Mock
+    private NewsService newsService;
 
     @Autowired
     private WebApplicationContext wac;
@@ -50,67 +62,113 @@ public class NewsControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-
-        session.setAttribute("newsArticle", new NewsArticle());
         
+        session.setAttribute("newsArticle", new NewsArticle());
+
         // InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         // viewResolver.setPrefix("/WEB-INF/jsp/view/");
         // viewResolver.setSuffix(".jsp");
         // mockMvc = MockMvcBuilders.standaloneSetup(newsController).setViewResolvers(viewResolver).build();
     }
 
+    /**
+     * Test method for {@link NewsController#loadFormPage()} .
+     */
     @Test
     public void testLoadFormPage() throws Exception {
         mockMvc.perform(get("/newsAdmin")).andExpect(status().isOk()).andExpect(view().name("newsAdmin"))
                 .andExpect(model().attributeExists("newsArticle"));
     }
 
+    /**
+     * Test method for {@link NewsController#viewNewsArticles()} .
+     */
     @Test
     public void testProcessNewsArticleValidationError() throws Exception {
-        mockMvc.perform(post("/news").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle"))
-                .andExpect(view().name("newsAdmin"));
+        mockMvc.perform(post("/news").session(session)).andExpect(status().isOk())
+                .andExpect(model().attributeExists("newsArticle"))
+                .andExpect(model().attributeHasFieldErrors("newsArticle", "title")).andExpect(view().name("newsAdmin"));
+
+     //   verifyZeroInteractions(newsServiceMock);
     }
 
+    /**
+     * Test method for {@link NewsController#processNewsArticle()} .
+     */
     @Test
+    @Transactional
+    @Rollback(true)
     public void testProcessNewsArticleSuccess() throws Exception {
-        mockMvc.perform(post("/news").session(session).param("title", "title").param("content", "content").param("subtitle", "subtitle"))
-                .andExpect(status().isOk()).andExpect(view().name("news"))
-                .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
+        short s = 1;
+
+        NewsArticle article = new NewsArticle();
+        article.setTitle("title");
+        article.setContent("content");
+        article.setSubtitle("subtitle");
+
+        mockMvc.perform(
+                post("/news").session(session).sessionAttr("newsArticle", article))
+                .andExpect(status().isOk())
+                .andExpect(view().name("news"))
+                .andExpect(model().attributeExists("articleList"))
+                .andExpect(
+                        model().attribute(
+                                "newsArticle",
+                                allOf(hasProperty("author", is("admin")), hasProperty("imageId", is(s)),
+                                        hasProperty("title", is("title")), hasProperty("content", is("content")),
+                                        hasProperty("subtitle", is("subtitle")))));
+
+       // verify(newsServiceMock, times(1)).addNewsArticle(Mockito.any(NewsArticle.class));
+     //   verifyNoMoreInteractions(newsServiceMock);
     }
 
+    /**
+     * Test method for {@link NewsController#viewNewsArticles()} .
+     */
     @Test
     public void testViewNewsArticles() throws Exception {
         mockMvc.perform(get("/news")).andExpect(status().isOk()).andExpect(view().name("news"))
                 .andExpect(model().attributeExists("articleList"));
     }
 
+    /**
+     * Test method for {@link NewsController#editArticle()} .
+     */
     @Test
     public void testEditArticle() throws Exception {
-        mockMvc.perform(get("/edit/67")).andExpect(status().isOk()).andExpect(view().name("editNews"))
+        mockMvc.perform(get("/edit/" + TEST_ARTICLE_ID)).andExpect(status().isOk()).andExpect(view().name("editNews"))
                 .andExpect(model().attributeExists("newsArticle"));
     }
-    
+
+    /**
+     * Test method for {@link NewsController#deleteNewsArticle()} .
+     */
     @Test
     @Transactional
     @Rollback(true)
     public void testDeleteNewsArticles() throws Exception {
-        mockMvc.perform(get("/delete/67"))
-                .andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/news"))
-                .andExpect(model().attributeExists("articleList"));
+        mockMvc.perform(get("/delete/" + TEST_ARTICLE_ID)).andExpect(status().isMovedTemporarily())
+                .andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
+
+       // verify(newsServiceMock, times(1)).removeNewsArticles(TEST_ARTICLE_ID);
+     //   verifyNoMoreInteractions(newsServiceMock);
     }
 
+    /**
+     * Test method for {@link NewsController#updateArticle()} .
+     */
     @Test
     @Transactional
     @Rollback(true)
     public void testUpdateArticle() throws Exception {
         NewsArticle article = new NewsArticle();
-        article.setStoryId(67);
-        article.setAuthor("admin");;
+        article.setStoryId(TEST_ARTICLE_ID);
+        article.setAuthor("admin");
         article.setTitle("title");
         article.setSubtitle("subtitle");
         article.setContent("content");
         session.setAttribute("newsArticle", article);
-        
+
         mockMvc.perform(post("/update").session(session)).andExpect(status().isOk()).andExpect(view().name("news"))
                 .andExpect(model().attributeExists("articleList")).andExpect(model().attributeExists("newsArticle"));
     }

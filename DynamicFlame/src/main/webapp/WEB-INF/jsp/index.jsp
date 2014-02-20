@@ -10,7 +10,6 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
 </head>
 <body class="homepage">
-
 	<!-- Header -->
 	<div id="header">
 
@@ -40,49 +39,45 @@
 		<br>
 		<div class="section group">
 			<div class="col span_1_of_4">
-				<a href="melville.html"><span class="venueContent">Melville</span>Sunday <span class="venueContentTimes">9:30am
-						to 11:30am</span><br> Juniors &amp; Adults
-				</a>
+				<a href="melville.html"><span class="venueContent">Melville</span>Sunday <span class="venueContentTimes">9:30am to
+						11:30am</span><br> Juniors &amp; Adults </a>
 			</div>
 
 			<div class="col span_1_of_4">
-				<a href="cannington.html"><span class="venueContent">Cannington</span>Sunday <span
-					class="venueContentTimes">11:00am to 1:00pm</span><br> Juniors &amp; Adults
-				</a>
+				<a href="cannington.html"><span class="venueContent">Cannington</span>Sunday <span class="venueContentTimes">11:00am
+						to 1:00pm</span><br> Juniors &amp; Adults </a>
 			</div>
 
 			<div class="col span_1_of_4">
-				<a href="hainsworth.html"><span class="venueContent">Hainsworth</span>Sunday <span
-					class="venueContentTimes">2:00pm to 3:00pm Juniors</span><br> 3:00pm to 5:00pm Adults
-				</a>
+				<a href="hainsworth.html"><span class="venueContent">Hainsworth</span>Sunday <span class="venueContentTimes">2:00pm
+						to 3:00pm Juniors</span><br> 3:00pm to 5:00pm Adults </a>
 			</div>
 
 			<div class="col span_1_of_4">
-				<a href="kingsway.html"><span class="venueContent">Kingsway</span>Tuesday <span
-					class="venueContentTimes">5:30pm to 6:45pm Juniors</span><br> 7:00pm to 10:00pm Adults
-				</a>
+				<a href="kingsway.html"><span class="venueContent">Kingsway</span>Tuesday <span class="venueContentTimes">5:30pm to
+						6:45pm Juniors</span><br> 7:00pm to 10:00pm Adults </a>
 			</div>
 
 		</div>
 		<br>
 		<div class="section group">
 			<div class="col span_1_of_4">
-				<a href="curtin.html"><span class="venueContentWed">Curtin</span>Wednesday <span
-					class="venueContentTimes">6:30pm to 8:30pm</span><br> Juniors &amp; Adults </a>
+				<a href="curtin.html"><span class="venueContentWed">Curtin</span>Wednesday <span class="venueContentTimes">6:30pm
+						to 8:30pm</span><br> Juniors &amp; Adults </a>
 			</div>
 
 			<div class="col span_1_of_4">
-				<a href="vicpark.html"><span class="venueContent">Vic Park</span>Friday <span class="venueContentTimes">5:30pm
-						to 6:45pm Juniors</span><br> 6:45pm to 9:00pm Adults </a>
+				<a href="vicpark.html"><span class="venueContent">Vic Park</span>Friday <span class="venueContentTimes">5:30pm to
+						6:45pm Juniors</span><br> 6:45pm to 9:00pm Adults </a>
 			</div>
 
 			<div class="col span_1_of_4">
-				<a href="langford.html"><span class="venueContent">Langford</span>Saturday <span
-					class="venueContentTimes">10:30am to 12:00am</span><br> Juniors &amp; Adults </a>
+				<a href="langford.html"><span class="venueContent">Langford</span>Saturday <span class="venueContentTimes">10:30am
+						to 12:00am</span><br> Juniors &amp; Adults </a>
 			</div>
 			<div class="col span_1_of_4">
-				<a href="heathridge.html"><span class="venueContent">Heathridge</span>Saturday <span
-					class="venueContentTimes">1:00pm to 3:30pm Juniors</span><br> Juniors &amp; Adults </a>
+				<a href="heathridge.html"><span class="venueContent">Heathridge</span>Saturday <span class="venueContentTimes">1:00pm
+						to 3:30pm Juniors</span><br> Juniors &amp; Adults </a>
 			</div>
 
 		</div>
@@ -105,7 +100,12 @@
 					<section class="contact">
 						<ul class="icons">
 							<li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
-							<li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+							<li><div style="color: white;">
+									<iframe
+										src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com/dynamicflamebadmintonclub&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80"
+										scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 100%; height: 80px;"
+										allowTransparency="true"></iframe>
+								</div></li>
 						</ul>
 					</section>
 

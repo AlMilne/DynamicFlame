@@ -40,7 +40,7 @@ public class NewsController {
 
     @Autowired
     private NewsService newsService;
-
+    
     /**
      * loadFormPage - initial page load mapping to add newsArticle to the model and return the newsAdmin.jsp view.
      * 
@@ -141,8 +141,8 @@ public class NewsController {
      * story_id of the article. Adds the article to be updated into the model and then returns the editNews view to load
      * the page with the article details pre-populated.
      * 
-     * TODO current finding of news story inefficient, should just return single article
-     * from db not have to return all and search
+     * TODO current finding of news story inefficient, should just return single article from db not have to return all
+     * and search
      * 
      * @param id story_id of the news article to edit
      * @param model object to store the article in
@@ -152,6 +152,8 @@ public class NewsController {
     public String editArticle(@PathVariable Integer id, Model model) {
         List<NewsArticle> articles = newsService.listNewsArticles();
         
+        LOGGER.log(Level.INFO, "editArticle {0}", articles.size());
+
         for (Iterator<NewsArticle> iterator = articles.iterator(); iterator.hasNext();) {
             NewsArticle article = (NewsArticle) iterator.next();
             if (article.getStoryId() == id) {

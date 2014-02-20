@@ -25,6 +25,22 @@
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<!-- SMTP settings -->
+		<property name="host" value="smtp.mail.yahoo.com" /> 
+		<property name="port" value="587" /> 
+		<property name="username" value="alasdair.milne@yahoo.co.uk" /> 
+		<property name="password" value="password" /> 
+		<property name="javaMailProperties"> 
+			<!-- additional properties specific to JavaMail -->
+			<props> 
+				<prop key="mail.transport.protocol">smtp</prop> 
+				<prop key="mail.smtp.auth">true</prop> 
+				<prop key="mail.smtp.starttls.enable">true</prop> 
+			</props> 
+		</property> 
+	</bean>
 
 	<!-- Configure JDBC Connection -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

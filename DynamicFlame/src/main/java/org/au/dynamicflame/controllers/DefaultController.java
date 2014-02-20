@@ -1,6 +1,8 @@
 package org.au.dynamicflame.controllers;
 
+import org.au.dynamicflame.model.Email;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -69,7 +71,13 @@ public class DefaultController {
     }
     
     @RequestMapping(value = "/contact.html", method = RequestMethod.GET)
-    public String contact() {
+    public String contact(Model model) {
+        model.addAttribute("email", new Email());
         return "contact";
+    }
+    
+    @RequestMapping(value = "/emailThanks.html", method = RequestMethod.GET)
+    public String emailThanks() {
+        return "emailThanks";
     }
 }
