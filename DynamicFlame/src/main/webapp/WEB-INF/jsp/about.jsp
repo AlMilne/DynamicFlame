@@ -28,7 +28,7 @@
 	</div>
 
 	<!-- Main -->
-	<div class="wrapper style3">
+	<div class="wrapper style4">
 
 		<div class="container">
 			<div class="row">
@@ -104,9 +104,10 @@
 			<hr />
 
 		</div>
-
-		<!-- Footer -->
-		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 	</div>
+	
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
 </body>
 </html>

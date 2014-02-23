@@ -43,9 +43,10 @@
 			<hr />
 
 		</div>
-
-		<!-- Footer -->
-		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 	</div>
+	
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
 </body>
 </html>

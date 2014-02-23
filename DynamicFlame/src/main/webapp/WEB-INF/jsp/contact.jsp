@@ -37,9 +37,7 @@
 				<div class="12u skel-cell-important" id="content">
 					<article id="main" class="special">
 						<header>
-							<h2>
-								Contact Us
-							</h2>
+							<h2>Contact Us</h2>
 							<span class="byline">For more information about the club please contact Norm Anthony on mobile XX XXXX XXXX.</span>
 						</header>
 
@@ -76,9 +74,10 @@
 			<hr />
 
 		</div>
-
-		<!-- Footer -->
-		<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 	</div>
+	
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
 </body>
 </html>
