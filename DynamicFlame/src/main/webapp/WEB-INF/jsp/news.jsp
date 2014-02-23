@@ -54,9 +54,9 @@
 								<a href="#">News Letter</a>
 							</h3>
 						</header>
-						<p>The Club's NEWSLETTER can be delivered to your email address upon request.</p>
+						<p>The latest club's NEWSLETTER can be downloaded here.</p>
 						<footer>
-							<a href="#" class="button">Subscribe</a>
+							<a href="${contextPath}resources/docs/dfbc_7th_newsletter.pdf" class="button">Download</a>
 						</footer>
 					</section>
 					<hr />
