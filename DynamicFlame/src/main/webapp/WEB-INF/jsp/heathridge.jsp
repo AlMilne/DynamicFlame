@@ -70,16 +70,14 @@
 						<header>
 							<h2>Heathridge Leisure Centre</h2>
 							<h3>Corner of Siren Road &amp; Sail Terrace, Heathridge</h3>
-							<span class="byline"> 1:00pm to 3:30pm Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
+							<span class="byline">Saturdays 1:00pm to 3:30pm Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
 								$10 for non-members
 							</span>
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell-important" id="content">
-					<section class="12u skel-cell-important">
-						<div id="mapCanvas"></div>
-					</section>
+				<div class="6u skel-cell" id="content">
+					<div id="mapCanvas"></div>
 				</div>
 			</div>
 

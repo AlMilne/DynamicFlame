@@ -70,16 +70,14 @@
 						<header>
 							<h2>Curtin</h2>
 							<h3>Curtin University Stadium</h3>
-							<span class="byline"> 6:30pm to 8:30pm Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
+							<span class="byline">Wednesday 6:30pm to 8:30pm Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
 								$10 for non-members
 							</span>
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell-important" id="content">
-					<section class="12u skel-cell-important">
-						<div id="mapCanvas"></div>
-					</section>
+				<div class="6u skel-cell" id="content">
+					<div id="mapCanvas"></div>
 				</div>
 			</div>
 

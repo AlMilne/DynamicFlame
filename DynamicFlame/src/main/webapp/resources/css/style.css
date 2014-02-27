@@ -73,7 +73,7 @@
 	.byline
 	{
 		display: block;
-		font-size: 1.5em;
+		font-size: 1.25em;
 		margin-top: 1em;
 		line-height: 1.5em;
 	}
@@ -1745,7 +1745,7 @@
         .banner ul li { float: left; text-align:center; }
 		
 #mapCanvas {
-	width: 30em;
+	width: 100%;
 	height: 21em;
 	background: grey;
 }

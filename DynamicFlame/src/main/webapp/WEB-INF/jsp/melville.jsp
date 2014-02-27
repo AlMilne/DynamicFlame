@@ -70,16 +70,14 @@
 						<header>
 							<h2>Melville Recreation Centre</h2>
 							<h3>Corner of Canning Highway and Stock Roads, Melville</h3>
-							<span class="byline"> 9:30am to 11:30am Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
+							<span class="byline">Sundays 9:30am to 11:30am Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
 								$10 for non-members
 							</span>
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell-important" id="content">
-					<section class="12u skel-cell-important">
-						<div id="mapCanvas"></div>
-					</section>
+				<div class="6u skel-cell" id="content">
+					<div id="mapCanvas"></div>
 				</div>
 			</div>
 

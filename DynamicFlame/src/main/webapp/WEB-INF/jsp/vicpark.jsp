@@ -78,10 +78,8 @@
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell-important" id="content">
-					<section class="12u skel-cell-important">
-						<div id="mapCanvas"></div>
-					</section>
+				<div class="6u skel-cell" id="content">
+					<div id="mapCanvas"></div>
 				</div>
 			</div>
 

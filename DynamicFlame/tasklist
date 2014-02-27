@@ -1,11 +1,23 @@
-- Create Spring form for uploading and deleting images
 - Security password encrypted in db
-- like stories and images
-- comment on stories and images
+- Fix mobile version
+- Most popular stories (latest or most liked)
+- Forms, need beautifying
+
+### Release 2 ###
+- Create Spring form for uploading and deleting images
+	- Split photos into categories
+	- Load photos from db location
+	- Upload new photos: category, caption
+	- Delete photos
+	- Drag and drop, rearrange photos?
+
+- Front page, hot news slider?
+
+### Release 3 ###
 - social login
+	- like stories and images
+	- comment on stories and images
 
-- contact us page
-
-- Create Spring forum
 - Create database to store forum posts
-- Add user login/profiles stored in database for forum use
+	- Create Spring forum
+	- Add user login/profiles stored in database for forum use 

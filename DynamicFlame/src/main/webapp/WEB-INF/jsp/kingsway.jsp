@@ -72,16 +72,14 @@
 							<h2>Kingsway Indoor Stadium</h2>
 							<h3>Kingsway Road, Madeley</h3>
 							<span class="byline" style="margin-bottom: 0;"> 5:30pm to 6:45pm Juniors </span> <span class="byline"
-								style="margin-top: 0;"> 7:00pm to 10:00pm Adults </span> <span class="byline"> $8 for members <strong>|</strong>
+								style="margin-top: 0;">Tuesdays 7:00pm to 10:00pm Adults </span> <span class="byline"> $8 for members <strong>|</strong>
 								$10 for non-members
 							</span>
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell-important" id="content">
-					<section class="12u skel-cell-important">
-						<div id="mapCanvas"></div>
-					</section>
+				<div class="6u skel-cell" id="content">
+					<div id="mapCanvas"></div>
 				</div>
 			</div>
 
