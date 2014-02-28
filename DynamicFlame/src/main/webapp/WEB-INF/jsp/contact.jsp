@@ -10,6 +10,30 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
+<script>
+	$.validator.setDefaults({
+
+	});
+
+	$().ready(function() {
+
+		// validate form on keyup and submit
+		$("#emailForm").validate({
+			rules : {
+				recipient : "required",
+				subject : "required",
+				message : "required"
+			},
+			messages : {
+				recipient : "Please enter recipient address",
+				subject : "Please enter a subject",
+				message : "Please enter email message"
+			}
+		});
+	});
+</script>
 </head>
 <body class="no-sidebar">
 
