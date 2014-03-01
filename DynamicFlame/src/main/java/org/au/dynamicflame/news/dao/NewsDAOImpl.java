@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.NewsArticle;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void editNewsArticle(NewsArticle newsArticle) {
         LOGGER.log(Level.INFO, "newsArticle: {0}", newsArticle.getStoryId());
-        
+
         // Retrieve the article from db that is to be updated
         NewsArticle articleToUpdate =
                 (NewsArticle) sessionFactory.getCurrentSession().load(NewsArticle.class, newsArticle.getStoryId());
@@ -78,6 +79,17 @@ public class NewsDAOImpl implements NewsDAO {
         } else {
             LOGGER.log(Level.SEVERE, "no article to update found");
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public NewsArticle getArticle(Integer storyId) {
+        Query query = sessionFactory.getCurrentSession().createQuery("FROM NewsArticle where story_id = :storyId");
+        query.setParameter("storyId", storyId);
+       
+        return (NewsArticle) query.list().get(0);
     }
 
 }

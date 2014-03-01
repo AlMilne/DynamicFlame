@@ -1,6 +1,5 @@
 package org.au.dynamicflame.controllers;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -141,26 +140,14 @@ public class NewsController {
      * story_id of the article. Adds the article to be updated into the model and then returns the editNews view to load
      * the page with the article details pre-populated.
      * 
-     * TODO current finding of news story inefficient, should just return single article from db not have to return all
-     * and search
-     * 
      * @param id story_id of the news article to edit
      * @param model object to store the article in
      * @return editNews.jsp view
      */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editArticle(@PathVariable Integer id, Model model) {
-        List<NewsArticle> articles = newsService.listNewsArticles();
-        
-        LOGGER.log(Level.INFO, "editArticle {0}", articles.size());
-
-        for (Iterator<NewsArticle> iterator = articles.iterator(); iterator.hasNext();) {
-            NewsArticle article = (NewsArticle) iterator.next();
-            if (article.getStoryId() == id) {
-                LOGGER.log(Level.INFO, "article {0}", article.getStoryId());
-                model.addAttribute("newsArticle", article);
-            }
-        }
+        NewsArticle article = newsService.getArticle(id);
+        model.addAttribute("newsArticle", article);
 
         return "editNews";
     }

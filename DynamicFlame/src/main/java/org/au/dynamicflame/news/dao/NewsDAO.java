@@ -40,5 +40,12 @@ public interface NewsDAO {
      * @param newsArticle the object to update
      */
     public void editNewsArticle(NewsArticle newsArticle);
+    
+    /**
+     * getArticle - retrieves a single news article matching the given story id
+     * 
+     * @param id (story_id) of the article to retrieve
+     */
+    public NewsArticle getArticle(Integer storyId);
 
 }

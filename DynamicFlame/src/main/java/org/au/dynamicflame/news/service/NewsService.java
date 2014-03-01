@@ -18,4 +18,6 @@ public interface NewsService {
     public void removeNewsArticles(Integer id);
     
     public void editNewsArticle(NewsArticle newsArticle);
+    
+    public NewsArticle getArticle(Integer storyId);
 }
