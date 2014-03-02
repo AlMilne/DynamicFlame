@@ -140,6 +140,8 @@ public class NewsControllerTest {
                 .andExpect(model().attributeExists("newsArticle"));
     }
 
+
+
     /**
      * Test method for {@link NewsController#deleteNewsArticle()} .
      */

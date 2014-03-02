@@ -11,7 +11,7 @@ import org.springframework.util.StopWatch;
 /**
  * AOPLogging.java - Uses AspectJ to add logging messages around method calls. Logs the method execution time, class and
  * method names, arguments and return values.
- * 
+ *
  * @author Alasdair
  * @since 26/01/2014
  */
@@ -24,13 +24,13 @@ public class AOPLogging {
     /**
      * logTimeMethod - Logs method details on entry and exit of methods. Records class name, method name and arguements
      * as well as execution time in ms.
-     * 
+     *
      * @param joinPoint
      * @return
      * @throws Throwable
      */
     @Around("execution(* org.au.dynamicflame..*.*(..))")
-    public Object logTimeMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object logTimeMethod(final ProceedingJoinPoint joinPoint) throws Throwable {
 
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -39,15 +39,15 @@ public class AOPLogging {
 
         stopWatch.stop();
 
-        StringBuffer logMessage = new StringBuffer();
+        StringBuilder logMessage = new StringBuilder();
         logMessage.append(joinPoint.getTarget().getClass().getName());
         logMessage.append(".");
         logMessage.append(joinPoint.getSignature().getName());
         logMessage.append("(");
         // append args
         Object[] args = joinPoint.getArgs();
-        for (int i = 0; i < args.length; i++) {
-            logMessage.append(args[i]).append(",");
+        for (Object arg : args) {
+            logMessage.append(arg).append(",");
         }
         if (args.length > 0) {
             logMessage.deleteCharAt(logMessage.length() - 1);

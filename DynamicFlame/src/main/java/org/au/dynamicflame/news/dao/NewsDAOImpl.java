@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * NewsDAOImpl.java - Implementation of the NewsDAO class to handle the adding, listing and deletion of news stories.
  * Uses the Hibernate sessionFactory to perform the necesary operations one each of these methods to interact with the
  * db.
- * 
+ *
  * @author Alasdair
  * @since 19/01/2014
  */
@@ -33,7 +33,7 @@ public class NewsDAOImpl implements NewsDAO {
      * {@inheritDoc}
      */
     @Override
-    public void addNewsArticle(NewsArticle newsArticle) {
+    public void addNewsArticle(final NewsArticle newsArticle) {
         getCurrentSession().save(newsArticle);
     }
 
@@ -62,7 +62,7 @@ public class NewsDAOImpl implements NewsDAO {
      * {@inheritDoc}
      */
     @Override
-    public void editNewsArticle(NewsArticle newsArticle) {
+    public void editNewsArticle(final NewsArticle newsArticle) {
         LOGGER.log(Level.INFO, "newsArticle: {0}", newsArticle.getStoryId());
 
         // Retrieve the article from db that is to be updated
@@ -85,11 +85,20 @@ public class NewsDAOImpl implements NewsDAO {
      * {@inheritDoc}
      */
     @Override
-    public NewsArticle getArticle(Integer storyId) {
+    public NewsArticle getArticle(final Integer storyId) {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM NewsArticle where story_id = :storyId");
         query.setParameter("storyId", storyId);
-       
+
         return (NewsArticle) query.list().get(0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<NewsArticle> getMostPopular() {
+        return sessionFactory.getCurrentSession().createQuery("FROM NewsArticle order by likes desc").setMaxResults(3).list();
     }
 
 }

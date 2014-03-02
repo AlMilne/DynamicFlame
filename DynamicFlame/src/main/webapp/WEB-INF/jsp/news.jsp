@@ -37,8 +37,7 @@
 			<div class="row">
 				<sec:authorize access="isAuthenticated()">
 					<div class="-9u 3u">
-						<a href="newsAdmin.html" class="newbutton">New Article</a> <a class="buttonLogin"
-							href="<c:url value="/j_spring_security_logout" />">Logout</a>
+						<a href="newsAdmin.html" class="newbutton">New Article</a> <a class="buttonLogin" href="<c:url value="/j_spring_security_logout" />">Logout</a>
 					</div>
 				</sec:authorize>
 				<sec:authorize access="isAnonymous()">
@@ -54,7 +53,7 @@
 								<a href="#">News Letter</a>
 							</h3>
 						</header>
-						<p>The latest club's NEWSLETTER can be downloaded here.</p>
+						<p>Download the club's latest newsletter.</p>
 						<footer>
 							<a href="${contextPath}resources/docs/dfbc_7th_newsletter.pdf" class="button">Download</a>
 						</footer>
@@ -66,60 +65,22 @@
 								<a href="#">Popular articles</a>
 							</h3>
 						</header>
-						<p>Tempus cubilia ultrices tempor sagittis. Nisl fermentum consequat integer interdum.</p>
-						<div class="row half no-collapse">
-							<div class="4u">
-								<a href="http://mdomaradzki.deviantart.com/art/Air-Lounge-385212062" class="image full"><img src="images/pic10.jpg"
-									alt="" /></a>
-							</div>
-							<div class="8u">
-								<h4>Nibh sed cubilia</h4>
-								<p>Amet nullam fringilla nibh nulla convallis tique ante proin.</p>
-							</div>
-						</div>
-						<div class="row half no-collapse">
-							<div class="4u">
-								<a href="http://mdomaradzki.deviantart.com/art/Paris-City-Streets-II-382623606" class="image full"><img
-									src="images/pic11.jpg" alt="" /></a>
-							</div>
-							<div class="8u">
-								<h4>Proin sed adipiscing</h4>
-								<p>Amet nullam fringilla nibh nulla convallis tique ante proin.</p>
-							</div>
-						</div>
-						<div class="row half no-collapse">
-							<div class="4u">
-								<a href="http://mdomaradzki.deviantart.com/art/Trainride-Visions-383309985" class="image full"><img
-									src="images/pic12.jpg" alt="" /></a>
-							</div>
-							<div class="8u">
-								<h4>Lorem feugiat magna</h4>
-								<p>Amet nullam fringilla nibh nulla convallis tique ante proin.</p>
-							</div>
-						</div>
-						<div class="row half no-collapse">
-							<div class="4u">
-								<a href="http://mdomaradzki.deviantart.com/art/Paris-Metro-382623851" class="image full"><img src="images/pic13.jpg"
-									alt="" /></a>
-							</div>
-							<div class="8u">
-								<h4>Sed tempus fringilla</h4>
-								<p>Amet nullam fringilla nibh nulla convallis tique ante proin.</p>
-							</div>
-						</div>
-						<div class="row half no-collapse">
-							<div class="4u">
-								<a href="http://mdomaradzki.deviantart.com/art/Cliffs-of-Coogee-II-366961860" class="image full"><img
-									src="images/pic14.jpg" alt="" /></a>
-							</div>
-							<div class="8u">
-								<h4>Malesuada fermentum</h4>
-								<p>Amet nullam fringilla nibh nulla convallis tique ante proin.</p>
-							</div>
-						</div>
-						<footer>
-							<a href="#" class="button">Magna Adipiscing</a>
-						</footer>
+						<p>The hottest news articles right now.</p>
+						<c:if test="${!empty mostPopular}">
+							<c:forEach items="${mostPopular}" begin="0" end="3" var="article">
+
+								<div class="row half no-collapse">
+									<div class="4u">
+										<img src="${contextPath}resources/images/shuttle_icon.gif" alt="shuttle icon" style="margin: 10px;" /></a>
+									</div>
+									<div class="8u">
+										<h4>${article.title}</h4>
+										<p>${article.subtitle}</p>
+									</div>
+								</div>
+
+							</c:forEach>
+						</c:if>
 					</section>
 				</div>
 				<div class="8u skel-cell-important" id="content">
@@ -133,8 +94,7 @@
 									<p>${article.subtitle}</p>
 									<p>${article.content}</p>
 									<sec:authorize access="isAuthenticated()">
-										<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')"
-											class="button">Delete</a>
+										<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
 										<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
 									</sec:authorize>
 								</section>

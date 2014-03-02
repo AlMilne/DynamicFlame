@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
+    /** LOGIN */
+    private static final String LOGIN = "login";
+
     /**
      * login - request mapping method to navigate login form page
      * 
@@ -23,7 +26,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
-        return "login";
+        return LOGIN;
     }
 
     /**
@@ -35,7 +38,7 @@ public class LoginController {
     @RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
     public String loginerror(ModelMap model) {
         model.addAttribute("error", "true");
-        return "login";
+        return LOGIN;
     }
 
     /**

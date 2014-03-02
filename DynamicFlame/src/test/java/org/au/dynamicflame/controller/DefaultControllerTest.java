@@ -21,7 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 /**
  * DefultControllerTest.java - tests for default controller
- * 
+ *
  * @author Alasdair
  * @since 16/02/2014
  */
@@ -29,86 +29,88 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
 public class DefaultControllerTest {
-    
+
+    private static final String INDEX = "index";
+
     private MockMvc mockMvc;
 
     @Autowired
     private WebApplicationContext wac;
 
     @InjectMocks
-    private DefaultController defaultController = new DefaultController();
-    
+    private final DefaultController defaultController = new DefaultController();
+
     @Autowired MockHttpSession session;
-    
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
     public void testHandleRequestView() throws Exception {
-        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
+        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name(INDEX));
     }
-    
+
     @Test
     public void testHandleRequestIndex() throws Exception {
-        mockMvc.perform(get("/index.html")).andExpect(status().isOk()).andExpect(view().name("index"));
+        mockMvc.perform(get("/index.html")).andExpect(status().isOk()).andExpect(view().name(INDEX));
     }
-    
+
     @Test
     public void testHandleRequestMelville() throws Exception {
         mockMvc.perform(get("/melville.html")).andExpect(status().isOk()).andExpect(view().name("melville"));
     }
-    
+
     @Test
     public void testHandleRequestCannington() throws Exception {
         mockMvc.perform(get("/cannington.html")).andExpect(status().isOk()).andExpect(view().name("cannington"));
     }
-    
+
     @Test
     public void testHandleRequestHainsworth() throws Exception {
         mockMvc.perform(get("/hainsworth.html")).andExpect(status().isOk()).andExpect(view().name("hainsworth"));
     }
-    
+
     @Test
     public void testHandleRequestCurtin() throws Exception {
         mockMvc.perform(get("/curtin.html")).andExpect(status().isOk()).andExpect(view().name("curtin"));
     }
-    
+
     @Test
     public void testHandleRequestVicpark() throws Exception {
         mockMvc.perform(get("/vicpark.html")).andExpect(status().isOk()).andExpect(view().name("vicpark"));
     }
-    
+
     @Test
     public void testHandleRequestLangford() throws Exception {
         mockMvc.perform(get("/langford.html")).andExpect(status().isOk()).andExpect(view().name("langford"));
     }
-    
+
     @Test
     public void testHandleRequestHeathridge() throws Exception {
         mockMvc.perform(get("/heathridge.html")).andExpect(status().isOk()).andExpect(view().name("heathridge"));
     }
-    
+
     @Test
     public void testHandleRequestKingsway() throws Exception {
         mockMvc.perform(get("/kingsway.html")).andExpect(status().isOk()).andExpect(view().name("kingsway"));
     }
-    
+
     @Test
     public void testHandleRequestPhotos() throws Exception {
         mockMvc.perform(get("/photos.html")).andExpect(status().isOk()).andExpect(view().name("photos"));
     }
-    
+
     @Test
     public void testHandleRequestAbout() throws Exception {
         mockMvc.perform(get("/about.html")).andExpect(status().isOk()).andExpect(view().name("about"));
     }
-    
+
     @Test
     public void testHandleRequestContact() throws Exception {
         mockMvc.perform(get("/contact.html")).andExpect(status().isOk()).andExpect(view().name("contact"));
     }
-    
+
 }

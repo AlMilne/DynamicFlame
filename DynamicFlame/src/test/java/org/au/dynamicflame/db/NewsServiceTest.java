@@ -1,5 +1,6 @@
 package org.au.dynamicflame.db;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
@@ -22,7 +23,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 /**
  * NewsServiceTest.java - Test class for testing the newsService. Will test CRUD operations on dynamicflame database
  * using the newService methods.
- * 
+ *
  * @author Alasdair
  * @since 19/01/2014
  */
@@ -46,14 +47,20 @@ public class NewsServiceTest {
         }
     }
 
+    /**
+     * Test method for {@link NewsService#addNewsArticle(newsArticle)} .
+     */
     @Test
     @Rollback(true)
     public void testAddStory() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
+        List<NewsArticle> result = newsService.listNewsArticles();
+        int count = result.size();
+
         NewsArticle newsArticle = new NewsArticle();
-        newsArticle.setTitle("title");
+        newsArticle.setTitle("test");
         newsArticle.setSubtitle("subtitle");
         newsArticle.setContent("content");
         newsArticle.setAuthor("admin");
@@ -62,11 +69,16 @@ public class NewsServiceTest {
 
         newsService.addNewsArticle(newsArticle);
 
+        assertEquals(count+1, newsService.listNewsArticles().size());
+
         session.flush();
         session.close();
 
     }
 
+    /**
+     * Test method for {@link NewsService#listNewsArticles()} .
+     */
     @Test
     public void testGetStories() {
         Session session = sessionFactory.openSession();
@@ -76,22 +88,27 @@ public class NewsServiceTest {
 
         assertNotNull(result.get(0).getTitle());
 
-        for (NewsArticle article : (List<NewsArticle>) result) {
-            System.out.println("article " + article.getTitle());
-        }
-
         session.flush();
 
         session.close();
     }
-    
+
+    /**
+     * Test method for {@link NewsService#removeNewsArticles(int)} .
+     */
     @Test
+    @Rollback(true)
     public void testRemoveStory() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
+        List<NewsArticle> result = newsService.listNewsArticles();
+        int count = result.size();
+
         newsService.removeNewsArticles(5);
-        
+
+        assertEquals(count-1, newsService.listNewsArticles().size());
+
         session.flush();
 
         session.close();

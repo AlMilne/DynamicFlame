@@ -32,7 +32,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("newsArticle")
 public class NewsController {
 
-    /** ARTICLE_LIST_VIEW */
+    private static final String NEWS_ADMIN_PAGE = "newsAdmin";
+
+    private static final String NEWS_PAGE = "news";
+
+    private static final String NEWS_ARTICLE = "newsArticle";
+
+    private static final String REDIRECT_NEWS = "redirect:/news";
+
     private static final String ARTICLE_LIST = "articleList";
 
     private static final Logger LOGGER = Logger.getLogger("NewsController");
@@ -49,8 +56,8 @@ public class NewsController {
     @RequestMapping(value = "/newsAdmin", method = RequestMethod.GET)
     public String loadFormPage(final Model model) {
         LOGGER.log(Level.INFO, "in loadFormPage");
-        model.addAttribute("newsArticle", new NewsArticle());
-        return "newsAdmin";
+        model.addAttribute(NEWS_ARTICLE, new NewsArticle());
+        return NEWS_ADMIN_PAGE;
     }
 
     /**
@@ -66,10 +73,10 @@ public class NewsController {
      */
     @RequestMapping(value = "/news", method = RequestMethod.POST)
     public String processNewsArticle(final HttpServletRequest request, final HttpServletResponse response,
-            @ModelAttribute("newsArticle") @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
+            @ModelAttribute(NEWS_ARTICLE) @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
 
         if (result.hasErrors()) {
-            return "newsAdmin";
+            return NEWS_ADMIN_PAGE;
         }
 
         LOGGER.log(Level.INFO, "in processNewsArticle");
@@ -89,7 +96,7 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "news";
+        return NEWS_PAGE;
     }
 
     /**
@@ -107,22 +114,24 @@ public class NewsController {
 
         request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
 
+        model.addAttribute("mostPopular", getMostPopular());
+
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "news";
+        return NEWS_PAGE;
     }
 
     /**
      * deleteNewsArticle - removes the selected news story from the db.
      *
-     * @param story_id
+     * @param storyId
      * @param model
      * @return String - view to display
      */
     @RequestMapping(value = "/delete/{story_id:\\d+}", method = RequestMethod.GET)
-    public String deleteNewsArticle(final HttpServletRequest request, @PathVariable("story_id") final Integer story_id, final Model model) {
-        LOGGER.log(Level.INFO, "in deleteContact {0}", story_id);
-        newsService.removeNewsArticles(story_id);
+    public String deleteNewsArticle(final HttpServletRequest request, @PathVariable("story_id") final Integer storyId, final Model model) {
+        LOGGER.log(Level.INFO, "in deleteContact {0}", storyId);
+        newsService.removeNewsArticles(storyId);
 
         // Set the articleList attribute to null to force refresh of the PagedLstHolder
         request.getSession().setAttribute(ARTICLE_LIST, null);
@@ -132,7 +141,7 @@ public class NewsController {
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
         // Redirect so page reloads
-        return "redirect:/news";
+        return REDIRECT_NEWS;
     }
 
     /**
@@ -147,7 +156,7 @@ public class NewsController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editArticle(@PathVariable final Integer id, final Model model) {
         NewsArticle article = newsService.getArticle(id);
-        model.addAttribute("newsArticle", article);
+        model.addAttribute(NEWS_ARTICLE, article);
 
         return "editNews";
     }
@@ -169,7 +178,7 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "redirect:/news";
+        return REDIRECT_NEWS;
     }
 
     /**
@@ -200,5 +209,15 @@ public class NewsController {
         }
 
         return pagedListHolder;
+    }
+
+    /**
+     * getMostPopular - returns list of most popular news stories to display in most popular column on news page
+     *
+     * @return List of most popular news stories
+     */
+    private List<NewsArticle> getMostPopular() {
+        LOGGER.log(Level.INFO, "getMostPopular");
+        return newsService.getMostPopular();
     }
 }
