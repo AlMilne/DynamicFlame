@@ -53,7 +53,7 @@
 
 	</div>
 
-	<form:form commandName="newsArticle" action="/update.htm" style="margin-left: 10em;" id="newsAdminForm">
+	<form:form commandName="newsArticle" action="update.htm" style="margin-left: 10em;" id="newsAdminForm">
 		<form:label path="title">
 			<spring:message code="label.title" />
 		</form:label>

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 /**
  * NewsController.java - Controller for the news page. Handles the mapping for creating new news stories as well as the
  * displaying and deleting of stories. PageListHolder used to handle pagination of results on the screen.
- * 
+ *
  * @author Alasdair
  * @since 10/01/2014
  */
@@ -39,15 +39,15 @@ public class NewsController {
 
     @Autowired
     private NewsService newsService;
-    
+
     /**
      * loadFormPage - initial page load mapping to add newsArticle to the model and return the newsAdmin.jsp view.
-     * 
+     *
      * @param model
      * @return String - view to display
      */
     @RequestMapping(value = "/newsAdmin", method = RequestMethod.GET)
-    public String loadFormPage(Model model) {
+    public String loadFormPage(final Model model) {
         LOGGER.log(Level.INFO, "in loadFormPage");
         model.addAttribute("newsArticle", new NewsArticle());
         return "newsAdmin";
@@ -56,7 +56,7 @@ public class NewsController {
     /**
      * processNewsArticle - adds a new newsArticle into the db using the details entered on the newsAdmin.jsp form. Uses
      * JSR 303 validation for the newsArticle and re-displays the newsAdmin page if not valid..
-     * 
+     *
      * @param request
      * @param response
      * @param newsArticle
@@ -65,8 +65,8 @@ public class NewsController {
      * @return String - view to display
      */
     @RequestMapping(value = "/news", method = RequestMethod.POST)
-    public String processNewsArticle(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("newsArticle") @Valid NewsArticle newsArticle, BindingResult result, Model model) {
+    public String processNewsArticle(final HttpServletRequest request, final HttpServletResponse response,
+            @ModelAttribute("newsArticle") @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
 
         if (result.hasErrors()) {
             return "newsAdmin";
@@ -95,14 +95,14 @@ public class NewsController {
     /**
      * viewNewsArticles - handles the redisplaying of the articles page so that the PagedListHolder gets re-populated
      * with the articles.
-     * 
+     *
      * @param request
      * @param response
      * @param model
      * @return String - view to display
      */
     @RequestMapping(value = "/news", method = RequestMethod.GET)
-    public String viewNewsArticles(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String viewNewsArticles(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
         request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
@@ -114,13 +114,13 @@ public class NewsController {
 
     /**
      * deleteNewsArticle - removes the selected news story from the db.
-     * 
+     *
      * @param story_id
      * @param model
      * @return String - view to display
      */
     @RequestMapping(value = "/delete/{story_id:\\d+}", method = RequestMethod.GET)
-    public String deleteNewsArticle(HttpServletRequest request, @PathVariable("story_id") final Integer story_id, Model model) {
+    public String deleteNewsArticle(final HttpServletRequest request, @PathVariable("story_id") final Integer story_id, final Model model) {
         LOGGER.log(Level.INFO, "in deleteContact {0}", story_id);
         newsService.removeNewsArticles(story_id);
 
@@ -139,13 +139,13 @@ public class NewsController {
      * editArticle - locates the news article that was selected for editing from the id path variable that matches the
      * story_id of the article. Adds the article to be updated into the model and then returns the editNews view to load
      * the page with the article details pre-populated.
-     * 
+     *
      * @param id story_id of the news article to edit
      * @param model object to store the article in
      * @return editNews.jsp view
      */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editArticle(@PathVariable Integer id, Model model) {
+    public String editArticle(@PathVariable final Integer id, final Model model) {
         NewsArticle article = newsService.getArticle(id);
         model.addAttribute("newsArticle", article);
 
@@ -154,13 +154,13 @@ public class NewsController {
 
     /**
      * updateArticle - updates the news article whose story_id matches that of the newsArticle passed in.
-     * 
+     *
      * @param newsArticle object that contains the updated values
      * @param model object to store the pageListholder in for pagination
      * @return articleDetails.jsp view
      */
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateArticle(@ModelAttribute NewsArticle newsArticle, Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/edit/update", method = RequestMethod.POST)
+    public String updateArticle(@ModelAttribute final NewsArticle newsArticle, final Model model, final HttpServletRequest request) {
         newsService.editNewsArticle(newsArticle);
         request.getSession().setAttribute(ARTICLE_LIST, null);
         PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
@@ -169,18 +169,18 @@ public class NewsController {
 
         model.addAttribute(ARTICLE_LIST, pagedListHolder);
 
-        return "news";
+        return "redirect:/news";
     }
 
     /**
      * populatePagedListHolder - populates the Spring PagedListHolder class with the list of news stories in order to
      * handle the news story pagination. Retrieves the request object 'page' to determine which direction the navigation
      * of the pages should be processed.
-     * 
+     *
      * @param request
      * @return
      */
-    private PagedListHolder<NewsArticle> populatePagedListHolder(HttpServletRequest request) {
+    private PagedListHolder<NewsArticle> populatePagedListHolder(final HttpServletRequest request) {
         @SuppressWarnings("unchecked")
         PagedListHolder<NewsArticle> pagedListHolder =
                 (PagedListHolder<NewsArticle>) request.getSession().getAttribute(ARTICLE_LIST);
@@ -191,7 +191,7 @@ public class NewsController {
             LOGGER.log(Level.INFO, "articleList - articleList.size(): {0}", articleList.size());
             pagedListHolder = new PagedListHolder<NewsArticle>(articleList);
         } else {
-            String page = (String) request.getParameter("page");
+            String page = request.getParameter("page");
             if ("next".equals(page)) {
                 pagedListHolder.nextPage();
             } else if ("previous".equals(page)) {
