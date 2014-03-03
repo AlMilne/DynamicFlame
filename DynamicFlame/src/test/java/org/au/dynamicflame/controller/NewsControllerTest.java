@@ -157,6 +157,20 @@ public class NewsControllerTest {
     }
 
     /**
+     * Test method for {@link NewsController#deleteNewsArticle()} .
+     */
+    @Test
+    @Transactional
+    @Rollback(true)
+    public void testDeleteNewsArticlesNullArticle() throws Exception {
+        mockMvc.perform(get("/delete/" + 5000)).andExpect(status().isMovedTemporarily())
+                .andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
+
+       // verify(newsServiceMock, times(1)).removeNewsArticles(TEST_ARTICLE_ID);
+     //   verifyNoMoreInteractions(newsServiceMock);
+    }
+
+    /**
      * Test method for {@link NewsController#updateArticle()} .
      */
     @Test

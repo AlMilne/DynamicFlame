@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.au.dynamicflame.controllers.SendEmailController;
 import org.au.dynamicflame.model.Email;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -23,14 +22,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-
 /**
  * DefultControllerTest.java - tests for default controller
- * 
+ *
  * @author Alasdair
  * @since 16/02/2014
  */
-@Ignore("tired of spamming own email")
+
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
@@ -53,7 +51,7 @@ public class SendEmailControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     /**
@@ -63,8 +61,7 @@ public class SendEmailControllerTest {
     public void testSendEmail() throws Exception {
         session.setAttribute("email", new Email());
 
-        mockMvc.perform(
-                post("/sendEmail").session(session).param("recipient", "alasdair.milne@yahoo.co.uk").param("subject", "subject")
-                        .param("message", "message")).andExpect(status().isOk()).andExpect(view().name("emailThanks"));
+        mockMvc.perform(post("/sendEmail").session(session).param("subject", "subject").param("message", "message"))
+            .andExpect(status().isOk()).andExpect(view().name("emailThanks"));
     }
 }

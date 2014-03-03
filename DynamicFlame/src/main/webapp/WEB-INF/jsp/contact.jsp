@@ -67,12 +67,6 @@
 
 
 						<form:form action="/sendEmail.htm" commandName="email" style="margin-left: 10em;" id="emailForm">
-							<form:label path="recipient">
-								<spring:message code="label.recipient" />
-							</form:label>
-							<form:input path="recipient" id="recipient"></form:input>
-							<form:errors path="recipient" cssClass="error" />
-							<br />
 
 							<form:label path="subject">
 								<spring:message code="label.subject" />

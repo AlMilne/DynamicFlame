@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Email;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class SendEmailController {
 
     private static final Logger LOGGER = Logger.getLogger("SendEmailController");
 
+    @Value("#{propSource[recipientAddress]}")
+    private String recipientAddress;
+
     @Autowired
     private JavaMailSender mailSender;
 
@@ -39,7 +43,6 @@ public class SendEmailController {
         LOGGER.log(Level.INFO, "email: {0}", email);
 
         // takes input from e-mail form
-        String recipientAddress = email.getRecipient();
         String subject = email.getSubject();
         String message = email.getMessage();
 
