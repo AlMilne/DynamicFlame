@@ -10,7 +10,6 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 <script>
 	$.validator.setDefaults({
@@ -21,13 +20,22 @@
 
 		// validate form on keyup and submit
 		$("#emailForm").validate({
+			invalidHandler : function(form, validator) {
+				var errors = validator.numberOfInvalids();
+				if (errors) {
+					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
+					var errors = "";
+
+					$("#errorsSummary").text(message + errors);
+				}
+				validator.focusInvalid();
+			},
 			rules : {
-				recipient : "required",
 				subject : "required",
 				message : "required"
 			},
+
 			messages : {
-				recipient : "Please enter recipient address",
 				subject : "Please enter a subject",
 				message : "Please enter email message"
 			}
@@ -62,23 +70,23 @@
 					<article id="main" class="special">
 						<header>
 							<h2>Contact Us</h2>
-							<span class="byline">For more information about the club please contact Norm Anthony on mobile XX XXXX XXXX.</span>
+							<span class="byline">For more information about the club please contact Norman Anthony on mobile XX XXXX XXXX.</span>
 						</header>
 
-
-						<form:form action="/sendEmail.htm" commandName="email" style="margin-left: 10em;" id="emailForm">
+						<div id="errorsSummary"></div>
+						<form:form action="sendEmail.htm" commandName="email" id="emailForm">
 
 							<form:label path="subject">
 								<spring:message code="label.subject" />
 							</form:label>
-							<form:input path="subject" id="subject"></form:input>
+							<form:input path="subject" id="subject" class="glowing-border"></form:input>
 							<form:errors path="subject" cssclass="error"></form:errors>
 							<br />
 
 							<form:label path="message">
 								<spring:message code="label.message" />
 							</form:label>
-							<form:textarea path="message" id="message" rows="5" style="width: 50em; background: #fff; border: 1px solid;"></form:textarea>
+							<form:textarea path="message" id="message" rows="5" class="glowing-border"></form:textarea>
 							<form:errors path="message" cssclass="error"></form:errors>
 							<br />
 
@@ -93,7 +101,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 

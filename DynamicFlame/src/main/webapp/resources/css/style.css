@@ -1879,8 +1879,26 @@ padding-right: 20px;
 
 /*** END : lightbox ***/
 
+/*** START : jquery validator errors ***/
+input.error {
+    outline: none;
+    border-color: 2px solid #f00 !important;
+    box-shadow: 0 0 10px #f00 !important;
+}
+
+textarea.error {
+    outline: none;
+    border-color: 2px solid #f00 !important;
+    box-shadow: 0 0 10px #f00 !important;
+}
+
+.valid {
+    border: 2px solid #0ff;
+}
+
 label.error {
 	color: red;
+	font-weight: bold;
 }
 
 #newsAdminForm label.error {
@@ -1888,8 +1906,44 @@ label.error {
 	width: auto;
 	display: inline;
 	color: red;
+	font-weight: bold;
 }
 
+#errorsSummary {
+	margin-left: 11%;
+	color: red; 
+	font-weight: bold;
+}
+
+/*** END : jquery validator errors ***/
+
+.glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.glowing-border:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+#emailform {
+	margin-left: 11%;
+}
+
+#emailform label {
+	font-weight: bold;	
+}
+
+#emailform textarea {
+	border: 2px solid #DADADA;
+	width: 75%; 
+	background: #fff;
+}
+#subject {
+	width: 75%; 
+}
 #facebook {
 	position: absolute;
 	top: 0;
