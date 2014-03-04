@@ -171,7 +171,7 @@ p a:hover {
 
 		<div class="container">
 
-			<div id="content">
+			<div>
 				<div id="wrap">
 					<ul id="gallery">
 						<div class="row">

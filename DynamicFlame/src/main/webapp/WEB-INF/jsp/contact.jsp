@@ -66,7 +66,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="12u skel-cell-important" id="content">
+				<div class="12u skel-cell-important">
 					<article id="main" class="special">
 						<header>
 							<h2>Contact Us</h2>
@@ -86,7 +86,7 @@
 							<form:label path="message">
 								<spring:message code="label.message" />
 							</form:label>
-							<form:textarea path="message" id="message" rows="5" class="glowing-border"></form:textarea>
+							<form:textarea path="message" id="message" rows="5" class="glowing-border" ></form:textarea>
 							<form:errors path="message" cssclass="error"></form:errors>
 							<br />
 

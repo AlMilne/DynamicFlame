@@ -49,6 +49,7 @@
 		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 	</div>
 
+	<div id="errorsSummary"></div>
 	<form:form commandName="newsArticle" action="news.htm" id="newsAdminForm" style="margin-left: 10em;">
 		<form:label path="title">
 			<spring:message code="label.title" />

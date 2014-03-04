@@ -1901,14 +1901,6 @@ label.error {
 	font-weight: bold;
 }
 
-#newsAdminForm label.error {
-	margin-left: 10px;
-	width: auto;
-	display: inline;
-	color: red;
-	font-weight: bold;
-}
-
 #errorsSummary {
 	margin-left: 11%;
 	color: red; 
@@ -1928,15 +1920,15 @@ label.error {
     box-shadow: 0 0 10px #9ecaed;
 }
 
-#emailform {
+#emailform, #newsAdminForm {
 	margin-left: 11%;
 }
 
-#emailform label {
+#emailform.label , #newsAdminForm.label {
 	font-weight: bold;	
 }
 
-#emailform textarea {
+#content, #message {
 	border: 2px solid #DADADA;
 	width: 75%; 
 	background: #fff;

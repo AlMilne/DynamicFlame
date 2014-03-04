@@ -65,7 +65,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="6u skel-cell-important" id="content">
+				<div class="6u skel-cell-important">
 					<article id="main" class="special">
 						<header>
 							<h2>Curtin</h2>
@@ -76,7 +76,7 @@
 						</header>
 					</article>
 				</div>
-				<div class="6u skel-cell" id="content">
+				<div class="6u skel-cell">
 					<div id="mapCanvas"></div>
 				</div>
 			</div>

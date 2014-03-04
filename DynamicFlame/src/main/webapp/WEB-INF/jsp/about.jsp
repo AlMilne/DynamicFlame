@@ -32,7 +32,7 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="12u skel-cell-important" id="content">
+				<div class="12u skel-cell-important">
 					<article id="main" class="special">
 						<header>
 							<h2>

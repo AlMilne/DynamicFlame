@@ -9,8 +9,6 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 <script>
 	$.validator.setDefaults({
@@ -21,6 +19,16 @@
 
 		// validate form on keyup and submit
 		$("#newsAdminForm").validate({
+			invalidHandler : function(form, validator) {
+				var errors = validator.numberOfInvalids();
+				if (errors) {
+					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
+					var errors = "";
+
+					$("#errorsSummary").text(message + errors);
+				}
+				validator.focusInvalid();
+			},
 			rules : {
 				title : "required",
 				subtitle : "required",
@@ -53,32 +61,39 @@
 
 	</div>
 
-	<form:form commandName="newsArticle" action="update.htm" style="margin-left: 10em;" id="newsAdminForm">
-		<form:label path="title">
-			<spring:message code="label.title" />
-		</form:label>
-		<form:input path="title" id="title"></form:input>
-		<form:errors path="title" cssClass="error" />
-		<br />
+	<div class="container">
+		<div class="row">
+			<div class="12u skel-cell-important">
+				<div id="errorsSummary"></div>
+				<form:form commandName="newsArticle" action="update.htm" id="newsAdminForm">
+					<form:label path="title">
+						<spring:message code="label.title" />
+					</form:label>
+					<form:input path="title" id="title" class="glowing-border"></form:input>
+					<form:errors path="title" cssClass="error" />
+					<br />
 
-		<form:label path="subtitle">
-			<spring:message code="label.subtitle" />
-		</form:label>
-		<form:input path="subtitle" id="subtitle"></form:input>
-		<form:errors path="subtitle" cssclass="error"></form:errors>
-		<br />
+					<form:label path="subtitle">
+						<spring:message code="label.subtitle" />
+					</form:label>
+					<form:input path="subtitle" id="subtitle" class="glowing-border"></form:input>
+					<form:errors path="subtitle" cssclass="error"></form:errors>
+					<br />
 
-		<form:label path="content">
-			<spring:message code="label.content" />
-		</form:label>
-		<form:textarea path="content" id="content" rows="5" style="width: 50em; background: #fff; border: 1px solid;"></form:textarea>
-		<form:errors path="content" cssclass="error"></form:errors>
-		<br />
+					<form:label path="content">
+						<spring:message code="label.content" />
+					</form:label>
+					<form:textarea path="content" id="content" rows="5" class="glowing-border"></form:textarea>
+					<form:errors path="content" cssclass="error"></form:errors>
+					<br />
 
-		<input type="submit" value="Save Changes" class="button" />
+					<input type="submit" value="Save Changes" class="button" />
 
-	</form:form>
-	
+				</form:form>
+			</div>
+		</div>
+	</div>
+
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 

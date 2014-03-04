@@ -83,7 +83,7 @@
 						</c:if>
 					</section>
 				</div>
-				<div class="8u skel-cell-important" id="content">
+				<div class="8u skel-cell-important">
 					<article id="main">
 						<h2>Club News</h2>
 						<c:if test="${!empty articleList}">
