@@ -1924,7 +1924,7 @@ label.error {
 	margin-left: 11%;
 }
 
-#emailform.label , #newsAdminForm.label {
+form label {
 	font-weight: bold;	
 }
 

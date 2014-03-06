@@ -84,3 +84,9 @@ CREATE TABLE IF NOT EXISTS `dynamicflame`.`comments` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
+
+CREATE TABLE user_auth ( 
+ username VARCHAR(10) NOT NULL, 
+ authority VARCHAR(10) NOT NULL, 
+ FOREIGN KEY (username) REFERENCES users(username) 
+);
