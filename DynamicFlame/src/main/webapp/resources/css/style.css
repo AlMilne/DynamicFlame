@@ -1920,7 +1920,7 @@ label.error {
     box-shadow: 0 0 10px #9ecaed;
 }
 
-#emailform, #newsAdminForm {
+#emailform, #newsAdminForm, #newsAdminForm {
 	margin-left: 11%;
 }
 
@@ -1933,7 +1933,14 @@ form label {
 	width: 75%; 
 	background: #fff;
 }
-#subject {
+
+div[class*='mce-tinymce'] {
+	border: 2px solid #DADADA;
+	width: 75%; 
+	background: #fff;
+}
+
+#subject,  {
 	width: 75%; 
 }
 #facebook {

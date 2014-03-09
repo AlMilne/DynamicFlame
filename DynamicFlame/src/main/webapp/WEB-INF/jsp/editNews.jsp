@@ -9,8 +9,13 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/tinymce/tinymce.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 <script>
+	tinymce.init({
+		selector : "textarea"
+	});
+
 	$.validator.setDefaults({
 
 	});
