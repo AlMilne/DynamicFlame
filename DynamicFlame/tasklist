@@ -1,7 +1,4 @@
-- Security password encrypted in db
 - Fix mobile version
-- Most popular stories (latest or most liked)
-- Forms, need beautifying
 
 ### Release 2 ###
 - Create Spring form for uploading and deleting images

@@ -87,7 +87,7 @@
 						<label for="password">Password </label>
 					</div>
 					<div class="-3u 6u" style="padding-top: 0em;">
-						<input name="j_password" id="password">
+						<input name="j_password" id="password" type="password">
 					</div>
 				</div>
 				<br /> <input type="submit" value="Login" class="button" />
