@@ -1,4 +1,4 @@
-package org.au.dynamicflame.photos.dao;
+package org.au.dynamicflame.photos.service;
 
 import java.util.List;
 
@@ -6,18 +6,23 @@ import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 
 /**
- * PhotosDAO.java - DAO interface for handling photos
+ * PhotosService.java - PhotosService interface. Will handle CRUD operations for photos.
  *
  * @author Alasdair
  * @since 09/03/2014
  */
-public interface PhotosDAO {
+public interface PhotosService {
 
+    /**
+     * getAlbums - returns a list of all Albums
+     *
+     * @return list of Albums
+     */
     public List<Album> getAlbums();
 
     public Image getImageById(final int imageId);
 
-    public List<Image> getImagesByAlbum(int albumId);
+    public List<Image> getImagesByAlbum(final int albumId);
 
     public void addImage(Image image);
 
@@ -26,5 +31,4 @@ public interface PhotosDAO {
     public void addAlbum(String albumName);
 
     public void editImage(Image image);
-
 }

@@ -6,14 +6,13 @@ import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.NewsArticle;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
  * NewsDAOImpl.java - Implementation of the NewsDAO class to handle the adding, listing and deletion of news stories.
- * Uses the Hibernate sessionFactory to perform the necesary operations one each of these methods to interact with the
+ * Uses the Hibernate sessionFactory to perform the necessary operations on each of these methods to interact with the
  * db.
  *
  * @author Alasdair
@@ -25,16 +24,12 @@ public class NewsDAOImpl implements NewsDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
-    }
-
     /**
      * {@inheritDoc}
      */
     @Override
     public void addNewsArticle(final NewsArticle newsArticle) {
-        getCurrentSession().save(newsArticle);
+        sessionFactory.getCurrentSession().save(newsArticle);
     }
 
     /**
@@ -75,7 +70,7 @@ public class NewsDAOImpl implements NewsDAO {
             articleToUpdate.setSubtitle(newsArticle.getSubtitle());
             articleToUpdate.setContent(newsArticle.getContent());
 
-            getCurrentSession().update(articleToUpdate);
+            sessionFactory.getCurrentSession().update(articleToUpdate);
         } else {
             LOGGER.log(Level.SEVERE, "no article to update found");
         }
