@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/03/2014 6:49:16 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="Album" table="album" catalog="dynamicflame">
+        <id name="albumId" type="java.lang.Short">
+            <column name="album_id" />
+            <generator class="identity" />
+        </id>
+        <property name="albumName" type="string">
+            <column name="album_name" length="45" />
+        </property>
+        <set name="images" table="image_album" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="Image">
+                <column name="image_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
