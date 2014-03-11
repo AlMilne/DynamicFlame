@@ -44,25 +44,23 @@ public class PhotosServiceImpl implements PhotosService {
      * {@inheritDoc}
      */
     @Override
-    public List<Image> getImagesByAlbum(final int p_albumId) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Image> getImagesByAlbumId(final short albumId) {
+        return photosDAO.getImagesByAlbumId(albumId);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addImage(final Image p_image) {
-        // TODO Auto-generated method stub
-
+    public List<Image> getImagesByAlbumName(final String albumName) {
+        return photosDAO.getImagesByAlbumName(albumName);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void deleteImage(final Short p_imageId) {
+    public void addImage(final Image image) {
         // TODO Auto-generated method stub
 
     }
@@ -71,7 +69,7 @@ public class PhotosServiceImpl implements PhotosService {
      * {@inheritDoc}
      */
     @Override
-    public void addAlbum(final String p_albumName) {
+    public void deleteImage(final Short imageId) {
         // TODO Auto-generated method stub
 
     }
@@ -80,7 +78,16 @@ public class PhotosServiceImpl implements PhotosService {
      * {@inheritDoc}
      */
     @Override
-    public void editImage(final Image p_image) {
+    public void addAlbum(final String albumName) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void editImage(final Image image) {
         // TODO Auto-generated method stub
 
     }

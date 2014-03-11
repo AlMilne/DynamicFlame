@@ -1,11 +1,11 @@
 package org.au.dynamicflame.photos.dao;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PhotosDAOImpl implements PhotosDAO {
-    private static final Logger LOGGER = Logger.getLogger("PhotosDAOImpl");
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -47,17 +46,53 @@ public class PhotosDAOImpl implements PhotosDAO {
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public List<Image> getImagesByAlbum(final int p_albumId) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Image> getImagesByAlbumId(final short albumId) {
+        Query query =
+                sessionFactory.getCurrentSession()
+                .createQuery("select i from Album a join a.images i where a.albumId = :albumId");
+        query.setParameter("albumId", albumId);
+
+        return query.list();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Image> getImagesByAlbumName(final String albumName) {
+        Query query =
+                sessionFactory.getCurrentSession()
+                .createQuery("select i from Album a join a.images i where a.albumName = :albumName");
+        query.setParameter("albumName", albumName);
+
+        return query.list();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addImage(final Image p_image) {
+    public void addImage(final Image image) {
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
+        session.save(image);
+
+        session.getTransaction().commit();
+
+        session.flush();
+        session.close();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void deleteImage(final Short imageId) {
         // TODO Auto-generated method stub
 
     }
@@ -66,7 +101,7 @@ public class PhotosDAOImpl implements PhotosDAO {
      * {@inheritDoc}
      */
     @Override
-    public void deleteImage(final Short p_imageId) {
+    public void addAlbum(final String albumName) {
         // TODO Auto-generated method stub
 
     }
@@ -75,16 +110,7 @@ public class PhotosDAOImpl implements PhotosDAO {
      * {@inheritDoc}
      */
     @Override
-    public void addAlbum(final String p_albumName) {
-        // TODO Auto-generated method stub
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void editImage(final Image p_image) {
+    public void editImage(final Image image) {
         // TODO Auto-generated method stub
 
     }

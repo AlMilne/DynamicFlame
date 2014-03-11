@@ -17,7 +17,9 @@ public interface PhotosDAO {
 
     public Image getImageById(final int imageId);
 
-    public List<Image> getImagesByAlbum(int albumId);
+    public List<Image> getImagesByAlbumId(short albumId);
+
+    public List<Image> getImagesByAlbumName(String albumName);
 
     public void addImage(Image image);
 
