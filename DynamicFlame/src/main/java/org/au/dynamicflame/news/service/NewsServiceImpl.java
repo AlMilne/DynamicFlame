@@ -2,12 +2,11 @@ package org.au.dynamicflame.news.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.au.dynamicflame.model.NewsArticle;
 import org.au.dynamicflame.news.dao.NewsDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * NewsServiceImpl.java - Service layer class for the news service.

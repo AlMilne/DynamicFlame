@@ -131,7 +131,12 @@ public class NewsController {
     @RequestMapping(value = "/delete/{story_id:\\d+}", method = RequestMethod.GET)
     public String deleteNewsArticle(final HttpServletRequest request, @PathVariable("story_id") final Integer storyId, final Model model) {
         LOGGER.log(Level.INFO, "in deleteContact {0}", storyId);
-        newsService.removeNewsArticles(storyId);
+
+        try {
+            newsService.removeNewsArticles(storyId);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Article to delete does not exist");
+        }
 
         // Set the articleList attribute to null to force refresh of the PagedLstHolder
         request.getSession().setAttribute(ARTICLE_LIST, null);

@@ -15,7 +15,13 @@ public interface PhotosDAO {
 
     public List<Album> getAlbums();
 
+    public Album getAlbumByName(String albumName);
+
     public Image getImageById(final int imageId);
+
+    public Image getImageByTitle(final String imageTitle);
+
+    public List<Image> getAllImages();
 
     public List<Image> getImagesByAlbumId(short albumId);
 
@@ -25,7 +31,7 @@ public interface PhotosDAO {
 
     public void deleteImage(Short imageId);
 
-    public void addAlbum(String albumName);
+    public void addAlbum(final Album album);
 
     public void editImage(Image image);
 

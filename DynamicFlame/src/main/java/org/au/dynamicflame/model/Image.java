@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -101,7 +102,7 @@ public class Image implements java.io.Serializable {
         this.uploadDate = uploadDate;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "image_album", catalog = "dynamicflame", joinColumns = { @JoinColumn(name = "image_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "album_id", nullable = false, updatable = false) })
     public Set<Album> getAlbums() {
         return albums;

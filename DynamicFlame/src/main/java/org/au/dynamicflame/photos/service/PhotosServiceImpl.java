@@ -2,13 +2,12 @@ package org.au.dynamicflame.photos.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 import org.au.dynamicflame.photos.dao.PhotosDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * PhotosServiceImpl.java - Service layer class for the PhotosService.
@@ -61,8 +60,7 @@ public class PhotosServiceImpl implements PhotosService {
      */
     @Override
     public void addImage(final Image image) {
-        // TODO Auto-generated method stub
-
+        photosDAO.addImage(image);
     }
 
     /**
@@ -70,17 +68,15 @@ public class PhotosServiceImpl implements PhotosService {
      */
     @Override
     public void deleteImage(final Short imageId) {
-        // TODO Auto-generated method stub
-
+        photosDAO.deleteImage(imageId);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void addAlbum(final String albumName) {
-        // TODO Auto-generated method stub
-
+    public void addAlbum(final Album album) {
+        photosDAO.addAlbum(album);
     }
 
     /**
@@ -90,6 +86,30 @@ public class PhotosServiceImpl implements PhotosService {
     public void editImage(final Image image) {
         // TODO Auto-generated method stub
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Album getAlbumByName(final String albumName) {
+        return photosDAO.getAlbumByName(albumName);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Image getImageByTitle(final String imageTitle) {
+        return photosDAO.getImageByTitle(imageTitle);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Image> getAllImages() {
+        return photosDAO.getAllImages();
     }
 
 }

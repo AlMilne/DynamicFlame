@@ -22,6 +22,12 @@ public interface PhotosService {
 
     public Image getImageById(final int imageId);
 
+    public Image getImageByTitle(final String imageTitle);
+
+    public List<Image> getAllImages();
+
+    public Album getAlbumByName(String albumName);
+
     public List<Image> getImagesByAlbumId(final short albumId);
 
     public List<Image> getImagesByAlbumName(String albumName);
@@ -30,7 +36,7 @@ public interface PhotosService {
 
     public void deleteImage(Short imageId);
 
-    public void addAlbum(String albumName);
+    public void addAlbum(final Album album);
 
     public void editImage(Image image);
 }

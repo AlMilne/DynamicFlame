@@ -8,19 +8,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import javax.transaction.Transactional;
-
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 import org.au.dynamicflame.photos.service.PhotosService;
-import org.hibernate.FlushMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * PhotosServiceTest.java - Test class for testing the PhotosService. Will test CRUD operations on dynamicflame database
@@ -32,21 +30,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
+@TransactionConfiguration(defaultRollback = true)
 public class PhotosServiceTest {
     private static final Logger LOGGER = Logger.getLogger("PhotosServiceTest");
-
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    protected FlushMode flushMode = FlushMode.MANUAL;
 
     @Autowired
     private PhotosService photosService;
 
     protected void tearDown() throws Exception {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
+
     }
 
     /**
@@ -54,14 +46,9 @@ public class PhotosServiceTest {
      */
     @Test
     public void testGetAlbums() {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-
         List<Album> albumsList = photosService.getAlbums();
 
         assertNotNull(albumsList);
-
-        assertEquals(3, albumsList.size());
 
         for (Album album : albumsList) {
             LOGGER.info(album.getAlbumName());
@@ -90,17 +77,23 @@ public class PhotosServiceTest {
         List<Image> images = photosService.getImagesByAlbumId(id);
 
         assertNotNull(images);
-        assertEquals(2, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Tournaments");
+        }
 
         id = 2;
         images = photosService.getImagesByAlbumId(id);
         assertNotNull(images);
-        assertEquals(1, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Venues");
+        }
 
         id = 3;
         images = photosService.getImagesByAlbumId(id);
         assertNotNull(images);
-        assertEquals(0, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Social");
+        }
     }
 
     /**
@@ -108,18 +101,40 @@ public class PhotosServiceTest {
      */
     @Test
     public void testGetImagesByAlbumName() {
+        // Get all images that are in the Tournaments album
         List<Image> images = photosService.getImagesByAlbumName("Tournaments");
-
         assertNotNull(images);
-        assertEquals(2, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Tournaments");
+        }
 
+        // Get all images that are in the Venues album
         images = photosService.getImagesByAlbumName("Venues");
         assertNotNull(images);
-        assertEquals(1, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Venues");
+        }
 
+        // Get all images that are in the Social album
         images = photosService.getImagesByAlbumName("Social");
         assertNotNull(images);
-        assertEquals(0, images.size());
+        if (images.size() > 0) {
+            verifyImageIsInAlbum(images, "Social");
+        }
+    }
+
+    /**
+     * verifyImageIsInAlbum - Test that all the images passed in are in the same given album
+     *
+     * @param images
+     */
+    private void verifyImageIsInAlbum(final List<Image> images, final String albumName) {
+        Set<Album> albums = images.get(0).getAlbums();
+
+        // Test that all the images returned are in the associated Tournaments album
+        for (Album album : albums) {
+            assertEquals(albumName, album.getAlbumName());
+        }
     }
 
     /**
@@ -131,7 +146,7 @@ public class PhotosServiceTest {
 
         image.setTitle("TestImage");
         image.setLocation("TestLocation");
-        image.setMetaType("TestMeta");
+        image.setMetaType("JPEG");
 
         Set<Album> albums = new HashSet<Album>();
         Album album = new Album();
@@ -143,4 +158,48 @@ public class PhotosServiceTest {
 
         photosService.addImage(image);
     }
+
+    /**
+     * Test method for {@link PhotosService#addAlbum(Album)} .
+     */
+    @Test
+    @Rollback(true)
+    public void testAddAlbum() {
+        Album album = new Album();
+
+        String albumName = "TestAlbum";
+
+        album.setAlbumName(albumName);
+
+        photosService.addAlbum(album);
+
+        Album testAlbum = photosService.getAlbumByName(albumName);
+
+        assertEquals(testAlbum.getAlbumName(), albumName);
+    }
+
+    /**
+     * Test method for {@link PhotosService#deleteImage(imageId)} .
+     */
+    @Test
+    public void testDeleteImage() {
+        Image imageToDelete = photosService.getImageByTitle("TestImage");
+
+        int numOfImages = photosService.getAllImages().size();
+
+        photosService.deleteImage(imageToDelete.getImageId());
+
+        assertEquals(numOfImages - 1, photosService.getAllImages().size());
+    }
+
+    /**
+     * Test method for {@link PhotosService#getImageByTitle(imageName)} .
+     */
+    @Test
+    public void testGetImageByTitle() {
+        Image image = photosService.getImageByTitle("TestImage");
+
+        assertEquals("TestImage", image.getTitle());
+    }
+
 }

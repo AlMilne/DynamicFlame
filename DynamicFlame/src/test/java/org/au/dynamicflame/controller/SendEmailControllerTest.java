@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.au.dynamicflame.controllers.SendEmailController;
 import org.au.dynamicflame.model.Email;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -28,7 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
  * @author Alasdair
  * @since 16/02/2014
  */
-
+@Ignore("tired of spamming own email")
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
