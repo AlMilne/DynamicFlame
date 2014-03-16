@@ -141,6 +141,7 @@ public class PhotosServiceTest {
      * Test method for {@link PhotosService#addImage(Image)} .
      */
     @Test
+    @Rollback(true)
     public void testAddImage() {
         Image image = new Image();
 
@@ -185,11 +186,13 @@ public class PhotosServiceTest {
     public void testDeleteImage() {
         Image imageToDelete = photosService.getImageByTitle("TestImage");
 
-        int numOfImages = photosService.getAllImages().size();
+        if (imageToDelete != null) {
+            int numOfImages = photosService.getAllImages().size();
 
-        photosService.deleteImage(imageToDelete.getImageId());
+            photosService.deleteImage(imageToDelete.getImageId());
 
-        assertEquals(numOfImages - 1, photosService.getAllImages().size());
+            assertEquals(numOfImages - 1, photosService.getAllImages().size());
+        }
     }
 
     /**
@@ -197,9 +200,9 @@ public class PhotosServiceTest {
      */
     @Test
     public void testGetImageByTitle() {
-        Image image = photosService.getImageByTitle("TestImage");
+        Image image = photosService.getImageByTitle("Trophies");
 
-        assertEquals("TestImage", image.getTitle());
+        assertEquals("Trophies", image.getTitle());
     }
 
 }

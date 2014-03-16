@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.au.dynamicflame.model.NewsArticle;
 import org.au.dynamicflame.news.service.NewsService;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -134,7 +135,7 @@ public class NewsController {
 
         try {
             newsService.removeNewsArticles(storyId);
-        } catch (Exception e) {
+        } catch (ObjectNotFoundException e) {
             LOGGER.log(Level.SEVERE, "Article to delete does not exist");
         }
 
