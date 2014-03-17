@@ -64,4 +64,18 @@ public class SendEmailController {
         // forwards to the view named contact
         return "emailThanks";
     }
+
+    /**
+     * @return the mailSender
+     */
+    public JavaMailSender getMailSender() {
+        return mailSender;
+    }
+
+    /**
+     * @param mailSender the mailSender to set
+     */
+    public void setMailSender(final JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 }
