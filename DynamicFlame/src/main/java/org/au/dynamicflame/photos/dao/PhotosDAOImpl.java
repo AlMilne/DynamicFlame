@@ -1,15 +1,11 @@
 package org.au.dynamicflame.photos.dao;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,8 +18,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PhotosDAOImpl implements PhotosDAO {
-
-    private static final Logger LOGGER = Logger.getLogger("PhotosDAOImpl");
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -45,7 +39,7 @@ public class PhotosDAOImpl implements PhotosDAO {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM Image where image_id = :imageId");
         query.setParameter("imageId", imageId);
 
-        return (Image) query.list().get(0);
+        return (Image) query.uniqueResult();
     }
 
     /**
@@ -77,16 +71,7 @@ public class PhotosDAOImpl implements PhotosDAO {
      */
     @Override
     public void addImage(final Image image) {
-        Session session = sessionFactory.openSession();
-
-        session.beginTransaction();
-
-        session.save(image);
-
-        session.getTransaction().commit();
-
-        session.flush();
-        session.close();
+        sessionFactory.getCurrentSession().save(image);
     }
 
     /**
@@ -104,25 +89,7 @@ public class PhotosDAOImpl implements PhotosDAO {
      */
     @Override
     public void addAlbum(final Album album) {
-
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-
-        try {
-            LOGGER.log(Level.INFO, "Adding album: {0}", album.getAlbumName());
-
-            tx = session.beginTransaction();
-            session.save(album);
-            tx.commit();
-            session.flush();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            throw e;
-        } finally {
-            session.close();
-        }
+        sessionFactory.getCurrentSession().save(album);
     }
 
     /**
@@ -142,7 +109,7 @@ public class PhotosDAOImpl implements PhotosDAO {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM Album where album_name = :albumName");
         query.setParameter("albumName", albumName);
 
-        return (Album) query.list().get(0);
+        return (Album) query.uniqueResult();
     }
 
     /**
@@ -153,7 +120,7 @@ public class PhotosDAOImpl implements PhotosDAO {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM Image where title = :imageTitle");
         query.setParameter("imageTitle", imageTitle);
 
-        return (Image) query.list().get(0);
+        return (Image) query.uniqueResult();
     }
 
     /**

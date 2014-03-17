@@ -10,11 +10,11 @@ import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
+import org.au.dynamicflame.photos.dao.PhotosDAO;
 import org.au.dynamicflame.photos.service.PhotosService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -30,12 +30,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml", "classpath*:testContext.xml" })
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 public class PhotosServiceTest {
     private static final Logger LOGGER = Logger.getLogger("PhotosServiceTest");
 
     @Autowired
     private PhotosService photosService;
+
+    @Autowired
+    private PhotosDAO photosDAO;
 
     protected void tearDown() throws Exception {
 
@@ -46,8 +49,12 @@ public class PhotosServiceTest {
      */
     @Test
     public void testGetAlbums() {
+        // Given
         List<Album> albumsList = photosService.getAlbums();
 
+        // When
+
+        // Then
         assertNotNull(albumsList);
 
         for (Album album : albumsList) {
@@ -64,8 +71,6 @@ public class PhotosServiceTest {
         Image image = photosService.getImageById(1);
 
         assertNotNull(image);
-
-        LOGGER.info(image.getTitle());
     }
 
     /**
@@ -141,7 +146,6 @@ public class PhotosServiceTest {
      * Test method for {@link PhotosService#addImage(Image)} .
      */
     @Test
-    @Rollback(true)
     public void testAddImage() {
         Image image = new Image();
 
@@ -150,21 +154,18 @@ public class PhotosServiceTest {
         image.setMetaType("JPEG");
 
         Set<Album> albums = new HashSet<Album>();
-        Album album = new Album();
-        album.setAlbumName("Venues");
-
+        Album album = photosDAO.getAlbumByName("Venues");
         albums.add(album);
 
         image.setAlbums(albums);
 
-        photosService.addImage(image);
+        photosDAO.addImage(image);
     }
 
     /**
      * Test method for {@link PhotosService#addAlbum(Album)} .
      */
     @Test
-    @Rollback(true)
     public void testAddAlbum() {
         Album album = new Album();
 
