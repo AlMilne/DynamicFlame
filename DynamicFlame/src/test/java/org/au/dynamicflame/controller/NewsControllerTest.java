@@ -32,8 +32,6 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * NewsControllerTest.java - test class for NewsController class.
  *
- * TODO: verify calling of newsServiceMock object, currently using real NewsController and not a mock
- *
  * @author Alasdair
  * @since 11/01/2014
  */
@@ -83,7 +81,7 @@ public class NewsControllerTest {
      * Test method for {@link NewsController#viewNewsArticles()} .
      */
     @Test
-    public void testProcessNewsArticleValidationError() throws Exception {
+    public void testShouldFaileForMissingNewsArticleTitle() throws Exception {
         mockMvc.perform(post("/news").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle")).andExpect(model().attributeHasFieldErrors("newsArticle", "title")).andExpect(view().name("newsAdmin"));
 
         // verifyZeroInteractions(newsServiceMock);
@@ -95,7 +93,7 @@ public class NewsControllerTest {
     @Test
     @Transactional
     @Rollback(true)
-    public void testProcessNewsArticleSuccess() throws Exception {
+    public void testShouldAddANewNewsArticleSuccessfully() throws Exception {
         short s = 1;
 
         NewsArticle article = new NewsArticle();
@@ -119,7 +117,7 @@ public class NewsControllerTest {
      * Test method for {@link NewsController#viewNewsArticles()} .
      */
     @Test
-    public void testViewNewsArticles() throws Exception {
+    public void testShouldBeAbleToViewAllNewsArticles() throws Exception {
         mockMvc.perform(get("/news")).andExpect(status().isOk()).andExpect(view().name("news")).andExpect(model().attributeExists("articleList"));
     }
 
@@ -127,7 +125,7 @@ public class NewsControllerTest {
      * Test method for {@link NewsController#editArticle()} .
      */
     @Test
-    public void testEditArticle() throws Exception {
+    public void testShouldBeAbleToEnterEditModeForAnArticle() throws Exception {
         mockMvc.perform(get("/edit/" + TEST_ARTICLE_ID)).andExpect(status().isOk()).andExpect(view().name("editNews")).andExpect(model().attributeExists("newsArticle"));
     }
 
@@ -137,7 +135,7 @@ public class NewsControllerTest {
     @Test
     @Transactional
     @Rollback(true)
-    public void testDeleteNewsArticles() throws Exception {
+    public void testShouldBeAbleToDeleteAnArticle() throws Exception {
         mockMvc.perform(get("/delete/" + TEST_ARTICLE_ID)).andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
 
         // verify(newsServiceMock, times(1)).removeNewsArticles(TEST_ARTICLE_ID);
@@ -150,7 +148,7 @@ public class NewsControllerTest {
     @Test
     @Transactional
     @Rollback(true)
-    public void testDeleteNewsArticlesNullArticle() throws Exception {
+    public void testShouldFailForDeletingNonExsitentArticle() throws Exception {
         mockMvc.perform(get("/delete/" + 5000)).andExpect(status().isMovedTemporarily())
         .andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
 
@@ -164,7 +162,7 @@ public class NewsControllerTest {
     @Test
     @Transactional
     @Rollback(true)
-    public void testUpdateArticle() throws Exception {
+    public void testShouldBeAbleToEditAnExsitingArticle() throws Exception {
         NewsArticle article = new NewsArticle();
         article.setStoryId(TEST_ARTICLE_ID);
         article.setAuthor("admin");

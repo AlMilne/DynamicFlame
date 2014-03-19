@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 /**
  * LoginControllerTest.java - tests for LoginController.java
- * 
+ *
  * @author Alasdair
  * @since 16/02/2014
  */
@@ -36,7 +36,7 @@ public class LoginControllerTest {
     private WebApplicationContext wac;
 
     @InjectMocks
-    private DefaultController defaultController = new DefaultController();
+    private final DefaultController defaultController = new DefaultController();
 
     @Autowired
     MockHttpSession session;
@@ -44,22 +44,22 @@ public class LoginControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
-    public void testLogin() throws Exception {
+    public void testShouldLoginSuccessfully() throws Exception {
         mockMvc.perform(get("/login")).andExpect(status().isOk()).andExpect(view().name("login"));
     }
 
     @Test
-    public void testLoginFailed() throws Exception {
+    public void testShouldDisplayErrorOnLoginFailure() throws Exception {
         mockMvc.perform(get("/loginfailed")).andExpect(status().isOk()).andExpect(view().name("login"))
                 .andExpect(model().attributeExists("error"));
     }
 
     @Test
-    public void testLogout() throws Exception {
+    public void testShouldBeAbleToLogout() throws Exception {
         mockMvc.perform(get("/logout")).andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/news"));
     }
 }

@@ -60,7 +60,7 @@ public class SendEmailControllerTest {
      * Test method for {@link SendEmailController#doSendEmail()} .
      */
     @Test
-    public void testSendEmail() throws Exception {
+    public void testShouldSendAnEmail() throws Exception {
         session.setAttribute("email", new Email());
 
         mockMvc.perform(post("/sendEmail").session(session).param("subject", "subject").param("message", "message"))
