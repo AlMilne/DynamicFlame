@@ -37,20 +37,21 @@ public class Image implements java.io.Serializable {
     private Date uploadDate;
     private Set<Album> albums = new HashSet<Album>(0);
 
-    public Image() {}
+    public Image() {
+    }
 
     public Image(final String title, final String metaType, final String location, final Date uploadDate) {
         this.title = title;
         this.metaType = metaType;
         this.location = location;
-        this.uploadDate = uploadDate;
+        this.uploadDate = new Date(uploadDate.getTime());
     }
 
     public Image(final String title, final String metaType, final String location, final Date uploadDate, final Set<Album> albums) {
         this.title = title;
         this.metaType = metaType;
         this.location = location;
-        this.uploadDate = uploadDate;
+        this.uploadDate = new Date(uploadDate.getTime());
         this.albums = albums;
     }
 
@@ -99,7 +100,7 @@ public class Image implements java.io.Serializable {
     }
 
     public void setUploadDate(final Date uploadDate) {
-        this.uploadDate = uploadDate;
+        this.uploadDate = new Date(uploadDate.getTime());
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

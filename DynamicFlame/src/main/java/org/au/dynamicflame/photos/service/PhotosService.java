@@ -18,25 +18,25 @@ public interface PhotosService {
      *
      * @return list of Albums
      */
-    public List<Album> getAlbums();
+    List<Album> getAlbums();
 
-    public Image getImageById(final int imageId);
+    Image getImageById(final int imageId);
 
-    public Image getImageByTitle(final String imageTitle);
+    Image getImageByTitle(final String imageTitle);
 
-    public List<Image> getAllImages();
+    List<Image> getAllImages();
 
-    public Album getAlbumByName(String albumName);
+    Album getAlbumByName(String albumName);
 
-    public List<Image> getImagesByAlbumId(final short albumId);
+    List<Image> getImagesByAlbumId(final short albumId);
 
-    public List<Image> getImagesByAlbumName(String albumName);
+    List<Image> getImagesByAlbumName(String albumName);
 
-    public void addImage(Image image);
+    void addImage(Image image);
 
-    public void deleteImage(Short imageId);
+    void deleteImage(Short imageId);
 
-    public void addAlbum(final Album album);
+    void addAlbum(final Album album);
 
-    public void editImage(Image image);
+    void editImage(Image image);
 }

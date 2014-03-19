@@ -73,7 +73,7 @@ public class NewsController {
      * @return String - view to display
      */
     @RequestMapping(value = "/news", method = RequestMethod.POST)
-    public String processNewsArticle(final HttpServletRequest request, final HttpServletResponse response,
+    public String addNewsArticle(final HttpServletRequest request, final HttpServletResponse response,
             @ModelAttribute(NEWS_ARTICLE) @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
 
         if (result.hasErrors()) {
@@ -136,7 +136,7 @@ public class NewsController {
         try {
             newsService.removeNewsArticles(storyId);
         } catch (ObjectNotFoundException e) {
-            LOGGER.log(Level.SEVERE, "Article to delete does not exist");
+            LOGGER.log(Level.SEVERE, "Article to delete does not exist {0}", e.getMessage());
         }
 
         // Set the articleList attribute to null to force refresh of the PagedLstHolder

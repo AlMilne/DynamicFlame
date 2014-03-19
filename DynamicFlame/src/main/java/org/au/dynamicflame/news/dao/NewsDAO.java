@@ -17,7 +17,7 @@ public interface NewsDAO {
      *
      * @param newsArticle the article to be added
      */
-    public void addNewsArticle(NewsArticle newsArticle);
+    void addNewsArticle(NewsArticle newsArticle);
 
     /**
      * listNewsArticles - returns a list of all the news articles currently stored in descending order by the time they
@@ -25,34 +25,34 @@ public interface NewsDAO {
      *
      * @return the list of news articles
      */
-    public List<NewsArticle> listNewsArticles();
+    List<NewsArticle> listNewsArticles();
 
     /**
      * removeNewsArticles - removes a single news article from db specified by the id passed in.
      *
      * @param id (story_id) of the article to be removed
      */
-    public void removeNewsArticles(Integer id);
+    void removeNewsArticles(Integer id);
 
     /**
      * editNewsArticle - edits or updates a news article with the values of the passed in newsArticle object.
      *
      * @param newsArticle the object to update
      */
-    public void editNewsArticle(NewsArticle newsArticle);
+    void editNewsArticle(NewsArticle newsArticle);
 
     /**
      * getArticle - retrieves a single news article matching the given story id
      *
      * @param id (story_id) of the article to retrieve
      */
-    public NewsArticle getArticle(Integer storyId);
+    NewsArticle getArticle(Integer storyId);
 
     /**
      * getMostPopular - returns the 3 most popular news articles based on number of likes
      *
      * @return list of popular news articles
      */
-    public List<NewsArticle> getMostPopular();
+    List<NewsArticle> getMostPopular();
 
 }

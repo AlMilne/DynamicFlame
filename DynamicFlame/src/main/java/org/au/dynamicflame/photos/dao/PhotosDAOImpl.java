@@ -20,6 +20,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PhotosDAOImpl implements PhotosDAO {
+    /** IMAGE_ID */
+    private static final String IMAGE_ID = "imageId";
+
+    /** ALBUM_NAME */
+    private static final String ALBUM_NAME = "albumName";
+
     private static final Logger LOGGER = Logger.getLogger("PhotosDAOImpl");
 
     @Autowired
@@ -40,7 +46,7 @@ public class PhotosDAOImpl implements PhotosDAO {
     @Override
     public Image getImageById(final int imageId) {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM Image where image_id = :imageId");
-        query.setParameter("imageId", imageId);
+        query.setParameter(IMAGE_ID, imageId);
 
         return (Image) query.uniqueResult();
     }
@@ -64,7 +70,7 @@ public class PhotosDAOImpl implements PhotosDAO {
     @Override
     public List<Image> getImagesByAlbumName(final String albumName) {
         Query query = sessionFactory.getCurrentSession().createQuery("select i from Album a join a.images i where a.albumName = :albumName");
-        query.setParameter("albumName", albumName);
+        query.setParameter(ALBUM_NAME, albumName);
 
         return query.list();
     }
@@ -83,7 +89,7 @@ public class PhotosDAOImpl implements PhotosDAO {
     @Override
     public void deleteImage(final Short imageId) {
         Query query = sessionFactory.getCurrentSession().createQuery("delete from Image where image_id = :imageId");
-        query.setParameter("imageId", imageId);
+        query.setParameter(IMAGE_ID, imageId);
         query.executeUpdate();
     }
 
@@ -114,7 +120,7 @@ public class PhotosDAOImpl implements PhotosDAO {
 
             sessionFactory.getCurrentSession().update(imageToUpdate);
         } else {
-            LOGGER.log(Level.SEVERE, "no iamge to update found");
+            LOGGER.log(Level.SEVERE, "no image to update found");
         }
 
     }
@@ -125,7 +131,7 @@ public class PhotosDAOImpl implements PhotosDAO {
     @Override
     public Album getAlbumByName(final String albumName) {
         Query query = sessionFactory.getCurrentSession().createQuery("FROM Album where album_name = :albumName");
-        query.setParameter("albumName", albumName);
+        query.setParameter(ALBUM_NAME, albumName);
 
         return (Album) query.uniqueResult();
     }

@@ -25,6 +25,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
@@ -82,7 +84,14 @@ public class NewsControllerTest {
      */
     @Test
     public void testShouldFaileForMissingNewsArticleTitle() throws Exception {
-        mockMvc.perform(post("/news").session(session)).andExpect(status().isOk()).andExpect(model().attributeExists("newsArticle")).andExpect(model().attributeHasFieldErrors("newsArticle", "title")).andExpect(view().name("newsAdmin"));
+        MockHttpServletRequestBuilder getRequest = post("/news").session(session);
+
+        ResultActions results = mockMvc.perform(getRequest);
+
+        results.andExpect(status().isOk());
+        results.andExpect(model().attributeExists("newsArticle"));
+        results.andExpect(model().attributeHasFieldErrors("newsArticle", "title"));
+        results.andExpect(view().name("newsAdmin"));
 
         // verifyZeroInteractions(newsServiceMock);
     }
@@ -118,6 +127,7 @@ public class NewsControllerTest {
      */
     @Test
     public void testShouldBeAbleToViewAllNewsArticles() throws Exception {
+
         mockMvc.perform(get("/news")).andExpect(status().isOk()).andExpect(view().name("news")).andExpect(model().attributeExists("articleList"));
     }
 
@@ -149,8 +159,7 @@ public class NewsControllerTest {
     @Transactional
     @Rollback(true)
     public void testShouldFailForDeletingNonExsitentArticle() throws Exception {
-        mockMvc.perform(get("/delete/" + 5000)).andExpect(status().isMovedTemporarily())
-        .andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
+        mockMvc.perform(get("/delete/" + 5000)).andExpect(status().isMovedTemporarily()).andExpect(view().name("redirect:/news")).andExpect(model().attributeExists("articleList"));
 
         // verify(newsServiceMock, times(1)).removeNewsArticles(TEST_ARTICLE_ID);
         // verifyNoMoreInteractions(newsServiceMock);

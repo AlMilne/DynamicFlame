@@ -3,6 +3,7 @@ package org.au.dynamicflame.db;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
 import org.au.dynamicflame.photos.dao.PhotosDAO;
 import org.au.dynamicflame.photos.service.PhotosService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -269,5 +271,34 @@ public class PhotosServiceTest {
         Image editedImage = photosService.getImageById(1);
 
         assertEquals(numberOfOriginalAlbums - 1, editedImage.getAlbums().size());
+    }
+
+    /**
+     * Test method for {@link PhotosService#editImage(image)} .
+     */
+    @Test
+    @Ignore
+    public void testShouldFailWhenNullImageToEdit() {
+        // Given
+        short id = 9999;
+        Image imageToEdit = new Image();
+        imageToEdit.setUploadDate(new Date());
+        imageToEdit.setImageId(id);
+
+        // When
+        photosService.editImage(imageToEdit);
+
+        // Then
+        List<Image> imageList = photosService.getAllImages();
+
+        boolean imagesUnedited = true;
+
+        for (Image image : imageList) {
+            if (image.getUploadDate().after(imageToEdit.getUploadDate())) {
+                imagesUnedited = false;
+            }
+        }
+
+        assertEquals(imagesUnedited, true);
     }
 }
