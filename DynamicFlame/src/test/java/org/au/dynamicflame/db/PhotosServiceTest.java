@@ -206,4 +206,68 @@ public class PhotosServiceTest {
         assertEquals("Trophies", image.getTitle());
     }
 
+    /**
+     * Test method for {@link PhotosService#editImage(image)} .
+     */
+    @Test
+    public void testShouldBeAbleToEditAStoredImagesAttributes() {
+        // Given
+        Image imageToEdit = photosService.getImageById(1);
+
+        // When
+        imageToEdit.setTitle("UpdatedTitle");
+
+        photosService.editImage(imageToEdit);
+
+        // Then
+        Image editedImage = photosService.getImageById(1);
+
+        assertEquals("UpdatedTitle", editedImage.getTitle());
+    }
+
+    /**
+     * Test method for {@link PhotosService#editImage(image)} .
+     */
+    @Test
+    public void testShouldBeAbleToAddAnExistingImageToAnotherAlbum() {
+        // Given
+        Image imageToEdit = photosService.getImageById(1);
+
+        Set<Album> albumsForImage = imageToEdit.getAlbums();
+        int numberOfOriginalAlbums = albumsForImage.size();
+
+        // When
+        Album album = photosDAO.getAlbumByName("Venues");
+        imageToEdit.getAlbums().add(album);
+
+        photosService.editImage(imageToEdit);
+
+        // Then
+        Image editedImage = photosService.getImageById(1);
+
+        assertEquals(numberOfOriginalAlbums + 1, editedImage.getAlbums().size());
+    }
+
+    /**
+     * Test method for {@link PhotosService#editImage(image)} .
+     */
+    @Test
+    public void testShouldBeAbleToRemoveAnExistingImageFromAnAlbum() {
+        // Given
+        Image imageToEdit = photosService.getImageById(1);
+
+        Set<Album> albumsForImage = imageToEdit.getAlbums();
+        int numberOfOriginalAlbums = albumsForImage.size();
+
+        // When
+        Album album = photosDAO.getAlbumByName("Tournaments");
+        imageToEdit.getAlbums().remove(album);
+
+        photosService.editImage(imageToEdit);
+
+        // Then
+        Image editedImage = photosService.getImageById(1);
+
+        assertEquals(numberOfOriginalAlbums - 1, editedImage.getAlbums().size());
+    }
 }

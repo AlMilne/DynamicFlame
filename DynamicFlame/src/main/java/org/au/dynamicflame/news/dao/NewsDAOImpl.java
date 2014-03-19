@@ -21,6 +21,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class NewsDAOImpl implements NewsDAO {
     private static final Logger LOGGER = Logger.getLogger("NewsDAOImpl");
+
     @Autowired
     private SessionFactory sessionFactory;
 

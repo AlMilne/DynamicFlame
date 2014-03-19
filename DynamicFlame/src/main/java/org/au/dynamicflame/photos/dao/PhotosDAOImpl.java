@@ -1,6 +1,8 @@
 package org.au.dynamicflame.photos.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PhotosDAOImpl implements PhotosDAO {
+    private static final Logger LOGGER = Logger.getLogger("PhotosDAOImpl");
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -97,7 +100,22 @@ public class PhotosDAOImpl implements PhotosDAO {
      */
     @Override
     public void editImage(final Image image) {
-        // TODO Auto-generated method stub
+        LOGGER.log(Level.INFO, "Image being updated: {0}", image.getLocation());
+
+        // Retrieve the article from db that is to be updated
+        Image imageToUpdate = (Image) sessionFactory.getCurrentSession().load(Image.class, image.getImageId());
+
+        // Set the article values to be updated
+        if (null != imageToUpdate) {
+            imageToUpdate.setLocation(image.getLocation());
+            imageToUpdate.setMetaType(image.getMetaType());
+            imageToUpdate.setTitle(image.getTitle());
+            imageToUpdate.setAlbums(image.getAlbums());
+
+            sessionFactory.getCurrentSession().update(imageToUpdate);
+        } else {
+            LOGGER.log(Level.SEVERE, "no iamge to update found");
+        }
 
     }
 

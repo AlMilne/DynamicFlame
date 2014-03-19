@@ -84,8 +84,7 @@ public class PhotosServiceImpl implements PhotosService {
      */
     @Override
     public void editImage(final Image image) {
-        // TODO Auto-generated method stub
-
+        photosDAO.editImage(image);
     }
 
     /**
