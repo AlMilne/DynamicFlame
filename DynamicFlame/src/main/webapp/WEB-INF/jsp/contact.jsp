@@ -20,7 +20,7 @@
 
 		// validate form on keyup and submit
 		$("#emailForm").validate({
-			
+
 			invalidHandler : function(form, validator) {
 				var errors = validator.numberOfInvalids();
 				if (errors) {
@@ -32,11 +32,16 @@
 				validator.focusInvalid();
 			},
 			rules : {
+				yourEmail : {
+					required : true,
+					email : true
+				},
 				subject : "required",
 				message : "required"
 			},
 
 			messages : {
+				yourEmail : "Please enter your email address",
 				subject : "Please enter a subject",
 				message : "Please enter email message"
 			}
@@ -71,23 +76,31 @@
 					<article id="main" class="special">
 						<header style="margin-bottom: 0px;">
 							<h2>Contact Us</h2>
-							<span class="byline" style="margin-bottom: 0px;">For more information about the club please contact Norman Anthony on mobile XX XXXX XXXX.</span>
+							<span class="byline" style="margin-bottom: 0px;">For more information about the club please contact Norman Anthony on mobile XX
+								XXXX XXXX.</span>
 						</header>
 
 						<div id="errorsSummary">&nbsp;</div>
 						<form:form action="sendEmail.htm" commandName="email" id="emailForm">
 
+							<form:label path="yourEmail">
+								<spring:message code="label.yourEmail" />
+							</form:label>
+							<form:input path="yourEmail" id="yourEmail" class="glowing-border" size="40" maxlength="60"></form:input>
+							<form:errors path="yourEmail" cssclass="error"></form:errors>
+							<label for="yourEmail" class="error">&nbsp;</label>
+
 							<form:label path="subject">
 								<spring:message code="label.subject" />
 							</form:label>
-							<form:input path="subject" id="subject" class="glowing-border"></form:input>
+							<form:input path="subject" id="subject" class="glowing-border" size="40" maxlength="40"></form:input>
 							<form:errors path="subject" cssclass="error"></form:errors>
 							<label for="subject" class="error">&nbsp;</label>
-							
+
 							<form:label path="message">
 								<spring:message code="label.message" />
 							</form:label>
-							<form:textarea path="message" id="message" rows="5" class="glowing-border" ></form:textarea>
+							<form:textarea path="message" id="message" rows="5" class="glowing-border"></form:textarea>
 							<form:errors path="message" cssclass="error"></form:errors>
 							<label for="message" class="error">&nbsp;</label>
 							<br />

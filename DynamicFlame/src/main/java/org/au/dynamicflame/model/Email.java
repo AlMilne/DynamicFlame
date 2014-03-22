@@ -1,27 +1,28 @@
 package org.au.dynamicflame.model;
 
 /**
- * Email.java - TODO Alasdair COMMENT MISSING.
- * 
+ * Email.java - Model class for email message, used on Contact us page.s
+ *
  * @author Alasdair
  * @since 19/02/2014
  */
 public class Email {
 
-    private String recipient;
+    private String yourEmail;
     private String subject;
     private String message;
+
     /**
-     * @return the recipient
+     * @return the yourEmail
      */
-    public String getRecipient() {
-        return recipient;
+    public String getYourEmail() {
+        return yourEmail;
     }
     /**
-     * @param recipient the recipient to set
+     * @param yourEmail the yourEmail to set
      */
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
+    public void setYourEmail(final String yourEmail) {
+        this.yourEmail = yourEmail;
     }
     /**
      * @return the subject
@@ -32,7 +33,7 @@ public class Email {
     /**
      * @param subject the subject to set
      */
-    public void setSubject(String subject) {
+    public void setSubject(final String subject) {
         this.subject = subject;
     }
     /**
@@ -44,7 +45,7 @@ public class Email {
     /**
      * @param message the message to set
      */
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 }

@@ -35,7 +35,7 @@
 				<div class="12u skel-cell-important">
 					<article id="main" class="special">
 						<header>
-							<span class="byline">Thank you for the email, someone from DBFC will try to get in touch soon.</span>
+							<span class="byline">${emailResult}</span>
 						</header>
 					</article>
 				</div>
@@ -44,7 +44,7 @@
 
 		</div>
 	</div>
-	
+
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 

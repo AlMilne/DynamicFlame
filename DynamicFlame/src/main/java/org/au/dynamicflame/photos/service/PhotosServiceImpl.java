@@ -1,6 +1,9 @@
 package org.au.dynamicflame.photos.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.au.dynamicflame.model.Album;
 import org.au.dynamicflame.model.Image;
@@ -18,10 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class PhotosServiceImpl implements PhotosService {
+    private static final Logger LOGGER = Logger.getLogger("PhotosServiceImpl");
 
     @Autowired
     private PhotosDAO photosDAO;
-
 
     /**
      * {@inheritDoc}
@@ -76,6 +79,16 @@ public class PhotosServiceImpl implements PhotosService {
      */
     @Override
     public void addAlbum(final Album album) {
+        File dir = new File("src\\main\\webapp\\resources\\images\\" + album.getAlbumName());
+
+        boolean success = dir.mkdir();
+
+        if (success) {
+            LOGGER.log(Level.INFO, "Created directory: {0}", album.getAlbumName());
+        } else {
+            LOGGER.log(Level.INFO, "Directory {0} already exists", album.getAlbumName());
+        }
+
         photosDAO.addAlbum(album);
     }
 

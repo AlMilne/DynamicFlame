@@ -100,7 +100,7 @@ public class Image implements java.io.Serializable {
     }
 
     public void setUploadDate(final Date uploadDate) {
-        this.uploadDate = new Date(uploadDate.getTime());
+        this.uploadDate = uploadDate;
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
