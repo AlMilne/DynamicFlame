@@ -1,0 +1,320 @@
+/* BOOTSTRAP 3.x GLOBAL STYLES
+-------------------------------------------------- */
+body {
+	color: #5a5a5a;
+}
+
+a:hover
+{
+	color: #ef8376;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10000;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+	margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+	height: 400px;
+	background-color: #555;
+}
+
+.carousel img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 400px;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.marketing h2 {
+	font-weight: normal;
+}
+
+.marketing .col-lg-4 p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media ( min-width : 768px) {
+	/* Remve the edge padding needed for mobile */
+	.marketing {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	/* Navbar positioning foo */
+	.navbar-wrapper {
+		margin-top: 20px;
+		margin-bottom: -90px;
+		/* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+	}
+	/* The navbar becomes detached from the top, so we round the corners */
+	.navbar-wrapper .navbar {
+		border-radius: 4px;
+	}
+
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 20px;
+		font-size: 21px;
+		line-height: 1.4;
+	}
+}
+/*********************************************************************************/
+/* Venues                                                                        */
+/*********************************************************************************/
+
+.venues {
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.venues a {
+	border-bottom: none !important;
+}
+
+.venueContent {
+	display: inline-block;
+	width: 170px;
+	text-align: left;
+	font-weight: bold;
+}
+
+.venueContentWed {
+	display: inline-block;
+	width: 140px;
+	text-align: left;
+	font-weight: bold;
+}
+
+.venueContentTimes {
+	margin: 20px 0px 0px 0px;
+	display: inline-block;
+}
+
+.venueBox {
+	background: 0 0 #EEEFEF;
+	border: 10px solid #ffffff;
+	padding: 10px 0px;
+	border-radius: 2em;
+}
+
+.byline
+	{
+		display: block;
+		font-size: 1.25em;
+		margin-top: 1em;
+		line-height: 1.5em;
+	}
+	
+	
+/*********************************************************************************/
+/* Maps                                                                        */
+/*********************************************************************************/
+	#mapCanvas {
+	width: 100%;
+	height: 21em;
+	background: grey;
+	margin-top: 20px;
+}
+
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+	#footer
+	{
+		position: relative;
+		overflow: hidden;
+		padding: 1em 0 1em 0;
+		background: #2b252c;
+		color: #fff;
+	}
+
+		#footer .fa.circled
+		{
+			background: #fff;
+			color: #2b252c;
+		}
+
+		#footer header
+		{
+			text-align: center;
+			cursor: default;
+		}
+		
+		#footer h2,
+		#footer h3,
+		#footer h4,
+		#footer h5,
+		#footer h6
+		{
+			color: #fff;
+		}
+
+		#footer .contact
+		{
+			text-align: center;
+		}
+		
+			#footer .contact p
+			{
+				text-align: center;
+				margin: 0 0 3em 0;
+			}
+		
+		#footer .copyright
+		{
+			text-align: center;
+			color: rgba(128,128,128,0.75);
+			font-size: 0.8em;
+			cursor: default;
+		}
+
+			#footer .copyright a
+			{
+				color: rgba(128,128,128,0.75);
+			}
+
+				#footer .copyright a:hover
+				{
+					color: rgba(212,212,212,0.85);
+				}
+ul.icons
+		{
+			position: relative;
+			background: rgba(128,128,128,0.05);
+			border-radius: 4em;
+			display: inline-block;
+			padding: 0.35em 0.75em 0.35em 0.75em;
+			font-size: 1.25em;
+			cursor: default;
+		}
+		
+			ul.icons li
+			{
+				display: inline-block;
+			}
+
+				ul.icons li a
+				{
+					display: inline-block;
+					background: none;
+					width: 2.5em;
+					height: 2.5em;
+					line-height: 2.5em;
+					text-align: center;
+					border-radius: 100%;
+					border: 0;
+					color: inherit;
+				}
+				
+					ul.icons li a:hover
+					{
+						color: #ef8376;
+					}
+					
+					/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+	#header
+	{
+		position: relative;
+		background-image: url('../images/IMG_7923.jpg');  
+		background-size: cover;
+		background-position: center center;
+		color: #fff;
+		z-index:-;
+		text-align: center;
+		padding: 3.5em 0 1em 0;
+		cursor: default;
+	}
+
+		#header .inner
+		{
+			position: relative;
+			z-index: 1;
+			margin: 0;
+			padding: 4em 0 0 0;
+		}
+	
+		#header h1
+		{
+			color: #fff;
+			font-size: 3em;
+			line-height: 1em;
+		}
+
+			.homepage #header h1
+			{
+				font-size: 4em;
+			}
+		
+			#header h1 a
+			{
+				color: inherit;
+			}
+	
+				
+			#header header
+		{
+			display: inline-block;
+		}
+		
+		#header footer
+		{
+			margin: 1em 0 0 0;
+		}
+		
+		#header hr
+		{
+			top: 1.5em;
+			margin-bottom: 3em;
+
+			border-bottom-color: rgba(192,192,192,0.35);
+			box-shadow: inset 0 1px 0 0 rgba(192,192,192,0.35);
+		}
+		
+			#header hr:before,
+			#header hr:after
+			{
+				background: rgba(192,192,192,0.35);
+			}
