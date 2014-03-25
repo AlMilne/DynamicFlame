@@ -46,7 +46,7 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="/resources/images/IMG_7921.jpg" class="img-responsive ">
+				<img src="resources/images/IMG_7921.jpg" class="img-responsive ">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Dynamic Flame Badminton Club</h1>
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="/resources/images/IMG_7923.jpg" class="img-responsive">
+				<img src="resources/images/IMG_7923.jpg" class="img-responsive">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Changes to the Grid</h1>
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="../../resources/images/winners.jpg" class="img-responsive">
+				<img src="resources/images/winners.jpg" class="img-responsive">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Percentage-based sizing</h1>
