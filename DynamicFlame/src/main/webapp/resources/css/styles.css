@@ -290,3 +290,29 @@ ul.icons li a:hover {
 #header hr:before,#header hr:after {
 	background: rgba(192, 192, 192, 0.35);
 }
+
+/*** START : jquery validator errors ***/
+input.error {
+    outline: none;
+    border-color: 2px solid #f00 !important;
+    box-shadow: 0 0 10px #f00 !important;
+}
+
+textarea.error {
+    outline: none;
+    border-color: 2px solid #f00 !important;
+    box-shadow: 0 0 10px #f00 !important;
+}
+
+label.error {
+	color: red;
+	font-weight: bold;
+	float: left;
+}
+
+#errorsSummary {
+	color: red; 
+	font-weight: bold;
+}
+
+/*** END : jquery validator errors ***/

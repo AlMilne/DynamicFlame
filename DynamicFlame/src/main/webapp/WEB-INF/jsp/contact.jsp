@@ -1,59 +1,18 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <title>Dynamic Flame Badminton Club</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-<script>
-	$.validator.setDefaults({
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	});
-
-	$().ready(function() {
-
-		// validate form on keyup and submit
-		$("#emailForm").validate({
-
-			invalidHandler : function(form, validator) {
-				var errors = validator.numberOfInvalids();
-				if (errors) {
-					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
-					var errors = "";
-
-					$("#errorsSummary").text(message + errors);
-				}
-				validator.focusInvalid();
-			},
-			rules : {
-				yourEmail : {
-					required : true,
-					email : true
-				},
-				subject : "required",
-				message : "required"
-			},
-
-			messages : {
-				yourEmail : "Please enter your email address",
-				subject : "Please enter a subject",
-				message : "Please enter email message"
-			}
-		});
-	});
-</script>
 </head>
 <body class="no-sidebar">
 
 	<!-- Header -->
 	<div id="header">
-
 		<!-- Inner -->
 		<div class="inner">
 			<header>
@@ -62,63 +21,126 @@
 				</h1>
 			</header>
 		</div>
-
-		<!-- Nav -->
-		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 	</div>
 
+	<!-- Nav -->
+	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
+
 	<!-- Main -->
-	<div class="wrapper style4">
+	<div class="container">
+		<div class="row text-center">
+			<header style="margin-bottom: 0px;">
+				<h2>Contact Us</h2>
+				<span class="byline" style="margin-bottom: 0px;">For more information about the club please contact Norman Anthony on mobile XX
+					XXXX XXXX.</span>
+			</header>
 
-		<div class="container">
-			<div class="row">
-				<div class="12u skel-cell-important">
-					<article id="main" class="special">
-						<header style="margin-bottom: 0px;">
-							<h2>Contact Us</h2>
-							<span class="byline" style="margin-bottom: 0px;">For more information about the club please contact Norman Anthony on mobile XX
-								XXXX XXXX.</span>
-						</header>
+			<div id="errorsSummary" class="text-center">&nbsp;</div>
+			<br>
+			<form:form action="sendEmail.htm" commandName="email" id="emailForm" class="form-horizontal">
+				<fieldset>
+					<!-- Text input-->
+					<div class="form-group">
+						<form:label path="yourEmail" class="col-md-4 control-label">
+							<spring:message code="label.yourEmail" />
+						</form:label>
+						<div class="col-md-4">
+							<input id="yourEmail" name="yourEmail" placeholder="Your email address" class="form-control input-md" type="text">
+						</div>
+						<form:errors path="yourEmail" cssclass="error"></form:errors>
+						<label for="yourEmail" class="error">&nbsp;</label>
+					</div>
 
-						<div id="errorsSummary">&nbsp;</div>
-						<form:form action="sendEmail.htm" commandName="email" id="emailForm">
+					<!-- Text input-->
+					<div class="form-group">
+						<form:label path="subject" class="col-md-4 control-label">
+							<spring:message code="label.subject" />
+						</form:label>
+						<div class="col-md-4">
+							<input id="subject" name="subject" placeholder="Subject of your message" class="form-control input-md" type="text">
+						</div>
+						<form:errors path="subject" cssclass="error"></form:errors>
+						<label for="subject" class="error">&nbsp;</label>
+					</div>
 
-							<form:label path="yourEmail">
-								<spring:message code="label.yourEmail" />
-							</form:label>
-							<form:input path="yourEmail" id="yourEmail" class="glowing-border" size="40" maxlength="60"></form:input>
-							<form:errors path="yourEmail" cssclass="error"></form:errors>
-							<label for="yourEmail" class="error">&nbsp;</label>
+					<!-- Text input-->
+					<div class="form-group">
+						<form:label path="message" class="col-md-4 control-label">
+							<spring:message code="label.message" />
+						</form:label>
+						<div class="col-md-4">
+							<textarea id="message" name="message" placeholder="Your message content" class="form-control input-md"></textarea>
+						</div>
+						<form:errors path="message" cssclass="error"></form:errors>
+						<label for="message" class="error">&nbsp;</label>
+					</div>
 
-							<form:label path="subject">
-								<spring:message code="label.subject" />
-							</form:label>
-							<form:input path="subject" id="subject" class="glowing-border" size="40" maxlength="40"></form:input>
-							<form:errors path="subject" cssclass="error"></form:errors>
-							<label for="subject" class="error">&nbsp;</label>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="send"></label>
+						<div class="col-md-4">
+							<button id="send" name="send" class="btn btn-primary">Send</button>
+						</div>
+					</div>
 
-							<form:label path="message">
-								<spring:message code="label.message" />
-							</form:label>
-							<form:textarea path="message" id="message" rows="5" class="glowing-border"></form:textarea>
-							<form:errors path="message" cssclass="error"></form:errors>
-							<label for="message" class="error">&nbsp;</label>
-							<br />
 
-							<input type="submit" value="Send" class="button" />
+				</fieldset>
 
-						</form:form>
-
-					</article>
-				</div>
-			</div>
-			<hr />
-
+			</form:form>
 		</div>
+		<hr />
+
 	</div>
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
+
+	<!-- JavaScript  -->
+
+	<script>
+		$.validator.setDefaults({
+
+		});
+
+		$().ready(function() {
+
+			// validate form on keyup and submit
+			$("#emailForm").validate({
+
+				invalidHandler : function(form, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
+						var errors = "";
+
+						$("#errorsSummary").text(message + errors);
+					}
+					validator.focusInvalid();
+				},
+				rules : {
+					yourEmail : {
+						required : true,
+						email : true
+					},
+					subject : "required",
+					message : "required"
+				},
+
+				messages : {
+					yourEmail : "Please enter your email address",
+					subject : "Please enter a subject",
+					message : "Please enter email message"
+				}
+			});
+		});
+	</script>
+
 
 </body>
 </html>

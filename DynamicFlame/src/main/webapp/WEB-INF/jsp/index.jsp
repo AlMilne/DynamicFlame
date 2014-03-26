@@ -157,7 +157,7 @@
 
 
 
-	<!-- JavaScript jQuery code from Bootply.com editor -->
+	<!-- JavaScript -->
 
 	<script type='text/javascript'>
 		$(document).ready(function() {
