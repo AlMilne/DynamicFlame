@@ -4,8 +4,7 @@ body {
 	color: #5a5a5a;
 }
 
-a:hover
-{
+a:hover {
 	color: #ef8376;
 }
 
@@ -100,7 +99,6 @@ a:hover
 /*********************************************************************************/
 /* Venues                                                                        */
 /*********************************************************************************/
-
 .venues {
 	font-size: 16px;
 	line-height: 1.4;
@@ -136,185 +134,159 @@ a:hover
 	border-radius: 2em;
 }
 
-.byline
-	{
-		display: block;
-		font-size: 1.25em;
-		margin-top: 1em;
-		line-height: 1.5em;
-	}
-	
-	
+.byline {
+	display: block;
+	font-size: 1.25em;
+	margin-top: 1em;
+	line-height: 1.5em;
+}
+
 /*********************************************************************************/
 /* Maps                                                                        */
 /*********************************************************************************/
-	#mapCanvas {
+#mapCanvas {
 	width: 100%;
-	height: 21em;
+	height: 25em;
 	background: grey;
 	margin-top: 20px;
+}
+
+#facebook {
+	margin-top: 14px;
+	float: right;
+	margin-right: 10px;
 }
 
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
+#footer {
+	position: relative;
+	overflow: hidden;
+	padding: 1em 0 1em 0;
+	background: #2b252c;
+	color: #fff;
+}
 
-	#footer
-	{
-		position: relative;
-		overflow: hidden;
-		padding: 1em 0 1em 0;
-		background: #2b252c;
-		color: #fff;
-	}
+#footer .fa.circled {
+	background: #fff;
+	color: #2b252c;
+}
 
-		#footer .fa.circled
-		{
-			background: #fff;
-			color: #2b252c;
-		}
+#footer header {
+	text-align: center;
+	cursor: default;
+}
 
-		#footer header
-		{
-			text-align: center;
-			cursor: default;
-		}
-		
-		#footer h2,
-		#footer h3,
-		#footer h4,
-		#footer h5,
-		#footer h6
-		{
-			color: #fff;
-		}
+#footer h2,#footer h3,#footer h4,#footer h5,#footer h6 {
+	color: #fff;
+}
 
-		#footer .contact
-		{
-			text-align: center;
-		}
-		
-			#footer .contact p
-			{
-				text-align: center;
-				margin: 0 0 3em 0;
-			}
-		
-		#footer .copyright
-		{
-			text-align: center;
-			color: rgba(128,128,128,0.75);
-			font-size: 0.8em;
-			cursor: default;
-		}
+#footer .contact {
+	text-align: center;
+}
 
-			#footer .copyright a
-			{
-				color: rgba(128,128,128,0.75);
-			}
+#footer .contact p {
+	text-align: center;
+	margin: 0 0 3em 0;
+}
 
-				#footer .copyright a:hover
-				{
-					color: rgba(212,212,212,0.85);
-				}
-ul.icons
-		{
-			position: relative;
-			background: rgba(128,128,128,0.05);
-			border-radius: 4em;
-			display: inline-block;
-			padding: 0.35em 0.75em 0.35em 0.75em;
-			font-size: 1.25em;
-			cursor: default;
-		}
-		
-			ul.icons li
-			{
-				display: inline-block;
-			}
+#footer .copyright {
+	text-align: center;
+	color: rgba(128, 128, 128, 0.75);
+	font-size: 0.8em;
+	cursor: default;
+}
 
-				ul.icons li a
-				{
-					display: inline-block;
-					background: none;
-					width: 2.5em;
-					height: 2.5em;
-					line-height: 2.5em;
-					text-align: center;
-					border-radius: 100%;
-					border: 0;
-					color: inherit;
-				}
-				
-					ul.icons li a:hover
-					{
-						color: #ef8376;
-					}
-					
-					/*********************************************************************************/
+#footer .copyright a {
+	color: rgba(128, 128, 128, 0.75);
+}
+
+#footer .copyright a:hover {
+	color: rgba(212, 212, 212, 0.85);
+}
+
+ul.icons {
+	position: relative;
+	background: rgba(128, 128, 128, 0.05);
+	border-radius: 4em;
+	display: inline-block;
+	padding: 0.35em 0.75em 0.35em 0.75em;
+	font-size: 1.25em;
+	cursor: default;
+}
+
+ul.icons li {
+	display: inline-block;
+}
+
+ul.icons li a {
+	display: inline-block;
+	background: none;
+	width: 2.5em;
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: center;
+	border-radius: 100%;
+	border: 0;
+	color: inherit;
+}
+
+ul.icons li a:hover {
+	color: #ef8376;
+}
+
+/*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
+#header {
+	position: relative;
+	background-image: url('../images/IMG_7923.jpg');
+	background-size: cover;
+	background-position: center center;
+	color: #fff;
+	z-index: -;
+	text-align: center;
+	padding: 3.5em 0 1em 0;
+	cursor: default;
+}
 
-	#header
-	{
-		position: relative;
-		background-image: url('../images/IMG_7923.jpg');  
-		background-size: cover;
-		background-position: center center;
-		color: #fff;
-		z-index:-;
-		text-align: center;
-		padding: 3.5em 0 1em 0;
-		cursor: default;
-	}
+#header .inner {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	padding: 4em 0 0 0;
+}
 
-		#header .inner
-		{
-			position: relative;
-			z-index: 1;
-			margin: 0;
-			padding: 4em 0 0 0;
-		}
-	
-		#header h1
-		{
-			color: #fff;
-			font-size: 3em;
-			line-height: 1em;
-		}
+#header h1 {
+	color: #fff;
+	font-size: 3em;
+	line-height: 1em;
+}
 
-			.homepage #header h1
-			{
-				font-size: 4em;
-			}
-		
-			#header h1 a
-			{
-				color: inherit;
-			}
-	
-				
-			#header header
-		{
-			display: inline-block;
-		}
-		
-		#header footer
-		{
-			margin: 1em 0 0 0;
-		}
-		
-		#header hr
-		{
-			top: 1.5em;
-			margin-bottom: 3em;
+.homepage #header h1 {
+	font-size: 4em;
+}
 
-			border-bottom-color: rgba(192,192,192,0.35);
-			box-shadow: inset 0 1px 0 0 rgba(192,192,192,0.35);
-		}
-		
-			#header hr:before,
-			#header hr:after
-			{
-				background: rgba(192,192,192,0.35);
-			}
+#header h1 a {
+	color: inherit;
+}
+
+#header header {
+	display: inline-block;
+}
+
+#header footer {
+	margin: 1em 0 0 0;
+}
+
+#header hr {
+	top: 1.5em;
+	margin-bottom: 3em;
+	border-bottom-color: rgba(192, 192, 192, 0.35);
+	box-shadow: inset 0 1px 0 0 rgba(192, 192, 192, 0.35);
+}
+
+#header hr:before,#header hr:after {
+	background: rgba(192, 192, 192, 0.35);
+}

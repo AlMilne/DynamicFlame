@@ -23,14 +23,7 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	<div id="fb-root"></div>
-
-	<div id="facebook" class="row">
-		<section class="col-md-8 col-md-4">
-			<div class="fb-like" data-href="http://www.facebook.com/dynamicflamebadmintonclub" data-layout="button_count" data-action="like"
-				data-show-faces="true" data-share="true"></div>
-		</section>
-	</div>
+	
 	<!-- Nav -->
 	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
@@ -64,8 +57,8 @@
 				<img src="resources/images/IMG_7923.jpg" class="img-responsive">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Changes to the Grid</h1>
-						<p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
+						<h1>All skill levels welcome</h1>
+						<p>Our members include beginners to state level players</p>
 						<p>
 							<a class="btn btn-large btn-primary" href="#">Learn more</a>
 						</p>
@@ -73,11 +66,11 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="resources/images/winners.jpg" class="img-responsive">
+				<img src="resources/images/shuttle.jpg" class="img-responsive">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Percentage-based sizing</h1>
-						<p>With "mobile-first" there is now only one percentage-based grid.</p>
+						<h1>8 venues across perth</h1>
+						<p>One membership covers all venues.</p>
 						<p>
 							<a class="btn btn-large btn-primary" href="#">Browse gallery</a>
 						</p>

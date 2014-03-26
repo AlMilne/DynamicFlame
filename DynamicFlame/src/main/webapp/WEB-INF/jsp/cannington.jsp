@@ -4,9 +4,7 @@
 <html>
 <head>
 <title>Dynamic Flame Badminton Club</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
 	
@@ -84,6 +82,8 @@
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
