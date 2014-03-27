@@ -152,7 +152,8 @@ a:hover {
 }
 
 #facebook {
-	margin-top: 14px;
+	position: relative;
+	top: 14px;
 	float: right;
 	margin-right: 10px;
 }
@@ -310,6 +311,21 @@ label.error {
 	float: left;
 }
 
+@media all and (max-width: 992px) {
+	label.error {
+		color: red;
+		font-weight: bold;
+		float: left;
+		padding-left: 30px;
+	}
+	
+	#emailForm input, textarea{
+		width: 97%;
+		margin-left: 10px;
+	}
+}
+
+	
 #errorsSummary {
 	color: red; 
 	font-weight: bold;
