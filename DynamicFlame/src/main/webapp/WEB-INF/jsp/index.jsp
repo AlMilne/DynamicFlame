@@ -1,6 +1,6 @@
+<!DOCTYPE HTML>
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <html lang="en">
-<html>
 <head>
 <title>Dynamic Flame Badminton Club</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -8,7 +8,6 @@
 <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-
 </head>
 
 <body>
@@ -23,7 +22,7 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	
+
 	<!-- Nav -->
 	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
@@ -47,7 +46,7 @@
 						<pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small="">
 						<p></p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="#venues">Let's Play</a>
+							<a class="btn btn-lg btn-primary" id="scrollStart" href="#venues">Let's Play</a>
 						</p>
 						</pthis>
 					</div>
@@ -89,7 +88,7 @@
 
 	<div class="container marketing">
 
-		<div class="row text-center venues">
+		<div class="row text-center venues" id="venues">
 			<h2>We invite you to join us at the following venues</h2>
 			<br>
 			<div class="section group">
@@ -160,9 +159,23 @@
 	<!-- JavaScript -->
 
 	<script type='text/javascript'>
-		$(document).ready(function() {
-
+	$(document).ready(function() {
+		
+		/* smooth scrolling sections */
+		$("#scrollStart").click(function() {
+			if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop : target.offset().top - 50
+					}, 1000);
+					return false;
+				}
+			}
 		});
+
+	});
 	</script>
 
 </body>

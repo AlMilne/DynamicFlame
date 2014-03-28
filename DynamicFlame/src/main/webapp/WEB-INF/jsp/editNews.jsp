@@ -1,52 +1,12 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
+<!DOCTYPE HTML>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<!DOCTYPE html>
-<html>
+<%@ include file="/WEB-INF/jsp/include.jsp"%>
+
+<html lang="en">
 <head>
-<title>Edit Article</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/tinymce/tinymce.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-<script>
-	tinymce.init({
-		selector : "textarea"
-	});
-
-	$.validator.setDefaults({
-
-	});
-
-	$().ready(function() {
-
-		// validate form on keyup and submit
-		$("#newsAdminForm").validate({
-			invalidHandler : function(form, validator) {
-				var errors = validator.numberOfInvalids();
-				if (errors) {
-					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
-					var errors = "";
-
-					$("#errorsSummary").text(message + errors);
-				}
-				validator.focusInvalid();
-			},
-			rules : {
-				title : "required",
-				subtitle : "required",
-				content : "required"
-			},
-			messages : {
-				title : "Please enter article title",
-				subtitle : "Please enter article subtitle",
-				content : "Please enter article content"
-			}
-		});
-	});
-</script>
+<title>Dynamic Flame Badminton Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
 	<!-- Header -->
@@ -101,6 +61,53 @@
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
+	
+	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/tinymce/tinymce.min.js"></script>
+	
+	<!-- JavaScript  -->
+
+	<script>
+	tinymce.init({
+		selector : "textarea"
+	});
+
+	$.validator.setDefaults({
+
+	});
+
+	$().ready(function() {
+
+		// validate form on keyup and submit
+		$("#newsAdminForm").validate({
+			invalidHandler : function(form, validator) {
+				var errors = validator.numberOfInvalids();
+				if (errors) {
+					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
+					var errors = "";
+
+					$("#errorsSummary").text(message + errors);
+				}
+				validator.focusInvalid();
+			},
+			rules : {
+				title : "required",
+				subtitle : "required",
+				content : "required"
+			},
+			messages : {
+				title : "Please enter article title",
+				subtitle : "Please enter article subtitle",
+				content : "Please enter article content"
+			}
+		});
+	});
+	</script>
 
 </body>
 

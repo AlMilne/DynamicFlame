@@ -1,21 +1,72 @@
+<!DOCTYPE HTML>
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE HTML>
-
-<html>
+<html lang="en">
 <head>
 <title>Dynamic Flame Badminton Club</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<style type="text/css">
+body {
+	
+}
+
+#masthead {
+	min-height: 150px;
+}
+
+#masthead h1 {
+	font-size: 30px;
+	line-height: 1;
+	padding-top: 20px;
+}
+
+#masthead .well {
+	margin-top: 8%;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 50px;
+	}
+}
+
+.navbar-bright {
+	background-color: #111155;
+	color: #fff;
+}
+
+.affix-top,.affix {
+	position: static;
+}
+
+@media ( min-width : 979px) {
+	#sidebar.affix-top {
+		position: static;
+		margin-top: 30px;
+		width: 228px;
+	}
+	#sidebar.affix {
+		position: fixed;
+		top: 70px;
+		width: 228px;
+	}
+}
+
+#sidebar li.active {
+	border: 0 #eee solid;
+	border-right-width: 4px;
+}
+</style>
 </head>
-<body class="left-sidebar">
+<body>
 
 	<!-- Header -->
 	<div id="header">
-
 		<!-- Inner -->
 		<div class="inner">
 			<header>
@@ -24,103 +75,132 @@
 				</h1>
 			</header>
 		</div>
-
-		<!-- Nav -->
-		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
-
 	</div>
 
-	<!-- Main -->
-	<div class="wrapper style4">
+	<!-- Nav -->
+	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
+	<div id="masthead">
 		<div class="container">
 			<div class="row">
-				<sec:authorize access="isAuthenticated()">
-					<div class="-9u 3u">
-						<a href="newsAdmin.html" class="newbutton">New Article</a> <a class="buttonLogin" href="<c:url value="/j_spring_security_logout" />">Logout</a>
-					</div>
-				</sec:authorize>
-				<sec:authorize access="isAnonymous()">
-					<div class="-9u 3u">
-						<a class="buttonLogin" href="login.html"> Login</a>
-					</div>
-				</sec:authorize>
-				<div class="4u" id="sidebar">
-					<hr class="first" />
-					<section>
-						<header>
-							<h3>
-								<a href="#">News Letter</a>
-							</h3>
-						</header>
-						<p>Download the club's latest newsletter.</p>
-						<footer>
-							<a href="${contextPath}resources/docs/dfbc_7th_newsletter.pdf" class="button">Download</a>
-						</footer>
-					</section>
-					<hr />
-					<section>
-						<header>
-							<h3>
-								<a href="#">Popular articles</a>
-							</h3>
-						</header>
-						<p>The hottest news articles right now.</p>
-						<c:if test="${!empty mostPopular}">
-							<c:forEach items="${mostPopular}" begin="0" end="3" var="article">
-
-								<div class="row half no-collapse">
-									<div class="4u">
-										<img src="${contextPath}resources/images/shuttle_icon.gif" alt="shuttle icon" style="margin: 10px;" /></a>
-									</div>
-									<div class="8u">
-										<h4>${article.title}</h4>
-										<p>${article.subtitle}</p>
-									</div>
-								</div>
-
-							</c:forEach>
-						</c:if>
-					</section>
+				<div class="col-md-7">
+					<h1>
+						Club News
+						<p class="lead">Latest news and info</p>
+					</h1>
 				</div>
-				<div class="8u skel-cell-important">
-					<article id="main">
-						<h2>Club News</h2>
-						<c:if test="${!empty articleList}">
-							<c:forEach items="${articleList.pageList}" var="article">
-								<section>
-									<h3>${article.title}</h3>
-									<span class="byline"><fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" /></span>
-									<p>${article.subtitle}</p>
-									<p>${article.content}</p>
-									<sec:authorize access="isAuthenticated()">
-										<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
-										<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
-									</sec:authorize>
-								</section>
+				<div class="col-md-5">
 
-								<c:if test="${articleList.nrOfElements == 0}">
-									<p>No Person Data</p>
-								</c:if>
-							</c:forEach>
-						</c:if>
-						<div>
-							<c:if test="${!articleList.firstPage}">
-								<a href="news.html?page=previous"><b>&lt;&lt; Prev</b></a>
-							</c:if>
-							<c:if test="${!articleList.lastPage}">
-								<a href="news.html?page=next"><b>Next &gt;&gt;</b></a>
-							</c:if>
-						</div>
-					</article>
+					<div class="row">
+						<sec:authorize access="isAuthenticated()">
+							<div class="col-sm-6">
+								<a href="newsAdmin.html" class="newbutton">New Article</a> <a class="buttonLogin" href="<c:url value="/j_spring_security_logout" />">Logout</a>
+							</div>
+						</sec:authorize>
+						<sec:authorize access="isAnonymous()">
+							<div class="col-sm-6">
+								<a class="buttonLogin" href="login.html"> Login</a>
+							</div>
+						</sec:authorize>
+
+					</div>
+
 				</div>
 			</div>
-			<hr />
+		</div>
+		<!-- /cont -->
+	</div>
 
+	<!-- Begin Body -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-3" id="leftCol">
+
+				<ul class="nav nav-stacked" id="sidebar">
+					<c:if test="${!empty articleList}">
+						<c:forEach items="${articleList.pageList}" var="article">
+							<li><a href="#${article.storyId}">${article.title}</a></li>
+						</c:forEach>
+					</c:if>
+				</ul>
+
+			</div>
+			<div class="col-md-9">
+				<c:if test="${!empty articleList}">
+					<c:forEach items="${articleList.pageList}" var="article">
+						<section>
+							<h2 id="${article.storyId}">${article.title}</h2>
+
+							<span class="byline"><fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" /></span>
+							<p>${article.subtitle}</p>
+							<p>${article.content}</p>
+							<sec:authorize access="isAuthenticated()">
+								<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
+								<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
+							</sec:authorize>
+							<hr class="col-md-12">
+						</section>
+
+						<c:if test="${articleList.nrOfElements == 0}">
+							<p>No Person Data</p>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				<div>
+					<c:if test="${!articleList.firstPage}">
+						<a href="news.html?page=previous"><b>&lt;&lt; Prev</b></a>
+					</c:if>
+					<c:if test="${!articleList.lastPage}">
+						<a href="news.html?page=next"><b>Next &gt;&gt;</b></a>
+					</c:if>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
 
+	<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+	<script type='text/javascript'>
+		$(document).ready(function() {
+
+			$('#sidebar').affix({
+				offset : {
+					top : 235
+				}
+			});
+
+			var $body = $(document.body);
+			var navHeight = $('.navbar').outerHeight(true) + 10;
+
+			$body.scrollspy({
+				target : '#leftCol',
+				offset : navHeight
+			});
+
+			/* smooth scrolling sections */
+			$('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop : target.offset().top - 50
+						}, 1000);
+						return false;
+					}
+				}
+			});
+
+		});
+	</script>
+
 </body>
 </html>
+
+
+
+

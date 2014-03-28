@@ -1,14 +1,11 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <!DOCTYPE HTML>
+<%@ include file="/WEB-INF/jsp/include.jsp"%>
 
-<html>
+<html lang="en">
 <head>
 <title>Dynamic Flame Badminton Club</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
 	
 </script>
 <script>
@@ -45,7 +42,6 @@
 
 	<!-- Header -->
 	<div id="header">
-
 		<!-- Inner -->
 		<div class="inner">
 			<header>
@@ -54,40 +50,38 @@
 				</h1>
 			</header>
 		</div>
-
-		<!-- Nav -->
-		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
-
 	</div>
+
+	<!-- Nav -->
+	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
 	<!-- Main -->
-	<div class="wrapper style4">
-
-		<div class="container">
-			<div class="row">
-				<div class="6u skel-cell-important">
-					<article id="main" class="special">
-						<header>
-							<h2>Melville Recreation Centre</h2>
-							<h3>Corner of Canning Highway and Stock Roads, Melville</h3>
-							<span class="byline">Sundays 9:30am to 11:30am Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
-								$10 for non-members
-							</span>
-						</header>
-					</article>
-				</div>
-				<div class="6u skel-cell">
-					<div id="mapCanvas"></div>
-				</div>
+	<div class="container marketing">
+		<div class="row">
+			<div class="col-md-6">
+				<article id="main" class="text-center">
+					<header>
+						<h2>Melville Recreation Centre</h2>
+						<h3>Corner of Canning Highway and Stock Roads, Melville</h3>
+						<span class="byline">Sundays 9:30am to 11:30am Juniors and Adults </span> <span class="byline"> $8 for members <strong>|</strong>
+							$10 for non-members
+						</span>
+					</header>
+				</article>
 			</div>
-
-			<hr />
-
+			<div class="col-md-6">
+				<div id="mapCanvas"></div>
+			</div>
 		</div>
+		<hr class="featurette-divider">
 	</div>
-	
+
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

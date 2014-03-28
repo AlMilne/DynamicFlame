@@ -1,9 +1,9 @@
+<!DOCTYPE HTML>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
-<!DOCTYPE HTML>
 
-<html>
+<html lang="en">
 <head>
 <title>Dynamic Flame Badminton Club</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
