@@ -1,38 +1,13 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <!DOCTYPE HTML>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ include file="/WEB-INF/jsp/include.jsp"%>
 
-<html>
+<html lang="en">
 <head>
 <title>Dynamic Flame Badminton Club</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
-	
-</script>
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<script>
-	$.validator.setDefaults({});
-
-	$().ready(function() {
-
-		// validate form on keyup and submit
-		$("#loginForm").validate({
-			errorClass: "loginError",
-			rules : {
-				j_username : "required",
-				j_password : "required"
-			},
-			messages : {
-				j_username : "Please enter username",
-				j_password : "Please enter password"
-			}
-		});
-	});
-</script>
 <style>
 .errorblock {
 	color: #ff0000;
@@ -41,16 +16,17 @@
 	padding: 8px;
 	margin: 16px;
 }
+
 .loginError {
-    color:#FF0000;
+	color: #FF0000;
 }
 </style>
 </head>
 <body onload='document.f.j_username.focus();'>
+<body class="no-sidebar">
 
 	<!-- Header -->
 	<div id="header">
-
 		<!-- Inner -->
 		<div class="inner">
 			<header>
@@ -59,43 +35,88 @@
 				</h1>
 			</header>
 		</div>
+	</div>
 
-		<!-- Nav -->
-		<%@ include file="/WEB-INF/jsp/nav.jsp"%>
+	<!-- Nav -->
+	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
-		<!-- Main -->
-		<div class="wrapper style4">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<br>
+			<br>
+			<form id="loginForm" action="<c:url value='j_spring_security_check' />" method='POST' class="form-horizontal" style="margin-bottom: 150px;">
+				<fieldset>
 
-			<c:if test="${not empty error}">
-				<div class="errorblock">
-					Your login attempt was not successful, try again.<br />
-				</div>
-			</c:if>
+					<!-- Form Name -->
+					<c:if test="${not empty error}">
+						<div class="errorblock">
+							Your login attempt was not successful, try again.<br />
+						</div>
+					</c:if>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="username">Username</label>
+						<div class="col-md-4">
+							<input id="username" name="j_username" placeholder="username" class="form-control input-md" required="" type="text">
 
-			<form id="loginForm" action="<c:url value='j_spring_security_check' />" method='POST' style="color: black;">
-				<div class="row">
-					<div class="-2u 7u">
-						<label for="username">Username </label>
+						</div>
 					</div>
-					<div class="-3u 6u">
-						<input name="j_username" id="username">
-					</div>
-				</div>
 
-				<div class="row" >
-					<div class="-2u 7u">
-						<label for="password">Password </label>
+					<!-- Password input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="password">Password</label>
+						<div class="col-md-4">
+							<input id="password" name="j_password" placeholder="password" class="form-control input-md" required="" type="password">
+
+						</div>
 					</div>
-					<div class="-3u 6u" style="padding-top: 0em;">
-						<input name="j_password" id="password" type="password">
+
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for=""></label>
+						<div class="col-md-4">
+							<button id="" name="" class="btn btn-primary">Login</button>
+						</div>
 					</div>
-				</div>
-				<br /> <input type="submit" value="Login" class="button" />
+
+				</fieldset>
 			</form>
+
+
 		</div>
 	</div>
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
+
+	<!-- JavaScript  -->
+
+	<script>
+		$.validator.setDefaults({});
+
+		$().ready(function() {
+
+			// validate form on keyup and submit
+			$("#loginForm").validate({
+				errorClass : "loginError",
+				rules : {
+					j_username : "required",
+					j_password : "required"
+				},
+				messages : {
+					j_username : "Please enter username",
+					j_password : "Please enter password"
+				}
+			});
+		});
+	</script>
+
 </body>
 </html>
