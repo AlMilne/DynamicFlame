@@ -28,35 +28,57 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="12u skel-cell-important">
-				<div id="errorsSummary"></div>
-				<form:form commandName="newsArticle" action="update.htm" id="newsAdminForm">
-					<form:label path="title">
-						<spring:message code="label.title" />
-					</form:label>
-					<form:input path="title" id="title" class="glowing-border"></form:input>
-					<form:errors path="title" cssClass="error" />
+
+			<div id="errorsSummary"></div>
+			<form:form commandName="newsArticle" action="update.htm" id="newsAdminForm" class="form-horizontal">
+				<fieldset>
+					<br />
+					<div class="form-group">
+						<form:label path="title" class="text-left col-xs-8 ">
+							<spring:message code="label.title" />
+						</form:label>
+						<div class="col-xs-8">
+							<form:input id="title" path="title" name="title" class="form-control input-md" type="text"></form:input>
+						</div>
+						<form:errors path="title" cssClass="error" />
+					</div>
 					<br />
 
-					<form:label path="subtitle">
-						<spring:message code="label.subtitle" />
-					</form:label>
-					<form:input path="subtitle" id="subtitle" class="glowing-border"></form:input>
-					<form:errors path="subtitle" cssclass="error"></form:errors>
+					<div class="form-group">
+						<form:label path="subtitle" class="col-xs-8 text-left">
+							<spring:message code="label.subtitle" />
+						</form:label>
+						<div class="col-xs-8">
+							<form:input path="subtitle" id="subtitle" name="subtitle" class="form-control input-md" type="text"></form:input>
+						</div>
+						<form:errors path="subtitle" cssclass="error"></form:errors>
+					</div>
 					<br />
 
-					<form:label path="content">
-						<spring:message code="label.content" />
-					</form:label>
-					<form:textarea path="content" id="content" rows="5" class="glowing-border"></form:textarea>
-					<form:errors path="content" cssclass="error"></form:errors>
+					<div class="form-group">
+						<form:label path="content" class="col-xs-8 text-left">
+							<spring:message code="label.content" />
+						</form:label>
+						<div class="col-xs-8"> 
+							<form:textarea id="content" path="content" rows="5" class="form-control input-md"></form:textarea>
+						</div>
+						<form:errors path="content" cssclass="error"></form:errors>
+					</div>
 					<br />
+				</fieldset>
 
-					<input type="submit" value="Save Changes" class="button" />
+				<div class="form-group">
+					<div>
+						<button id="send" name="send" class="btn btn-primary">Save Changes</button>
+					
+						<button id="cancel" name="cancel" class="btn btn-primary">Cancel</button>
+					</div>
+				</div>
 
-				</form:form>
-			</div>
+
+			</form:form>
 		</div>
+
 	</div>
 
 	<!-- Footer -->
@@ -67,46 +89,46 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
-	
+
 	<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/tinymce/tinymce.min.js"></script>
-	
+
 	<!-- JavaScript  -->
 
 	<script>
-	tinymce.init({
-		selector : "textarea"
-	});
-
-	$.validator.setDefaults({
-
-	});
-
-	$().ready(function() {
-
-		// validate form on keyup and submit
-		$("#newsAdminForm").validate({
-			invalidHandler : function(form, validator) {
-				var errors = validator.numberOfInvalids();
-				if (errors) {
-					var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
-					var errors = "";
-
-					$("#errorsSummary").text(message + errors);
-				}
-				validator.focusInvalid();
-			},
-			rules : {
-				title : "required",
-				subtitle : "required",
-				content : "required"
-			},
-			messages : {
-				title : "Please enter article title",
-				subtitle : "Please enter article subtitle",
-				content : "Please enter article content"
-			}
+		tinymce.init({
+			selector : "textarea"
 		});
-	});
+
+		$.validator.setDefaults({
+
+		});
+
+		$().ready(function() {
+
+			// validate form on keyup and submit
+			$("#newsAdminForm").validate({
+				invalidHandler : function(form, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						var message = errors == 1 ? 'Please correct the below error\n' : 'Please correct the below ' + errors + ' errors.\n';
+						var errors = "";
+
+						$("#errorsSummary").text(message + errors);
+					}
+					validator.focusInvalid();
+				},
+				rules : {
+					title : "required",
+					subtitle : "required",
+					content : "required"
+				},
+				messages : {
+					title : "Please enter article title",
+					subtitle : "Please enter article subtitle",
+					content : "Please enter article content"
+				}
+			});
+		});
 	</script>
 
 </body>
