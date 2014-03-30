@@ -30,7 +30,7 @@
 		<div class="row">
 
 			<div id="errorsSummary"></div>
-			<form:form commandName="newsArticle" action="update.htm" id="newsAdminForm" class="form-horizontal">
+			<form:form commandName="newsArticle" action="update.htm" id="newsAdminForm" class="form-horizontal" style="margin-left: 5px;">
 				<fieldset>
 					<br />
 					<div class="form-group">
@@ -68,10 +68,10 @@
 				</fieldset>
 
 				<div class="form-group">
-					<div>
-						<button id="send" name="send" class="btn btn-primary">Save Changes</button>
+					<div class="col-xs-8">
+						<button id="send" name="action" class="btn btn-primary" value="save">Save Changes</button>
 					
-						<button id="cancel" name="cancel" class="btn btn-primary">Cancel</button>
+						<button id="cancel" name="action" class="btn btn-primary" value="cancel">Cancel</button>
 					</div>
 				</div>
 

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
@@ -73,8 +74,7 @@ public class NewsController {
      * @return String - view to display
      */
     @RequestMapping(value = "/news", method = RequestMethod.POST)
-    public String addNewsArticle(final HttpServletRequest request, final HttpServletResponse response,
-            @ModelAttribute(NEWS_ARTICLE) @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
+    public String addNewsArticle(final HttpServletRequest request, final HttpServletResponse response, @ModelAttribute(NEWS_ARTICLE) @Valid final NewsArticle newsArticle, final BindingResult result, final Model model) {
 
         if (result.hasErrors()) {
             return NEWS_ADMIN_PAGE;
@@ -175,14 +175,16 @@ public class NewsController {
      * @return articleDetails.jsp view
      */
     @RequestMapping(value = "/edit/update", method = RequestMethod.POST)
-    public String updateArticle(@ModelAttribute final NewsArticle newsArticle, final Model model, final HttpServletRequest request) {
-        newsService.editNewsArticle(newsArticle);
-        request.getSession().setAttribute(ARTICLE_LIST, null);
-        PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
+    public String updateArticle(@ModelAttribute final NewsArticle newsArticle, @RequestParam final String action, final Model model, final HttpServletRequest request) {
+        if (action.equals("save")) {
+            newsService.editNewsArticle(newsArticle);
+            request.getSession().setAttribute(ARTICLE_LIST, null);
+            PagedListHolder<NewsArticle> pagedListHolder = populatePagedListHolder(request);
 
-        request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
+            request.getSession().setAttribute(ARTICLE_LIST, pagedListHolder);
 
-        model.addAttribute(ARTICLE_LIST, pagedListHolder);
+            model.addAttribute(ARTICLE_LIST, pagedListHolder);
+        }
 
         return REDIRECT_NEWS;
     }
@@ -197,8 +199,7 @@ public class NewsController {
      */
     private PagedListHolder<NewsArticle> populatePagedListHolder(final HttpServletRequest request) {
         @SuppressWarnings("unchecked")
-        PagedListHolder<NewsArticle> pagedListHolder =
-                (PagedListHolder<NewsArticle>) request.getSession().getAttribute(ARTICLE_LIST);
+        PagedListHolder<NewsArticle> pagedListHolder = (PagedListHolder<NewsArticle>) request.getSession().getAttribute(ARTICLE_LIST);
 
         // If first time on page populate the pagedListHolder with the news articles
         if (pagedListHolder == null) {
