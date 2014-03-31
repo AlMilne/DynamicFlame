@@ -6,8 +6,11 @@
 <title>Dynamic Flame Badminton Club</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-aQPwDQ4SB1xM8HwK3p-BPVBPBH9mTuA&sensor=false">
-	
 </script>
+<!--[if lt IE 9]>
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
 <script>
 	var marker;
 	var myLatlng;
@@ -38,7 +41,7 @@
 	});
 </script>
 </head>
-<body class="no-sidebar">
+<body>
 
 	<!-- Header -->
 	<div id="header">
