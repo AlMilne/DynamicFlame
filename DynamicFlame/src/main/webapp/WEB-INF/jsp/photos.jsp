@@ -20,7 +20,7 @@
 	// Set up PhotoSwipe with all anchor tags in the Gallery container 
 	document.addEventListener('DOMContentLoaded', function() {
 
-		Code.photoSwipe('a', '#Gallery');
+		Code.photoSwipe('a', '#gallery');
 
 	}, false);
 </script>
@@ -42,34 +42,21 @@
 <%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
 <!-- Main -->
-<div class="container marketing">
+<div class="container" id="photoGallery">
 	<div class="row">
-		<div id="wrap">
-			<div id="Gallery">
-				<div class="gallery-row">
-					<div class="gallery-item">
-						<a href="resources/images/full/001.jpg"><img src="resources/images/thumb/001.jpg" alt="Image 01" /></a>
-					</div>
-					<div class="gallery-item">
-						<a href="resources/images/full/002.jpg"><img src="resources/images/thumb/002.jpg" alt="Image 02" /></a>
-					</div>
-					<div class="gallery-item">
-						<a href="resources/images/full/003.jpg"><img src="resources/images/thumb/003.jpg" alt="Image 03" /></a>
-					</div>
-				</div>
-				<div class="gallery-row">
-					<div class="gallery-item">
-						<a href="resources/images/full/004.jpg"><img src="resources/images/thumb/004.jpg" alt="Image 04" /></a>
-					</div>
-					<div class="gallery-item">
-						<a href="resources/images/full/005.jpg"><img src="resources/images/thumb/005.jpg" alt="Image 05" /></a>
-					</div>
-					<div class="gallery-item">
-						<a href="resources/images/full/006.jpg"><img src="resources/images/thumb/006.jpg" alt="Image 06" /></a>
-					</div>
-				</div>
+		<ul id="gallery" class="wrap">
+			<div class="gallery-row">
+				<li class="gallery-item"><a href="resources/images/full/IMG_7923.jpg"><img src="resources/images/thumb/IMG_7923_sm.jpg" alt="Image 01" /></a><div>Hainsworth</div></a></li>
+				<li class="gallery-item"><a href="resources/images/full/002.jpg"><img src="resources/images/thumb/002.jpg" alt="Image 02" /></a></li>
+				<li class="gallery-item"><a href="resources/images/full/003.jpg"><img src="resources/images/thumb/003.jpg" alt="Image 03" /></a></li>
 			</div>
-		</div>
+			<div class="gallery-row">
+				<li class="gallery-item"><a href="resources/images/full/004.jpg"><img src="resources/images/thumb/004.jpg" alt="Image 04" /></a></li>
+				<li class="gallery-item"><a href="resources/images/full/005.jpg"><img src="resources/images/thumb/005.jpg" alt="Image 05" /></a></li>
+				<li class="gallery-item"><a href="resources/images/full/006.jpg"><img src="resources/images/thumb/006.jpg" alt="Image 06" /></a></li>
+			</div>
+		</ul>
+
 	</div>
 </div>
 <hr />
