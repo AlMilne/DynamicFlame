@@ -2,8 +2,11 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <html lang="en">
 <head>
-<title>Dynamic Flame Badminton Club</title>
+<title>Dynamic Flame Badminton Club | Perth WA | Training Social | dynamicflame.net</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Dynamic flame badminton club is a fun social badminton club based in Perth WA. Open to everyone of all skill levels.">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
