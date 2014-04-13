@@ -62,7 +62,7 @@
 						<h1>All skill levels welcome</h1>
 						<p>Our members include beginners to state level players</p>
 						<p>
-							<a class="btn btn-large btn-primary" href="#">Learn more</a>
+							<a class="btn btn-large btn-primary" href="news.html">Learn more</a>
 						</p>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 						<h1>8 venues across perth</h1>
 						<p>One membership covers all venues.</p>
 						<p>
-							<a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+							<a class="btn btn-large btn-primary" href="photos.html">Browse gallery</a>
 						</p>
 					</div>
 				</div>

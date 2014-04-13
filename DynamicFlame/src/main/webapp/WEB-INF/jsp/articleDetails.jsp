@@ -5,7 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>News Stories</title>
-
+<!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body>
 	<h3>News Articles</h3>

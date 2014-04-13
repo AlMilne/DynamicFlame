@@ -8,6 +8,9 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
+<!--[if lt IE 9]>
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body class="no-sidebar">
 

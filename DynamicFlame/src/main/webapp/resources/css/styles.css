@@ -329,6 +329,19 @@ label.error {
 	font-weight: bold;
 }
 
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+
+.loginError {
+	color: #FF0000;
+}
+
+
 /*** END : jquery validator errors ***/
 .menu {
 	list-style-type: none;
@@ -423,6 +436,61 @@ label.error {
 		padding: 5px;
 	}
 }
+
+/*********************************************************************************/
+/* 	News page side bar                                                           */
+/*           																     */
+/*********************************************************************************/
+#masthead {
+	min-height: 150px;
+}
+
+#masthead h1 {
+	font-size: 30px;
+	line-height: 1;
+	padding-top: 20px;
+}
+
+#masthead .well {
+	margin-top: 8%;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 50px;
+	}
+}
+
+.navbar-bright {
+	background-color: #111155;
+	color: #fff;
+}
+
+.affix-top,.affix {
+	position: static;
+}
+
+@media ( min-width : 979px) {
+	#sidebar.affix-top {
+		position: static;
+		margin-top: 30px;
+		width: 228px;
+	}
+	#sidebar.affix {
+		position: fixed;
+		top: 70px;
+		width: 228px;
+	}
+}
+
+#sidebar li.active {
+	border: 0 #eee solid;
+	border-right-width: 4px;
+}
+
+
+
+
 /*********************************************************************************/
 /* Icons                                                                         */
 /* Powered by Font Awesome by Dave Gandy | http://fontawesome.io                 */

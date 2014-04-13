@@ -8,7 +8,6 @@
 <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-</head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link href="<%=request.getContextPath()%>/resources/css/photoswipe.css" type="text/css" rel="stylesheet" />
 
