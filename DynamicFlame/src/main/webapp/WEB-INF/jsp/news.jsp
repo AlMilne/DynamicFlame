@@ -6,6 +6,10 @@
 <head>
 <title>Dynamic Flame Badminton Club</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Dynamic flame badminton club news. All the latest news and info from the club.">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 
 <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -128,24 +132,25 @@ body {
 			</div>
 			<div class="col-md-9">
 				<c:if test="${!empty articleList}">
-					<c:forEach items="${articleList.pageList}" var="article">
-						<section>
-							<h2 id="${article.storyId}">${article.title}</h2>
+					<article>
+						<c:forEach items="${articleList.pageList}" var="article">
+							<section>
+								<h2 id="${article.storyId}">${article.title}</h2>
 
-							<span class="byline"><fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" /></span>
-							<p>${article.subtitle}</p>
-							<p>${article.content}</p>
-							<sec:authorize access="isAuthenticated()">
-								<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
-								<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
-							</sec:authorize>
-							<hr class="col-md-12">
-						</section>
-
-						<c:if test="${articleList.nrOfElements == 0}">
-							<p>No Person Data</p>
-						</c:if>
-					</c:forEach>
+								<span class="byline"><fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" /></span>
+								<p>${article.subtitle}</p>
+								<p>${article.content}</p>
+								<sec:authorize access="isAuthenticated()">
+									<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
+									<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
+								</sec:authorize>
+								<hr class="col-md-12">
+							</section>
+						</c:forEach>
+					</article>
+				</c:if>
+				<c:if test="${articleList.nrOfElements == 0}">
+					<p>No current news articles</p>
 				</c:if>
 				<div>
 					<c:if test="${!articleList.firstPage}">
@@ -153,7 +158,7 @@ body {
 					</c:if>
 					<c:if test="${!articleList.lastPage}">
 						<a href="news.html?page=next"><b>Next &gt;&gt;</b></a>
-					</c:if>
+					</c:if><br>
 				</div>
 			</div>
 		</div>
