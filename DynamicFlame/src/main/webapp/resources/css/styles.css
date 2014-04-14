@@ -134,7 +134,7 @@ a:hover {
 	border-radius: 2em;
 }
 
-.byline {
+.byline, time {
 	display: block;
 	font-size: 1.25em;
 	margin-top: 1em;
@@ -161,7 +161,7 @@ a:hover {
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
-#footer {
+footer {
 	position: relative;
 	overflow: hidden;
 	padding: 1em 0 1em 0;
@@ -169,41 +169,41 @@ a:hover {
 	color: #fff;
 }
 
-#footer .fa.circled {
+footer .fa.circled {
 	background: #fff;
 	color: #2b252c;
 }
 
-#footer header {
+footer header {
 	text-align: center;
 	cursor: default;
 }
 
-#footer h2,#footer h3,#footer h4,#footer h5,#footer h6 {
+footer h2,footer h3,footer h4,footer h5,footer h6 {
 	color: #fff;
 }
 
-#footer .contact {
+footer .contact {
 	text-align: center;
 }
 
-#footer .contact p {
+footer .contact p {
 	text-align: center;
 	margin: 0 0 3em 0;
 }
 
-#footer .copyright {
+footer .copyright {
 	text-align: center;
 	color: rgba(128, 128, 128, 0.75);
 	font-size: 0.8em;
 	cursor: default;
 }
 
-#footer .copyright a {
+footer .copyright a {
 	color: rgba(128, 128, 128, 0.75);
 }
 
-#footer .copyright a:hover {
+footer .copyright a:hover {
 	color: rgba(212, 212, 212, 0.85);
 }
 

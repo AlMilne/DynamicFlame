@@ -84,7 +84,9 @@
 							<section>
 								<h2 id="${article.storyId}">${article.title}</h2>
 
-								<span class="byline"><fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" /></span>
+								<time>
+									<fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" />
+								</time>
 								<p>${article.subtitle}</p>
 								<p>${article.content}</p>
 								<sec:authorize access="isAuthenticated()">

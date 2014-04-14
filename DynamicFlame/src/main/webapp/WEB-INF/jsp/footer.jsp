@@ -1,4 +1,4 @@
-<div id="footer">
+<footer>
 	<div class="container">
 		<p class="pull-right">
 			<a href="#">Back to top</a>
@@ -26,4 +26,4 @@
 
 		</div>
 	</div>
-</div>
+</footer>

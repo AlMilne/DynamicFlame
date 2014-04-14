@@ -46,12 +46,9 @@
 					<div class="carousel-caption">
 						<h1>Dynamic Flame Badminton Club</h1>
 						<h2>A fun social badminton club based in Perth WA</h2>
-						<pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small="">
-						<p></p>
 						<p>
 							<a class="btn btn-lg btn-primary" id="scrollStart" href="#venues">Let's Play</a>
 						</p>
-						</pthis>
 					</div>
 				</div>
 			</div>
