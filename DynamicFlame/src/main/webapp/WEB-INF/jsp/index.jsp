@@ -41,7 +41,7 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="resources/images/IMG_7921.jpg" class="img-responsive ">
+				<img src="resources/images/IMG_79211.jpg" class="img-responsive ">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Dynamic Flame Badminton Club</h1>

@@ -67,7 +67,6 @@
 
 		<div class="row">
 			<div class="col-md-3" id="leftCol">
-
 				<ul class="nav nav-stacked" id="sidebar">
 					<c:if test="${!empty articleList}">
 						<c:forEach items="${articleList.pageList}" var="article">
@@ -75,26 +74,22 @@
 						</c:forEach>
 					</c:if>
 				</ul>
-
 			</div>
-			<div class="col-md-9">
+			<section class="col-md-9">
 				<c:if test="${!empty articleList}">
 					<article>
 						<c:forEach items="${articleList.pageList}" var="article">
-							<section>
-								<h2 id="${article.storyId}">${article.title}</h2>
-
-								<time>
-									<fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" />
-								</time>
-								<p>${article.subtitle}</p>
-								<p>${article.content}</p>
-								<sec:authorize access="isAuthenticated()">
-									<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
-									<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
-								</sec:authorize>
-								<hr class="col-md-12">
-							</section>
+							<h2 id="${article.storyId}">${article.title}</h2>
+							<time>
+								<fmt:formatDate pattern="EEEE, dd MMMM yyyy, HH:mm " value="${article.postedTime}" />
+							</time>
+							<p>${article.subtitle}</p>
+							<p>${article.content}</p>
+							<sec:authorize access="isAuthenticated()">
+								<a href="delete/${article.storyId}" onclick="return confirm('Are you sure you want to delete this article?')" class="button">Delete</a>
+								<a href="edit/${article.storyId}" class="buttonEdit">Edit</a>
+							</sec:authorize>
+							<hr class="col-md-12">
 						</c:forEach>
 					</article>
 				</c:if>
@@ -107,9 +102,10 @@
 					</c:if>
 					<c:if test="${!articleList.lastPage}">
 						<a href="news.html?page=next"><b>Next &gt;&gt;</b></a>
-					</c:if><br>
+					</c:if>
+					<br>
 				</div>
-			</div>
+			</section>
 		</div>
 	</div>
 	<!-- Footer -->
