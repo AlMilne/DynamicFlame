@@ -29,9 +29,7 @@
 	<!-- Nav -->
 	<%@ include file="/WEB-INF/jsp/nav.jsp"%>
 
-
-	<!-- Carousel
-================================================== -->
+	<!-- Carousel ================================================== -->
 	<div id="myCarousel" class="carousel slide">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">

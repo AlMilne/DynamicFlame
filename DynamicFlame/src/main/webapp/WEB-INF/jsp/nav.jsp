@@ -1,4 +1,5 @@
-<header class="navbar-wrapper">
+<header class="navbar-wrapper"><nav>
+	<h2 class="hidden">Site Navigation</h2>
 	<div class="container">
 		<div class="navbar navbar-inverse navbar-static-top">
 
@@ -8,7 +9,7 @@
 				</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<nav>
+				
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="index.html">Home</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Venues<b class="caret"></b></a>
@@ -27,7 +28,7 @@
 						<li><a href="photos.html">Photos</a></li>
 						<li><a href="contact.html">Contact Us</a></li>
 					</ul>
-				</nav>
+				
 				<div id="fb-root"></div>
 
 				<div id="facebook">
@@ -39,5 +40,5 @@
 
 		</div>
 	</div>
-	<!-- /container -->
+	<!-- /container --></nav>
 </header>
