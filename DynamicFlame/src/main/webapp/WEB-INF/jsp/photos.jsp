@@ -45,9 +45,36 @@
 	<div class="row">
 		<ul id="gallery" class="wrap">
 			<div class="gallery-row">
-				<li class="gallery-item"><a href="resources/images/full/IMG_7923.jpg"><img src="resources/images/thumb/IMG_7923_sm.jpg" alt="Image 01" /></a><div>Hainsworth</div></a></li>
-				<li class="gallery-item"><a href="resources/images/full/002.jpg"><img src="resources/images/thumb/002.jpg" alt="Image 02" /></a></li>
-				<li class="gallery-item"><a href="resources/images/full/003.jpg"><img src="resources/images/thumb/003.jpg" alt="Image 03" /></a></li>
+				<li class="gallery-item">
+					<a href="resources/images/full/IMG_7923.jpg">
+						<figure>
+							<img src="resources/images/thumb/IMG_7923_sm.jpg" alt="Hainsworth" />
+						</figure>
+						<figcaption>
+							<div>Hainsworth</div>
+						</figcaption>
+					</a>
+				</li>
+				<li class="gallery-item">
+					<a href="resources/images/full/002.jpg">
+						<figure>
+							<img src="resources/images/thumb/002.jpg" alt="Image 02" />
+						</figure>
+						<figcaption>
+							<div>Image 02</div>
+						</figcaption>
+					</a>
+				</li>
+				<li class="gallery-item">
+					<a href="resources/images/full/003.jpg">
+						<figure>
+							<img src="resources/images/thumb/003.jpg" alt="Image 03" />
+						</figure>
+						<figcaption>
+							<div>Image 03</div>
+						</figcaption>
+					</a>
+				</li>
 			</div>
 			<div class="gallery-row">
 				<li class="gallery-item"><a href="resources/images/full/004.jpg"><img src="resources/images/thumb/004.jpg" alt="Image 04" /></a></li>
